@@ -15,7 +15,7 @@ function Home() {
             <div class="content" >
               <h2 class="title">Popular Movies</h2>
               <p class="copy">Check out all the new popular movies</p>
-              <button class="btn"><Link to="/popularFilm">Popular movies</Link></button>
+              <button class="btn"><Link to="/popularMovies">Popular movies</Link></button>
             </div>
           </div>
           <div class="cardT">

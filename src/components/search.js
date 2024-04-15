@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import MoviePoster from '../components/image';
+import { getSearched } from '../api/getSearched';
+import Movie from './Movie';
+import Serie from './Serie';
 
-import SeriePoster from '../components/imageSerie';
-import SerieDetails from '../components/detailsSerie';
-const API_KEY = 'e3436ec42b993f82543c9bdaa01a5e45';
-
-function MovieSearch() {
+function Search() {
   const [query, setQuery] = useState('');
   const [searchType, setSearchType] = useState('movie'); // 'movie' or 'tv'
   const [results, setResults] = useState([]);
@@ -14,18 +11,9 @@ function MovieSearch() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/${searchType}`,
-        {
-          params: {
-            api_key: API_KEY,
-            language: 'en-US',
-            query: query,
-          },
-        }
-      );
+      const data = await getSearched(searchType,query);
       // Add a 'mediaType' property to each item in the results array
-      const itemsWithMediaType = response.data.results.map((item) => ({
+      const itemsWithMediaType = data.results.map((item) => ({
         ...item,
         mediaType: searchType === 'movie' ? 'movie' : 'tv',
       }));
@@ -143,52 +131,9 @@ function MovieSearch() {
                            {results.map((item) => (
                              <li key={item.id}>
                                {item.mediaType === 'movie' ? (
-                                 <div className="movie_card" id="bright" key={item.id}>
-                                   <div className="info_section">
-                                     <div className="movie_header">
-                                       <MoviePoster movieId={item.id} />
-                                       <h1>{item.title}</h1>
-                                       <h3>.</h3>
-                                       <span className="minutes">{item.vote_average}</span>
-                                       <p className="type">
-                                         {item.release_date}, {item.original_language}
-                                       </p>
-                                       <h1>{item.genres}</h1>
-                                     </div>
-                                     <div className="movie_desc" ref={movieDescRef}>
-                                       <p className="text">{item.overview}</p>
-                                     </div>
-                                   </div>
-                                   <div className="blur_back">
-                                     {/* Check if the movie poster file_path is available */}
-                                     {item.poster_path && (
-                                       <img
-                                         src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                                         alt={item.title}
-                                       />
-                                     )}
-                                   </div>
-                                 </div>
+                                 <Movie  movie={item} />
                                ) : (
-                                 <div className="movie_card" id="bright" key={item.id}>
-                                   <div className="info_section">
-                                     <div className="movie_header">
-                                       <SeriePoster SerieId={item.id} />
-                                       <h1>{item.name}</h1>
-                                       <h3>.</h3>
-                                       <span className="minutes">
-                                         <SerieDetails SerieId={item.id} />
-                                       </span>
-                                       <p className="type">{item.first_air_date}</p>
-                                     </div>
-                                     <div className="movie_desc" ref={movieDescRef}>
-                                       <p className="text">{item.overview}</p>
-                                     </div>
-                                   </div>
-                                   <div className="blur_back">
-                                     <SeriePoster SerieId={item.id} />
-                                   </div>
-                                 </div>
+                                <Serie serie={item}/>
                                )}
                              </li>
                            ))}
@@ -198,4 +143,4 @@ function MovieSearch() {
                    );
                  }
 
-                 export default MovieSearch;
+                 export default Search;
