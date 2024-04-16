@@ -8,7 +8,6 @@ function Cover({ Type, Id ,number}) {
   const fetchCover = async () => {
     try {
       const data1 = await getPoster(Type, Id);
-        console.log("data",data1.posters)
       if (data1.posters && data1.posters.length > 0) {
         setCover(data1.posters[number]);
       } else {

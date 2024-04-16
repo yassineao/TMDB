@@ -9,6 +9,7 @@ import Search from '../pages/Search'
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup'; 
 function RouteComponent() {
+  
   return (
     <Routes>
       <Route path="/" element={<Home />} />

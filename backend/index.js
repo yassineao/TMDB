@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const jwt = require('jsonwebtoken');
+const cookies = require('js-cookie');
 const app = express();
 const port = 5000;
 
@@ -78,25 +79,37 @@ app.post('/login', async (req, res) => {
     if (user) {
       const match = await bcrypt.compare(password, user.password);
       if (match) {
-        res.status(200).json({ message: 'Login successful', user });
-        console.log("1")
+        const token = jwt.sign({ userId: user._id }, 'your_secret_key');
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200).json({ message: 'Login successful', user, token });
       } else {
         res.status(401).json({ message: 'Invalid password' });
-        console.log("2")
-        console.log(password)
-        console.log(user.password)
       }
     } else {
       res.status(404).json({ message: 'User not found' });
-      console.log("3")
     }
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
-    console.log("4")
   }
 });
 
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+    req.userId = decoded.userId;
+    next();
+  });
+};
+app.get('/protected', verifyToken, (req, res) => {
+  res.status(200).json({ message: 'This is a protected route', userId: req.userId });
+});
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
