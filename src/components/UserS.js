@@ -48,65 +48,112 @@ function UserS() {
         }
     }
     return (
-        <>
-            <h1>This is React WebApp </h1>
-            <form onSubmit={handleSubmit}>
-                    <div id="error-message" >{errorMessage}</div>
-                        <div className="field input-field">
-                        <input type="text" placeholder="Firstname" className="input"   value={firstname}
-          onChange={(e) => setFirstname(e.target.value)} required/>
-                         </div>
-                         <div className="field input-field">
-                        <input type="text" placeholder="Lastname" className="input"   value={lastname}
-          onChange={(e) => setLastname(e.target.value)} required/>
-                         </div>
-                         <div className="field input-field">
-                        <input type="text" placeholder="Country" className="input"   value={country}
-          onChange={(e) => setCountry(e.target.value)} required/>
-                         </div>
-                         <div className="field input-field">
-                        <input type="text" placeholder="city" className="input"   value={city}
-          onChange={(e) => setCity(e.target.value)} required/>
-                         </div>
-                         <div className="field input-field">
-                        <input type="text" placeholder="Nr°" className="input"   value={house_Nr}
-          onChange={(e) => setHouse_Nr(e.target.value)} required/>
-                         </div>
-                         <div className="field input-field">
-                        <input type="text" placeholder="PLZ" className="input"   value={pLZ}
-          onChange={(e) => setPLZ(e.target.value)} required/>
-                         </div>
-                         
+        <><div class="form">
 
-                         <div className="field input-field">
-                        <input type="text" placeholder="Phone number" className="input"   value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)} required/>
-                         </div>
-                        <div className="field input-field">
-                            <input type="email" placeholder="Email" className="input"  value={email}
-          onChange={(e) => setEmail(e.target.value)} required/>
-                            <i className='bx bx-hide eye-icon'></i>
-                        </div>
-                        <div className="field input-field">
-                            <input type="text" placeholder="Password" className="password"   value={password}
-          onChange={(e) => setPassword(e.target.value)} required/>
-                            <i className='bx bx-hide eye-icon'></i>
-                        </div>
-                        
-                        <div className="field input-field">
-                            <input type="text" placeholder="Retype password" className="password"  value={checkPass}
-          onChange={(e) => setcheckPass(e.target.value)} required/>
-                            <i className='bx bx-hide eye-icon'></i>
-                        </div>
-                        <div className="field button-field">
-                            <button   >Signup</button>
-                        </div>
-                    </form>
-                    <div className="form-link">
-                        <span>Already have an account? <a href="/loginpage" className="link login-link">Login</a></span>
+        <ul class="tab-group">
+        </ul>
+      
+        <div class="tab-content">
+          <div id="signup">
+            <h1>Sign Up for Free</h1>
+      
+            <form onSubmit={handleSubmit}>
+      
+              <div class="top-row">
+                <div class="field-wrap">
+                  <label>
+                    
+                  </label>
+                  <input type="text" placeholder="Firstname" className="input"   value={firstname}
+      onChange={(e) => setFirstname(e.target.value)} required autocomplete="off"/>
+                </div>
+      
+                <div class="field-wrap">
+                  <label>
+                  </label>
+                  <input type="text" placeholder="Lastname" className="input"   value={lastname}
+      onChange={(e) => setLastname(e.target.value)} required autocomplete="off"/>
+                </div>
+              </div>
+      
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="Country" className="input"   value={country}
+      onChange={(e) => setCountry(e.target.value)} required/>
+              </div>
+      
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="city" className="input"   value={city}
+      onChange={(e) => setCity(e.target.value)} required/>
+              </div>
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="Nr°" className="input"   value={house_Nr}
+      onChange={(e) => setHouse_Nr(e.target.value)} required/>
+              </div>
+      
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="PLZ" className="input"   value={pLZ}
+      onChange={(e) => setPLZ(e.target.value)} required/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="Phone number" className="input"   value={phoneNumber}
+      onChange={(e) => setPhoneNumber(e.target.value)} required/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="email" placeholder="Email" className="input"  value={email}
+      onChange={(e) => setEmail(e.target.value)} required/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="Password" className="password"   value={password}
+      onChange={(e) => setPassword(e.target.value)} required/>
+              </div>
+
+              <div class="field-wrap">
+                <label>
+                </label>
+                <input type="text" placeholder="Retype password" className="password"  value={checkPass}
+      onChange={(e) => setcheckPass(e.target.value)} required/>
+              </div>
+
+
+              
+              <div className="field button-field">
+                        <button   >Signup</button>
                     </div>
-               
- 
+
+            </form>
+            <div className="form-link">
+                    <span>Already have an account? <a href="/login" className="link login-link">Login</a></span>
+                </div>
+          </div>
+      
+          <div id="login">
+         
+      
+          </div>
+      
+        </div>
+      
+      </div> 
+
+
+       
         </>
     );
 }

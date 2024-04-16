@@ -1,20 +1,19 @@
 import React from 'react';
 import UserS from '../components/UserS';
-
-import "../styles/Cards.css"
-import "../styles/Nbar.css"
+import "../styles/signin.css"
 
 
-function Login() {
+function Signup() {
     return (
       <div>
         <UserS/>
-
-
+        
+       
+          
       </div>
 
 
     );
   }
   
-  export default Login;
+  export default Signup;

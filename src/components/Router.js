@@ -6,8 +6,8 @@ import Home from '../pages/Home';
 import PopSer from '../pages/PopularSeries';
 import PopMov from '../pages/PopularMovies';
 import Search from '../pages/Search'
-import Login from '../pages/Login';
-import UserS from './UserS';
+import Signin from '../pages/Signin';
+import Signup from '../pages/Signup'; 
 function RouteComponent() {
   return (
     <Routes>
@@ -15,8 +15,8 @@ function RouteComponent() {
       <Route path="/popularMovies" element={<PopMov />} />
       <Route path="/popularSerie" element={<PopSer />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<UserS />} />
+      <Route path="/login" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 }

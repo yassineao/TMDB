@@ -1,13 +1,13 @@
 import React from 'react';
-
+import Login from '../components/Login';
 import "../styles/Cards.css"
 import "../styles/Nbar.css"
 
 
-function Login() {
+function Signin() {
     return (
       <div>
-        bruh
+       <Login/>
 
 
       </div>
@@ -16,4 +16,4 @@ function Login() {
     );
   }
   
-  export default Login;
+  export default Signin;
