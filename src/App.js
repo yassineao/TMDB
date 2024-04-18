@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
 
 import './styles/navigation.css';
 import RouteComponent from './components/Router';
 
 function App() {
+  const [userData, setUserData] = useState(null); // State to hold user data
+
+  const logout = () => {
+    // Clear session storage or cookies
+    sessionStorage.removeItem('session');
+    // Redirect to the login page or any other desired page
+    window.location.href = '/login'; // Redirect to the login page after logout
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/protected', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('session')}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Request failed');
+        }
+        const data = await response.json();
+        setUserData(data.user); // Set user data to state
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData(); // Call the async function to fetch data
+  }, []); // Run the effect only once when the component mounts
+
   return (
     <div className="App">
       <Router>
@@ -21,11 +52,16 @@ function App() {
             <div className="nav right">
               <Link to="/popularMovies" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
               <Link to="/popularSerie" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Series</span></span></Link>
-              <Link to="/signup" className="nav-link"><span className="nav-link-span"><span className="u-nav">Login</span></span></Link>
+              {userData ? (
+                <>
+                  <Link to="/profile" className="nav-link"><span className="nav-link-span"><span className="u-nav">Profile</span></span></Link>
+                  <Link to="/logout" onClick={logout} className="nav-link"><span className="nav-link-span"><span className="u-nav">Logout</span></span></Link>
+                </>
+              ) : (
+                <Link to="/signup" className="nav-link"><span className="nav-link-span"><span className="u-nav">Login</span></span></Link>
+              )}
               <Link to="/Search" className="nav-link"><span className="nav-link-span"><span className="u-nav">Search</span></span></Link>
-
             </div>
-            
           </nav>
         </header>
       </Router>

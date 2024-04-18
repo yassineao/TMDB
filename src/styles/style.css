@@ -574,4 +574,8 @@ li{margin-bottom:20px;}
 div{
   padding-left:6px;
  }
- 
+ .smallButton {
+  padding: 5px 10px; /* Adjust the padding as needed */
+  font-size: 12px; /* Adjust the font size as needed */
+  color: ghostwhite;
+}

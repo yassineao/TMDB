@@ -8,6 +8,7 @@ import PopMov from '../pages/PopularMovies';
 import Search from '../pages/Search'
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup'; 
+import Profile from '../pages/Profile';
 function RouteComponent() {
   
   return (
@@ -18,6 +19,7 @@ function RouteComponent() {
       <Route path="/search" element={<Search />} />
       <Route path="/login" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
