@@ -16,6 +16,7 @@ function Movies() {
       const data = await getMovies();
       
       setMovies(data);
+      console.log('Movie Dawwwta:', data);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching Movies:', error);

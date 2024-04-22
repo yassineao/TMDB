@@ -157,3 +157,49 @@ app.put('/profile', verifyToken, async (req, res) => {
     res.status(500).send('Something went wrong');
   }
 });
+
+app.put('/add-favorite-film', verifyToken, async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { filmId, type } = req.body;
+    // Find the user by ID and update favoriteFilms array based on the type
+    let updatedUser;
+    if (type === 'addToSet') {
+      
+    console.log('Remove from favosssssssrites:', type,filmId);
+      updatedUser = await User.findByIdAndUpdate(userId, {
+        $addToSet: { favoriteFilms: filmId } // $addToSet ensures filmId is added only if not already present
+      }, { new: true }); // To return the updated document
+    } else {
+      updatedUser = await User.findByIdAndUpdate(userId, {
+        $pull: { favoriteFilms: filmId } // $pull removes filmId from favoriteFilms array
+      }, { new: true }); // To return the updated document
+    }
+    
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Something went wrong');
+  }
+});
+app.get('/favorite-movies', verifyToken, async (req, res) => {
+  try {
+    const userId = req.user._id;
+    console.log('Remove from favorites:', userId);
+    // Find the user by ID and retrieve their favorite movies
+    const user = await User.findById(userId);
+
+    // Check if the user exists
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Retrieve the favorite movies from the user object or from a separate collection in your database
+    const favoriteMovies = user.favoriteFilms; // Assuming favoriteMovies is an array in the user object
+
+    res.status(200).json({ favoriteMovies });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Something went wrong');
+  }
+});
