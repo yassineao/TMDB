@@ -1,35 +1,28 @@
+import React from 'react';
+import useFavoriteMovies from '../api/getFavorite';
+import MovieF from '../components/FavoriteM';
 
-import React, { useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
-import MovieList from '../components/favMovie';
+function FavoriteMoviesPage() {
+    const { favoriteMovies, loading, error } = useFavoriteMovies();
 
-import "../styles/Cards.css"
-import "../styles/Nbar.css"
-import { getFav } from '../api/getFavorite';
+    if (loading) {
+        return <div>Loading favorite movies...</div>;
+    }
 
-function FavMovies() {
-    
-  useEffect(() => {
-  }, []); 
-
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
-      <div>
-           <div>
-                            <h1 class="titles">Your favorite movies </h1>
-                          <div class="card">
-                            <MovieList />
-
-
-
-
-
-                           </div>
-                           </div>
-      </div>
-
-
+        <div>
+            <h2>Favorite Movies</h2>
+            <ul>
+                {favoriteMovies.map((movieId) => (
+                    <li key={movieId}><MovieF movieId={movieId}/></li>
+                ))}
+            </ul>
+        </div>
     );
-  }
-  
-  export default FavMovies;
+}
+
+export default FavoriteMoviesPage;

@@ -81,7 +81,6 @@ function Movie({ movie }) {
               </button>
               <span className="minutes">{movie.vote_average}</span>
               <p className="type">{movie.release_date}, {movie.original_language}</p>
-              <h1>{movie.genres}</h1>
             </div>
             <div className="movie_desc">
               <p className="text">{movie.overview}</p>

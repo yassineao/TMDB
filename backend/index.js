@@ -185,19 +185,12 @@ app.put('/add-favorite-film', verifyToken, async (req, res) => {
 app.get('/favorite-movies', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
-    console.log('Remove from favorites:', userId);
-    // Find the user by ID and retrieve their favorite movies
-    const user = await User.findById(userId);
-
-    // Check if the user exists
+    const user = await User.findById(userId).populate('favoriteFilms');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
-    // Retrieve the favorite movies from the user object or from a separate collection in your database
-    const favoriteMovies = user.favoriteFilms; // Assuming favoriteMovies is an array in the user object
-
-    res.status(200).json({ favoriteMovies });
+    
+    res.status(200).json(user.favoriteFilms);
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
