@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router,  Link } from 'react-router-dom';
 
 import './styles/navigation.css';
 import RouteComponent from './components/Router';
@@ -55,6 +55,8 @@ function App() {
               {userData ? (
                 <>
                   <Link to="/profile" className="nav-link"><span className="nav-link-span"><span className="u-nav">Profile</span></span></Link>
+                  <Link to="/favmovies" className="nav-link"><span className="nav-link-span"><span className="u-nav">Watchlist</span></span></Link>
+
                   <Link to="/logout" onClick={logout} className="nav-link"><span className="nav-link-span"><span className="u-nav">Logout</span></span></Link>
                 </>
               ) : (

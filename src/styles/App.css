@@ -36,7 +36,3 @@
     transform: rotate(360deg);
   }
 }
-.smallButton {
-  padding: 5px 10px; /* Adjust the padding as needed */
-  font-size: 12px; /* Adjust the font size as needed */
-}

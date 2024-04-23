@@ -1,46 +1,18 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/style.css";
 import Cover from './Cover';
+import getToken from '../api/getToken';
+import updateFavoriteFilm from '../api/updateFavoriteFilm';
 
 function Movie({ movie }) {
   const [isAdded, setIsAdded] = useState(false);
   const [filmId, setFilmId] = useState('');
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/protected', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('session')}`,
-            'Content-Type': 'application/json',
-          },
-        });
-        if (!response.ok) {
-          throw new Error('Request failed');
-        }
-        const data = await response.json();
-        setUserData(data.user);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
+  
   const handleAddFavoriteFilm = async (type, filmId) => {
     try {
-      const token = sessionStorage.getItem('session');
-      const response = await fetch('http://localhost:5000/add-favorite-film', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ type, filmId })
-      });
-
+      
+      const response = await updateFavoriteFilm(type, filmId);
+      
       if (response.ok) {
         const data = await response.json();
         console.log('User updated with new favorite films:', data);
@@ -59,15 +31,17 @@ function Movie({ movie }) {
   const addToFavorites = () => {
     setIsAdded(!isAdded);
     setFilmId(movie.id);
+    const type = isAdded ? "pull" : "addToSet";
+    
     if (isAdded) {
       console.log('Remove from favorites:', movie.title);
-      handleAddFavoriteFilm("pull", movie.id);
     } else {
       console.log('Add to favorites:', movie.title);
-      handleAddFavoriteFilm("addToSet", movie.id);
     }
+    
+    handleAddFavoriteFilm(type, movie.id);
   };
-
+  
   return (
     <div>
       <div className="card">
