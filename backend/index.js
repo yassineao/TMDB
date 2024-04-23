@@ -86,7 +86,7 @@ app.post('/login', async (req, res) => {
       if (match) {
         const token = jwt.sign({ user: user }, '65269dfa629841gwe9r51er8');
       
-        res.status(200).json({ message: 'Login successful', user, token });
+        res.status(200).json({ message: 'Login successful',  token });
       } else {
         res.status(401).json({ message: 'Invalid password' });
       }

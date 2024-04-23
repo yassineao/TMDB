@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/style.css";
 import Cover from './Cover';
-import getToken from '../api/getToken';
+import getToken from '../api/getTokenU';
 import updateFavoriteFilm from '../api/updateFavoriteFilm';
 
 function Movie({ movie }) {
+  const [userDataFetched, setUserDataFetched] = useState(false); // Track if user data has been fetched
+
   const [isAdded, setIsAdded] = useState(false);
   const [filmId, setFilmId] = useState('');
-  
+  const [userData, setUserData] = useState(null); 
   const handleAddFavoriteFilm = async (type, filmId) => {
     try {
       
@@ -41,7 +43,28 @@ function Movie({ movie }) {
     
     handleAddFavoriteFilm(type, movie.id);
   };
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Call the getToken function to fetch user data only if it hasn't been fetched before
+        if (!userDataFetched) {
+          const user = await getToken();
+          setUserData(user); // Set user data to state
+          setUserDataFetched(true); // Update the state to indicate that user data has been fetched
+   
+          const numberExists = user.favoriteFilms.includes(movie.id);
+
+          if (numberExists) {
+            setIsAdded(true); // Set isAdded to true if movie is already in favorites
+          } 
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData(); // Call the async function to fetch data
+  }, [userDataFetched]);
   return (
     <div>
       <div className="card">

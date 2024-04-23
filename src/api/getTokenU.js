@@ -11,8 +11,7 @@ async function getToken() {
           throw new Error('Request failed');
         }
         const data = await response.json();
-        console.log(data);
-        return data;
+        return data.user;
       } catch (error) {
         console.error(error);
       }

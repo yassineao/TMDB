@@ -1,27 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import '../styles/Cards.css';
 import '../styles/Nbar.css';
-import fetchData from '../api/getConnected,js';
+
+import getToken from '../api/getTokenU';
 function Home() {
   const [userData, setUserData] = useState(null); // State to hold user data
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/protected', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('session')}`,
-            'Content-Type': 'application/json',
-          },
-        });
-        if (!response.ok) {
-          throw new Error('Request failed');
-        }
-        const data = await response.json();
-        setUserData(data.user); // Set user data to state
+        // Call the getToken function to fetch user data
+        const user = await getToken();
+        setUserData(user); // Set user data to state
       } catch (error) {
         console.error(error);
       }
@@ -34,8 +25,8 @@ function Home() {
     <div>
       {userData && (
         <div>
-          <h1 class="titles">Welcome !!</h1>
-          <h2 class="titles"> {userData.lastname}</h2>
+          <h1 className="titles">Welcome !!</h1>
+          <h2 className="titles"> {userData.lastname}</h2>
           {/* Render other user information as needed */}
         </div>
       )}
@@ -61,15 +52,13 @@ function Home() {
         <div className="cardT">
           <div className="content">
             <h2 className="title">Search movie</h2>
-            <p className="copy">Check informations about a film </p>
+            <p className="copy">Check information about a film</p>
             <button className="btn">
               <Link to="/search">Search</Link>
             </button>
           </div>
         </div>
       </main>
-      
-      
     </div>
   );
 }

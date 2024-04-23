@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router,  Link } from 'react-router-dom';
 
+import getToken from './api/getTokenU';
 import './styles/navigation.css';
 import RouteComponent from './components/Router';
 
@@ -13,22 +14,12 @@ function App() {
     // Redirect to the login page or any other desired page
     window.location.href = '/login'; // Redirect to the login page after logout
   };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/protected', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem('session')}`,
-            'Content-Type': 'application/json',
-          },
-        });
-        if (!response.ok) {
-          throw new Error('Request failed');
-        }
-        const data = await response.json();
-        setUserData(data.user); // Set user data to state
+        // Call the getToken function to fetch user data
+        const user = await getToken();
+        setUserData(user); // Set user data to state
       } catch (error) {
         console.error(error);
       }

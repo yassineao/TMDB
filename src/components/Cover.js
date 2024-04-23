@@ -13,7 +13,6 @@ function Cover({ Type, Id ,number}) {
       } else {
         console.error('No poster found for this movie.');
       }
-      console.log(cover)
     } catch (error) {
       console.error('Error fetching poster:', error);
     }
