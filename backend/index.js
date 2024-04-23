@@ -49,6 +49,10 @@ const UserSchema = new mongoose.Schema({
     type: [Number], // Array of integers
     default: [],
   },
+  favoriteSeries: {
+    type: [Number], // Array of integers
+    default: [],
+  },
 });
 
 

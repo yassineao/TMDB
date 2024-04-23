@@ -1,10 +1,29 @@
 import { useState, useEffect } from 'react';
 
+import getToken from '../api/getTokenU';
 function useFavoriteMovies() {
     const [favoriteMovies, setFavoriteMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [userDataFetched, setUserDataFetched] = useState(false); 
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            // Call the getToken function to fetch user data only if it hasn't been fetched before
+            if (!userDataFetched) {
+              const user = await getToken();
+              console.log(user);// Set user data to state
+              setUserDataFetched(true); // Update the state to indicate that user data has been fetched
+       
+            
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchData(); // Call the async function to fetch data
+      }, [userDataFetched]);
     useEffect(() => {
         const fetchFavoriteMovies = async () => {
             try {

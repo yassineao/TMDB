@@ -4,6 +4,20 @@ import Cover from './Cover';
 
 function Serie({  serie }) { // Receive props as a single object argument
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <div className="movie_card" id="bright" key={serie.id}>
     <div className="info_section">
