@@ -1,13 +1,15 @@
-async function updateFavoriteFilm(type, filmId) {
+async function updateFavoriteFilm(type, Id ,t) {
     try {
+      console.log("wdwq",t)
       const response = await fetch('http://localhost:5000/add-favorite-film', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${sessionStorage.getItem('session')}`,
         },
-        body: JSON.stringify({ type, filmId })
+        body: JSON.stringify({ Id, type, t})
       });
+      
       return response;
     } catch (error) {
       console.error('Error updating favorite films:', error);

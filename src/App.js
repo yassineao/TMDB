@@ -4,7 +4,7 @@ import { BrowserRouter as Router,  Link } from 'react-router-dom';
 import getToken from './api/getTokenU';
 import './styles/navigation.css';
 import RouteComponent from './components/Router';
-
+import test from './pages/Test';
 function App() {
   const [userData, setUserData] = useState(null); // State to hold user data
 
@@ -41,6 +41,8 @@ function App() {
             </div>
 
             <div className="nav right">
+            <Link to="/test" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
+
               <Link to="/popularMovies" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
               <Link to="/popularSerie" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Series</span></span></Link>
               {userData ? (

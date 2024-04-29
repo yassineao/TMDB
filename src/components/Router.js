@@ -10,6 +10,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup'; 
 import Profile from '../pages/Profile';
 import FavMovies from '../pages/Favorite';
+import Test from '../pages/Test';
 function RouteComponent() {
   
   return (
@@ -22,6 +23,7 @@ function RouteComponent() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/favmovies" element={<FavMovies />} />
+      <Route path="/test" element={<Test />} />
     </Routes>
   );
 }

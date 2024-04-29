@@ -3,6 +3,7 @@ import "../styles/style.css"
 import { getSeries } from '../api/getSeries';
 import Cover from './Cover';
 import Serie from './Serie';
+import Card from './Card';
 function Series() {
  
 
@@ -52,7 +53,7 @@ function Series() {
         <p>Loading...</p>
       ) : (
         series.results.slice(0, 20).map(serie => ( // Use slice(0, 20) to get only the first 20 movies
-      <Serie serie={serie}/>
+      <Card Type={"serie"} serie={serie}/>
         ))
       )}
     </div>

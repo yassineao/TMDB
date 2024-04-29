@@ -3,7 +3,7 @@ import "../styles/style.css"
 import { getMovies } from '../api/getMovies';
 import Cover from './Cover';
 import Movie from './Movie';
-
+import Card from './Card';
 function Movies() {
  
 
@@ -54,7 +54,7 @@ function Movies() {
         <p>Loading...</p>
       ) : (
         movies.results.slice(0, 20).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
-        <Movie  movie={movie} />
+        <Card Type={"movie"} movie={movie} />
         ))
       )}
     </div>

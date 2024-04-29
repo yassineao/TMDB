@@ -155,7 +155,7 @@ app.put('/profile', verifyToken, async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json({ user: updatedUser, token });
+    res.status(200).json({  token });
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
@@ -165,22 +165,45 @@ app.put('/profile', verifyToken, async (req, res) => {
 app.put('/add-favorite-film', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
-    const { filmId, type } = req.body;
+    const { Id, type,t } = req.body;
     // Find the user by ID and update favoriteFilms array based on the type
+    console.log(t);
     let updatedUser;
     if (type === 'addToSet') {
+      if (t=== 'movie'){
+
+        updatedUser = await User.findByIdAndUpdate(userId, {
+          $addToSet: { favoriteFilms: Id } // $addToSet ensures filmId is added only if not already present
+        }, { new: true }); // To return the updated document
+
+
+      }
+      else{
+        updatedUser = await User.findByIdAndUpdate(userId, {
+          $addToSet: { favoriteSeries: Id } // $addToSet ensures filmId is added only if not already present
+        }, { new: true }); // To return the updated document
+
+      }
       
-    console.log('Remove from favosssssssrites:', type,filmId);
-      updatedUser = await User.findByIdAndUpdate(userId, {
-        $addToSet: { favoriteFilms: filmId } // $addToSet ensures filmId is added only if not already present
-      }, { new: true }); // To return the updated document
     } else {
-      updatedUser = await User.findByIdAndUpdate(userId, {
-        $pull: { favoriteFilms: filmId } // $pull removes filmId from favoriteFilms array
-      }, { new: true }); // To return the updated document
+      if (t=== 'movie'){
+
+        updatedUser = await User.findByIdAndUpdate(userId, {
+          $pull: { favoriteFilms: Id } // $addToSet ensures filmId is added only if not already present
+        }, { new: true }); // To return the updated document
+
+
+      }
+      else{
+        updatedUser = await User.findByIdAndUpdate(userId, {
+          $pull: { favoriteSeries: Id } // $addToSet ensures filmId is added only if not already present
+        }, { new: true }); // To return the updated document
+
+      }
     }
-    
-    res.status(200).json(updatedUser);
+    const token = jwt.sign({ user: updatedUser }, '65269dfa629841gwe9r51er8');
+    // Send the updated token along with the updated user information in the response
+    res.status(200).json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');

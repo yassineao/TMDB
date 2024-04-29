@@ -17,8 +17,7 @@ function Movie({ movie }) {
       
       if (response.ok) {
         const data = await response.json();
-        console.log('User updated with new favorite films:', data);
-        // Optionally, you can update the UI or show a success message here
+        sessionStorage.setItem('session', data.token);
       } else {
         const errorData = await response.json();
         console.error('Failed to update favorite films:', errorData.message);
@@ -53,7 +52,7 @@ function Movie({ movie }) {
           setUserDataFetched(true); // Update the state to indicate that user data has been fetched
    
           const numberExists = user.favoriteFilms.includes(movie.id);
-
+          console.log(user.favoriteFilms)
           if (numberExists) {
             setIsAdded(true); // Set isAdded to true if movie is already in favorites
           } 

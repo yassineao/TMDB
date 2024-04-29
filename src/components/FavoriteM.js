@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Movie from './Movie';
-
+import Card from './Card';
 function MovieF({ movieId }) {
     const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
     const [movie, setMovieData] = useState(null);
@@ -25,7 +25,7 @@ function MovieF({ movieId }) {
     return (
         <div>
             {movie ? (
-                <Movie movie={movie}></Movie>
+               <Card Type={"movie"} movie={movie} />
             ) : (
                 <p>Loading...</p>
             )}
