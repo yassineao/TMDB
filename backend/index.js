@@ -46,11 +46,11 @@ const UserSchema = new mongoose.Schema({
     alias: 'updated_at', 
   },
   favoriteFilms: {
-    type: [Number], // Array of integers
+    type: [Number], 
     default: [],
   },
   favoriteSeries: {
-    type: [Number], // Array of integers
+    type: [Number], 
     default: [],
   },
 });

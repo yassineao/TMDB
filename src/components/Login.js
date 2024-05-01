@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom'; 
 
 function Login() {
-    const navigate = useNavigate(); // Access to the navigate function
+    const navigate = useNavigate(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -27,7 +27,7 @@ function Login() {
                 alert(result.message);
                 console.log(sessionStorage.getItem('session'));
                 // Navigate to another route after successful login
-                window.location.href = '/'; // Replace '/protected' with your desired route
+                window.location.href = '/'; 
             } else {
                 alert(result.message);
             }

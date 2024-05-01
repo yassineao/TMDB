@@ -5,21 +5,20 @@ import '../styles/Nbar.css';
 
 import getToken from '../api/getTokenU';
 function Home() {
-  const [userData, setUserData] = useState(null); // State to hold user data
+  const [userData, setUserData] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Call the getToken function to fetch user data
         const user = await getToken();
-        setUserData(user); // Set user data to state
+        setUserData(user); 
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchData(); // Call the async function to fetch data
-  }, []); // Run the effect only once when the component mounts
+    fetchData(); 
+  }, []); 
 
   return (
     <div>
@@ -27,7 +26,6 @@ function Home() {
         <div>
           <h1 className="titles">Welcome !!</h1>
           <h2 className="titles"> {userData.lastname}</h2>
-          {/* Render other user information as needed */}
         </div>
       )}
       <main className="page-content">

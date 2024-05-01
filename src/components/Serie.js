@@ -2,7 +2,7 @@ import React from 'react';
 import "../styles/style.css"
 import Cover from './Cover';
 
-function Serie({  serie }) { // Receive props as a single object argument
+function Serie({  serie }) {
 
 
 

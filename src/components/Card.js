@@ -21,11 +21,11 @@ function Card({ Type,movie,serie }) {
       } else {
         const errorData = await response.json();
         console.error('Failed to update favorite films:', errorData.message);
-        // Optionally, you can handle the error here, e.g., show an error message to the user
+      
       }
     } catch (error) {
       console.error('Error updating favorite films:', error);
-      // Optionally, you can handle unexpected errors here
+    
     }
   };
 
