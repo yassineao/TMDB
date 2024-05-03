@@ -167,7 +167,7 @@ app.put('/add-favorite-film', verifyToken, async (req, res) => {
     const userId = req.user._id;
     const { Id, type,t } = req.body;
     // Find the user by ID and update favoriteFilms array based on the type
-    console.log(t);
+    console.log("lllllllllllllllllll",type);
     let updatedUser;
     if (type === 'addToSet') {
       if (t=== 'movie'){
@@ -212,12 +212,23 @@ app.put('/add-favorite-film', verifyToken, async (req, res) => {
 app.get('/favorite-movies', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
-    const user = await User.findById(userId).populate('favoriteFilms');
+    const user = await User.findById(userId);
+    const t = "movie";
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
+    if (t=== 'movie'){
     res.status(200).json(user.favoriteFilms);
+    }
+    else{
+
+      
+      console.log("dwdw",user.favoriteFilms);
+      console.log("dwdw",user.favoriteSeries);
+
+    res.status(200).json(user.favoriteSeries);
+    }
+    
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');

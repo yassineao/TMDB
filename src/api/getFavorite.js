@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import getToken from '../api/getTokenU';
-function useFavoriteMovies() {
+function useFavoriteMovies(t) {
     const [favoriteMovies, setFavoriteMovies] = useState([]);
+    const [favoriteSeries, setFavoriteSeries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [userDataFetched, setUserDataFetched] = useState(false); 
@@ -26,6 +27,8 @@ function useFavoriteMovies() {
       }, [userDataFetched]);
     useEffect(() => {
         const fetchFavoriteMovies = async () => {
+          
+      console.log("asdfsadfasf",t)
             try {
                 const token = sessionStorage.getItem('session');
                 const response = await fetch('http://localhost:5000/favorite-movies', {
@@ -34,7 +37,7 @@ function useFavoriteMovies() {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json',
                     },
-                });
+                  });
 
                 if (response.ok) {
                     const data = await response.json();

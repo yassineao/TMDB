@@ -3,7 +3,7 @@ import useFavoriteMovies from '../api/getFavorite';
 import MovieF from '../components/FavoriteM';
 
 function FavoriteMoviesPage() {
-    const { favoriteMovies, loading, error } = useFavoriteMovies();
+    const { favoriteMovies, loading, error } = useFavoriteMovies('movie');
 
     if (loading) {
         return <div>Loading favorite movies...</div>;

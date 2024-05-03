@@ -53,7 +53,7 @@ function Series() {
         <p>Loading...</p>
       ) : (
         series.results.slice(0, 20).map(serie => ( // Use slice(0, 20) to get only the first 20 movies
-      <Card Type={"serie"} serie={serie}/>
+      <Card Type={"serie"} serie={serie} movie={null}/>
         ))
       )}
     </div>

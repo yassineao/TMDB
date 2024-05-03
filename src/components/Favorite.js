@@ -3,7 +3,7 @@ import { getSearched } from '../api/getSearched';
 import Card from './Card';
 import Serie from './Serie';
 
-function Search() {
+function Favorite() {
   const [query, setQuery] = useState('');
   const [searchType, setSearchType] = useState('movie'); // 'movie' or 'tv'
   const [results, setResults] = useState([]);
@@ -143,4 +143,4 @@ function Search() {
                    );
                  }
 
-                 export default Search;
+                 export default Favorite;

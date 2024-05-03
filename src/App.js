@@ -53,7 +53,7 @@ function App() {
                   <Link to="/logout" onClick={logout} className="nav-link"><span className="nav-link-span"><span className="u-nav">Logout</span></span></Link>
                 </>
               ) : (
-                <Link to="/signup" className="nav-link"><span className="nav-link-span"><span className="u-nav">Login</span></span></Link>
+                <Link to="/login" className="nav-link"><span className="nav-link-span"><span className="u-nav">Login</span></span></Link>
               )}
               <Link to="/Search" className="nav-link"><span className="nav-link-span"><span className="u-nav">Search</span></span></Link>
             </div>

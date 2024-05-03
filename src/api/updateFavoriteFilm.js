@@ -1,6 +1,6 @@
 async function updateFavoriteFilm(type, Id ,t) {
     try {
-      console.log("wdwq",t)
+      console.log("pppppp",t, Id)
       const response = await fetch('http://localhost:5000/add-favorite-film', {
         method: 'PUT',
         headers: {

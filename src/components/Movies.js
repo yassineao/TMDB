@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "../styles/style.css"
 import { getMovies } from '../api/getMovies';
 import Cover from './Cover';
-import Movie from './Movie';
 import Card from './Card';
 function Movies() {
  

@@ -8,8 +8,27 @@ function Card({ Type,movie,serie }) {
   const [userDataFetched, setUserDataFetched] = useState(false); // Track if user data has been fetched
 
   const [isAdded, setIsAdded] = useState(false);
-  const [Id, setId] = useState('');
+  var Id = null;
   const [userData, setUserData] = useState(null); 
+  var numberExists = null;
+
+  const addToFavorites = () => {
+    
+    setIsAdded(!isAdded);
+    var t = "movie";
+    if (movie!==null){
+      
+        Id=movie.id;
+    }
+    
+    else{
+        Id=serie.id;
+         t = "serie";
+    }
+    const type = isAdded ? "pull" : "addToSet";
+    handleAddFavoriteFilm(type, Id, t);
+
+  };
   const handleAddFavoriteFilm = async (type, Id, t) => {
     
     try {
@@ -28,31 +47,6 @@ function Card({ Type,movie,serie }) {
     
     }
   };
-
-  const addToFavorites = () => {
-    setIsAdded(!isAdded);
-    var t = "movie";
-    if (movie.id!==null){
-        setId(movie.id);
-        
-        
-    }
-    else{
-        setId(serie.id);
-         t = "serie";
-    
-    }
-    const type = isAdded ? "pull" : "addToSet";
-    
-    if (isAdded) {
-      console.log('Remove from favorites:', movie.title);
-    } else {
-      console.log('Add to favorites:', movie.title);
-    }
-    console.log("Teee",t);
-    handleAddFavoriteFilm(type, movie.id, t);
-
-  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,12 +55,19 @@ function Card({ Type,movie,serie }) {
           const user = await getToken();
           setUserData(user); // Set user data to state
           setUserDataFetched(true); // Update the state to indicate that user data has been fetched
-   
-          const numberExists = user.favoriteFilms.includes(movie.id);
-          console.log(user.favoriteFilms)
-          if (numberExists) {
-            setIsAdded(true); // Set isAdded to true if movie is already in favorites
-          } 
+          if (movie!==null){
+             numberExists = user.favoriteFilms.includes(movie.id);
+          
+            }
+            
+            else{
+               numberExists = user.favoriteSeries.includes(serie.id);
+             
+                
+            }
+            if (numberExists) {
+              setIsAdded(true); // Set isAdded to true if movie is already in favorites
+            } 
         }
       } catch (error) {
         console.error(error);
@@ -103,8 +104,11 @@ function Card({ Type,movie,serie }) {
             <div className="movie_header">
             <Cover Type="tv" Id={serie.id} number={1} />
             <h1>{serie.name}</h1>
-            <h3>.</h3>
+            <button className="smallButton" onClick={addToFavorites}>
+                    {isAdded ? 'Remove from Favorites' : 'Add to Favorites'}
+                </button>
             <span className="minutes">222 </span>
+            
             <p className="type">{serie.first_air_date}</p>
             </div>
             <div className="movie_desc">
