@@ -31,7 +31,7 @@ function useFavoriteMovies(t) {
       console.log("asdfsadfasf",t)
             try {
                 const token = sessionStorage.getItem('session');
-                const response = await fetch('http://localhost:5000/favorite-movies', {
+                const response = await fetch('http://localhost:5000/favorite-movies?t='+t, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,

@@ -61,10 +61,7 @@ User.createIndexes();
 app.use(express.json());
 app.use(cors());
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('App is working');
-});
+
 
 // Register route
 app.post('/register', async (req, res) => {
@@ -213,7 +210,8 @@ app.get('/favorite-movies', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId);
-    const t = "movie";
+    const t = req.query.t; 
+    console.log(t)
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
