@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useFavoriteMovies from '../api/getFavorite';
-import MovieF from '../components/FavoriteM';
 import MovieSerieF from '../components/Favorite';
 function FavoriteMoviesPage() {
-    const [searchType, setSearchType] = useState('tv'); // 'movie' or 'tv'
+    const [searchType, setSearchType] = useState('movie'); // 'movie' or 'tv'
 
     var { favoriteMovies, loading, error } = useFavoriteMovies(searchType);
     if (loading) {
@@ -13,19 +12,16 @@ function FavoriteMoviesPage() {
     if (error) {
         return <div>Error: {error}</div>;
     }
-    
+    const handleToggleSearchType = () => {
+        const newSearchType = searchType === 'movie' ? 'tv' : 'movie';
+        setSearchType(newSearchType);
+    };
     return (
         <div>
-            <h2>Favorite Movies</h2>
-            <button
-            onClick={() => {
-                setSearchType(searchType === 'movie' ? 'tv' : 'movie');
-                window.location.reload();
-            }}
-            >
-                            
-                           Toggle Search Type (Current: {searchType})
-                         </button>
+               <h1 class="titles">Favorite Movies </h1>
+               <button onClick={handleToggleSearchType}>
+                Toggle Search Type (Current: {searchType})
+            </button>
             <ul>
                 {favoriteMovies.map((Id) => (
                     <li key={favoriteMovies.id}>

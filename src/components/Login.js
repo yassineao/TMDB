@@ -48,7 +48,7 @@ function Login() {
                                     onChange={(e) => setEmail(e.target.value)} required/>
                             </div>
                             <div className="field-wrap">
-                                <input type="text" placeholder="Password" className="password"   value={password}
+                                <input type="password" placeholder="Password" className="password"   value={password}
                                     onChange={(e) => setPassword(e.target.value)} required/>
                             </div>
                             <p className="forgot"><a href="#">Forgot Password?</a></p>

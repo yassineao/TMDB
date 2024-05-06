@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getSearched } from '../api/getSearched';
 import Card from './Card';
-import Serie from './Serie';
 
 function Search() {
   const [query, setQuery] = useState('');
@@ -133,8 +132,8 @@ function Search() {
                                {item.mediaType === 'movie' ? (
                                 <Card Type={"movie"} movie={item} />
                                ) : (
-                                <Serie serie={item}/>
-                               )}
+                                <Card Type={"serie"} serie={item} movie={null}/>
+                              )}
                              </li>
                            ))}
                          </ul>

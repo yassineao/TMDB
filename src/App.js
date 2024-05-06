@@ -41,7 +41,6 @@ function App() {
             </div>
 
             <div className="nav right">
-            <Link to="/test" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
 
               <Link to="/popularMovies" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
               <Link to="/popularSerie" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Series</span></span></Link>

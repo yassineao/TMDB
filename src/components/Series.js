@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/style.css"
 import { getSeries } from '../api/getSeries';
-import Cover from './Cover';
-import Serie from './Serie';
 import Card from './Card';
 function Series() {
  
