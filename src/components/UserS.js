@@ -15,8 +15,21 @@ function UserS() {
     const [password, setPassword] = useState('');
     const [checkPass, setcheckPass] = useState('');
     const [errorMessage, setErrorMessage] = useState('')
+   
     const handleSubmit = async (e) => {
       try{  e.preventDefault();
+         
+    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    if (!passwordRegex.test(password)) {
+        setErrorMessage('Password must be at least 8 characters long and contain at least one number and one special character.');
+        return;
+    }
+
+    // Password matching logic
+    if (password !== checkPass) {
+        setErrorMessage('Passwords do not match.');
+        return;
+    }
         let result = await fetch(
         'http://localhost:5000/register', {
             method: "post",
@@ -46,7 +59,11 @@ function UserS() {
         catch{
             alert("Check Data");
         }
+       
     }
+
+
+
     return (
         <><div class="form">
 
@@ -120,18 +137,18 @@ function UserS() {
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="text" placeholder="Password" className="password"   value={password}
+                <input type="password" placeholder="Password" className="password"   value={password}
       onChange={(e) => setPassword(e.target.value)} required/>
               </div>
 
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="text" placeholder="Retype password" className="password"  value={checkPass}
+                <input type="password" placeholder="Retype password" className="password"  value={checkPass}
       onChange={(e) => setcheckPass(e.target.value)} required/>
               </div>
 
-
+              {errorMessage && <p  style={{ color: 'red' }}>{errorMessage}</p>}
               
               <div className="field button-field">
                         <button   >Signup</button>

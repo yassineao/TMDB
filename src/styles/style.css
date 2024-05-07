@@ -571,9 +571,7 @@ li{margin-bottom:20px;}
   background-color: #cfd6e1; /* Color of the scrollbar thumb */
   border-radius: 10px; /* Rounded corners for the scrollbar thumb */
 }
-div{
-  padding-left:6px;
- }
+
  .smallButton {
   padding: 5px 10px; /* Adjust the padding as needed */
   font-size: 12px; /* Adjust the font size as needed */

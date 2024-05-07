@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Cards.css';
 import '../styles/Nbar.css';
 
 import getToken from '../api/getTokenU';
@@ -28,7 +27,18 @@ function Home() {
           <h2 className="titles"> {userData.lastname}</h2>
         </div>
       )}
-      <main className="page-content">
+      
+        <section>
+
+
+
+        </section>
+        <section>
+
+
+          
+        </section>
+        <main className="page-content">
         <div className="cardT">
           <div className="content">
             <h2 className="title">Popular Movies</h2>

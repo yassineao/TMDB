@@ -183,3 +183,6 @@ body {
     transition-duration: 0s;
   }
 }
+li.cardS {
+  display: table-caption;
+}
