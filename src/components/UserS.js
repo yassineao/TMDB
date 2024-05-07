@@ -14,53 +14,39 @@ function UserS() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [checkPass, setcheckPass] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      // Password validation logic
-      const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-        if (!passwordRegex.test(password)) {
-            setErrorMessage('Password must be at least 8 characters long and contain at least one number and one special character.');
-            return;
+      try{  e.preventDefault();
+        let result = await fetch(
+        'http://localhost:5000/register', {
+            method: "post",
+            body: JSON.stringify({  
+                firstname,
+                lastname,
+                country,
+                city,
+                house_Nr,
+                pLZ , 
+                email,
+                password,
+                phoneNumber,
+             }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        result = await result.json();
+        console.warn(result);
+        if (result) {
+            alert("Data saved succesfully");
         }
-
-        // Password matching logic
-        if (password !== checkPass) {
-            setErrorMessage('Passwords do not match.');
-            return;
+        else{
+            alert("Check Data");
+        }}
+        catch{
+            alert("Check Data");
         }
-
-      // Form submission
-      try {
-          const result = await fetch('http://localhost:5000/register', {
-              method: "post",
-              body: JSON.stringify({
-                  firstname,
-                  lastname,
-                  country,
-                  city,
-                  house_Nr,
-                  pLZ,
-                  email,
-                  password,
-                  phoneNumber,
-              }),
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
-          const data = await result.json();
-          console.warn(data);
-          if (result.ok) {
-              alert("Data saved successfully");
-          } else {
-              alert("Check Data");
-          }
-      } catch (error) {
-          console.error('Error submitting form:', error);
-          alert("Check Data");
-      }
-  };
+    }
     return (
         <><div class="form">
 
@@ -86,7 +72,7 @@ function UserS() {
                   <label>
                   </label>
                   <input type="text" placeholder="Lastname" className="input"   value={lastname}
-      onChange={(e) => setLastname(e.target.value)} required autocomplete="on"/>
+      onChange={(e) => setLastname(e.target.value)} required autocomplete="off"/>
                 </div>
               </div>
       
@@ -94,14 +80,14 @@ function UserS() {
                 <label>
                 </label>
                 <input type="text" placeholder="Country" className="input"   value={country}
-      onChange={(e) => setCountry(e.target.value)} autocomplete="on" required/>
+      onChange={(e) => setCountry(e.target.value)} required/>
               </div>
       
               <div class="field-wrap">
                 <label>
                 </label>
                 <input type="text" placeholder="city" className="input"   value={city}
-      onChange={(e) => setCity(e.target.value)} autocomplete="on" required/>
+      onChange={(e) => setCity(e.target.value)} required/>
               </div>
               <div class="field-wrap">
                 <label>
@@ -113,14 +99,14 @@ function UserS() {
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="number" placeholder="PLZ" className="input"   value={pLZ}
+                <input type="text" placeholder="PLZ" className="input"   value={pLZ}
       onChange={(e) => setPLZ(e.target.value)} required/>
               </div>
 
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="number" placeholder="Phone number" className="input"   value={phoneNumber}
+                <input type="text" placeholder="Phone number" className="input"   value={phoneNumber}
       onChange={(e) => setPhoneNumber(e.target.value)} required/>
               </div>
 
@@ -134,19 +120,18 @@ function UserS() {
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="password" placeholder="Password" className="password"   value={password}
+                <input type="text" placeholder="Password" className="password"   value={password}
       onChange={(e) => setPassword(e.target.value)} required/>
               </div>
 
               <div class="field-wrap">
                 <label>
                 </label>
-                <input type="password" placeholder="Retype password" className="password"  value={checkPass}
+                <input type="text" placeholder="Retype password" className="password"  value={checkPass}
       onChange={(e) => setcheckPass(e.target.value)} required/>
               </div>
 
 
-              {errorMessage && <p  style={{ color: 'red' }}>{errorMessage}</p>}
               
               <div className="field button-field">
                         <button   >Signup</button>

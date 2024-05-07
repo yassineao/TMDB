@@ -55,7 +55,7 @@ function useFavoriteMovies(t) {
         };
 
         fetchFavoriteMovies();
-    }, []);
+    },  [t]);
 
     return { favoriteMovies, loading, error };
 }
