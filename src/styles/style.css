@@ -4,15 +4,7 @@
   margin: 0;
 }
 
-html,
-body {
-  margin: 0;
-  background: #1e0726;
-  font-family: "Montserrat", helvetica, arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  margin-top: 40px;
-}
+
 .titles {
   font-size: 150px;
       color: #ddd;
@@ -195,6 +187,8 @@ float: right;
 
 
 #search {
+  
+  margin-top: 200px;
 	display: grid;
 	grid-area: search;
 	grid-template:

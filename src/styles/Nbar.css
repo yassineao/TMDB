@@ -15,16 +15,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/*-------------Layout-------------*/
-body {
-  line-height: 1.5em;
-  padding: 0;
-  margin: 0;
-}
 
-section {
-  height: 100vh;
-}
 
 #home {
   background-color: #ddd;

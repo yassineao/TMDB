@@ -72,7 +72,7 @@ function UserS() {
       
         <div class="tab-content">
           <div id="signup">
-            <h1>Sign Up for Free</h1>
+            <h1 class="title">Sign Up for Free</h1>
       
             <form onSubmit={handleSubmit}>
       

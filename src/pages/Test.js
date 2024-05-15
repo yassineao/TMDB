@@ -1,170 +1,354 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import "../styles/test.css"
-
+import '../styles/main.css';
 export default function Home() {
-
- 
   
-
-    
-
-  useEffect(() => {
-    let sections = document.querySelectorAll('.section'),
-      images = document.querySelectorAll('.background'),
-      headings = document.querySelectorAll('.section-title'),
-      outerWrappers = document.querySelectorAll('.wrapper-outer'),
-      innerWrappers = document.querySelectorAll('.wrapper-inner'),
-      currentIndex = -1,
-      wrap = (index, max) => (index + max) % max,
-      animating;
-
-    gsap.set(outerWrappers, { yPercent: 100 });
-    gsap.set(innerWrappers, { yPercent: -100 });
-
-
-
-
-
-
-    
-    function gotoSection(index, direction) {
-      index = wrap(index, sections.length);
-      animating = true;
-
-      let fromTop = direction === -1;
-      let dFactor = fromTop ? -1 : 1;
-      let tl = gsap.timeline({
-        defaults: { duration: 1.25, ease: 'power1.inOut' },
-        onComplete: () => {
-          animating = false;
-        },
-      });
-
-      if (currentIndex >= 0) {
-        gsap.set(sections[currentIndex], { zIndex: 0 });
-        tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
-          sections[currentIndex],
-          { autoAlpha: 0 }
-        );
-      }
-
-      gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-      tl.fromTo(
-        [outerWrappers[index], innerWrappers[index]],
-        { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) },
-        { yPercent: 0 },
-        0
-      )
-        .fromTo(
-          images[index],
-          { yPercent: 15 * dFactor },
-          { yPercent: 0 },
-          0
-        )
-        .fromTo(
-          headings[index],
-          { autoAlpha: 0, yPercent: 150 * dFactor },
-          {
-            autoAlpha: 1,
-            yPercent: 0,
-            duration: 1,
-            ease: 'power2',
-            stagger: { each: 0.02, from: 'random' },
-          },
-          0.2
-        );
-
-      currentIndex = index;
-    }
-
-    function navigateSectionById(id) {
-      let index = Array.from(sections).findIndex(
-        (section) => section.id === id
-      );
-
-      if (index !== -1 && index !== currentIndex) {
-        gotoSection(index, index > currentIndex ? 1 : -1);
-      }
-    }
-
-    let lastTap = 0;
-    document.addEventListener('touchend', function (event) {
-      let currentTime = new Date().getTime();
-      let tapLength = currentTime - lastTap;
-      if (tapLength < 500 && tapLength > 0) {
-        gotoSection(currentIndex + 1, 1);
-        event.preventDefault();
-      }
-      lastTap = currentTime;
-    });
-
-    window.addEventListener('wheel', (event) => {
-      if (event.deltaY < 0 && !animating) {
-        gotoSection(currentIndex - 1, -1);
-      } else if (event.deltaY > 0 && !animating) {
-        gotoSection(currentIndex + 1, 1);
-      }
-    });
-
-    gotoSection(0, 1);
-  }, []);
+    return (
+      <div>
+      <head>
+      <title>Dopetrope by HTML5 UP</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="homepage is-preload">
+      <div id="page-wrapper">
   
-
-  return (
-    <div className="app-container">
-     <section className="S1">
-      <Section
-        id="first"
-        title="Learning"
-        className="first"
-        bgUrl="https://r4.wallpaperflare.com/wallpaper/39/346/426/digital-art-men-city-futuristic-night-hd-wallpaper-01b69d213afe95f35634472bcdf74a70.jpg"
-        
-      />
-      <Section
-        id="second"
-        title="Challenge"
-        className="second"
-        bgUrl="https://r4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-d8b62d28c0f06c48d03c114ec8f2b4aa.jpg"
-      />
-      <Section
-        id="third"
-        title="Game"
-        className="third"
-        bgUrl="https://r4.wallpaperflare.com/wallpaper/526/482/570/digital-digital-art-artwork-illustration-environment-hd-wallpaper-e9ea17c37c37d5558d5c60bbed0bc434.jpg"
-      />
-      <Section
-        id="fourth"
-        title="T"
-        className="fourth"
-        bgUrl="https://r4.wallpaperflare.com/wallpaper/850/28/9/anime-anime-girls-digital-digital-art-artwork-hd-wallpaper-da2b197a0bb7c496eac50381ab5980a6.jpg"
-      />
-      <Section
-        id="fifth"
-        title="?"
-        className="fifth"
-        bgUrl="https://r4.wallpaperflare.com/wallpaper/266/749/195/digital-digital-art-artwork-illustration-drawing-hd-wallpaper-a8c69dc850107c58a0dc21ae2822044a.jpg"
-      />
-      </section>
-      
+          <section id="header">
+  
+  
+              <section id="banner">
+                <header>
+                  <h2>Howdy. This is Dopetrope.</h2>
+                  <p>A responsive template by HTML5 UP</p>
+                </header>
+              </section>
+  
+              <section id="intro" class="container">
+                <div class="row">
+                  <div class="col-4 col-12-medium">
+                    <section class="first">
+                      <i class="icon solid featured fa-cog"></i>
+                      <header>
+                        <h2>Ipsum consequat</h2>
+                      </header>
+                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <section class="middle">
+                      <i class="icon solid featured alt fa-bolt"></i>
+                      <header>
+                        <h2>Magna etiam dolor</h2>
+                      </header>
+                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-12-medium">
+                    <section class="last">
+                      <i class="icon solid featured alt2 fa-star"></i>
+                      <header>
+                        <h2>Tempus adipiscing</h2>
+                      </header>
+                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                    </section>
+                  </div>
+                </div>
+                <footer>
+                  <ul class="actions">
+                    <li><a href="#" class="button large">Get Started</a></li>
+                    <li><a href="#" class="button alt large">Learn More</a></li>
+                  </ul>
+                </footer>
+              </section>
+  
+          </section>
+  
+          <section id="main">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+  
+                    <section>
+                      <header class="major">
+                        <h2>My Portfolio</h2>
+                      </header>
+                      <div class="row">
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+                            <header>
+                              <h3>Ipsum feugiat et dolor</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+                            <header>
+                              <h3>Sed etiam lorem nulla</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+                            <header>
+                              <h3>Consequat et tempus</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+                            <header>
+                              <h3>Blandit sed adipiscing</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+                            <header>
+                              <h3>Etiam nisl consequat</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-4 col-6-medium col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>
+                            <header>
+                              <h3>Dolore nisl feugiat</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button alt">Find out more</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+  
+                </div>
+                <div class="col-12">
+  
+                    <section>
+                      <header class="major">
+                        <h2>The Blog</h2>
+                      </header>
+                      <div class="row">
+                        <div class="col-6 col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+                            <header>
+                              <h3>Magna tempus consequat</h3>
+                              <p>Posted 45 minutes ago</p>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button icon solid fa-file-alt">Continue Reading</a></li>
+                                <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                        <div class="col-6 col-12-small">
+                          <section class="box">
+                            <a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+                            <header>
+                              <h3>Aptent veroeros aliquam</h3>
+                              <p>Posted 45 minutes ago</p>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+                            <footer>
+                              <ul class="actions">
+                                <li><a href="#" class="button icon solid fa-file-alt">Continue Reading</a></li>
+                                <li><a href="#" class="button alt icon solid fa-comment">33 comments</a></li>
+                              </ul>
+                            </footer>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+  
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section id="footer">
+            <div class="container">
+              <div class="row">
+                <div class="col-8 col-12-medium">
+                  <section>
+                    <header>
+                      <h2>Blandit nisl adipiscing</h2>
+                    </header>
+                    <ul class="dates">
+                      <li>
+                        <span class="date">Jan <strong>27</strong></span>
+                        <h3><a href="#">Lorem dolor sit amet veroeros</a></h3>
+                        <p>Ipsum dolor sit amet veroeros consequat blandit ipsum phasellus lorem consequat etiam.</p>
+                      </li>
+                      <li>
+                        <span class="date">Jan <strong>23</strong></span>
+                        <h3><a href="#">Ipsum sed blandit nisl consequat</a></h3>
+                        <p>Blandit phasellus lorem ipsum dolor tempor sapien tortor hendrerit adipiscing feugiat lorem.</p>
+                      </li>
+                      <li>
+                        <span class="date">Jan <strong>15</strong></span>
+                        <h3><a href="#">Magna tempus lorem feugiat</a></h3>
+                        <p>Dolore consequat sed phasellus lorem sed etiam nullam dolor etiam sed amet sit consequat.</p>
+                      </li>
+                      <li>
+                        <span class="date">Jan <strong>12</strong></span>
+                        <h3><a href="#">Dolore tempus ipsum feugiat nulla</a></h3>
+                        <p>Feugiat lorem dolor sed nullam tempus lorem ipsum dolor sit amet nullam consequat.</p>
+                      </li>
+                      <li>
+                        <span class="date">Jan <strong>10</strong></span>
+                        <h3><a href="#">Blandit tempus aliquam?</a></h3>
+                        <p>Feugiat sed tempus blandit tempus adipiscing nisl lorem ipsum dolor sit amet dolore.</p>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+                <div class="col-4 col-12-medium">
+                  <section>
+                    <header>
+                      <h2>What's this all about?</h2>
+                    </header>
+                    <a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+                    <p>
+                      This is <strong>Dopetrope</strong> a free, fully responsive HTML5 site template by
+                      <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a> It's released for free under
+                      the <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for any personal or commercial project &ndash; just don't forget to credit us!
+                    </p>
+                    <footer>
+                      <ul class="actions">
+                        <li><a href="#" class="button">Find out more</a></li>
+                      </ul>
+                    </footer>
+                  </section>
+                </div>
+                <div class="col-4 col-6-medium col-12-small">
+                  <section>
+                    <header>
+                      <h2>Tempus consequat</h2>
+                    </header>
+                    <ul class="divided">
+                      <li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
+                      <li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
+                      <li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
+                      <li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
+                      <li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
+                      <li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+                    </ul>
+                  </section>
+                </div>
+                <div class="col-4 col-6-medium col-12-small">
+                  <section>
+                    <header>
+                      <h2>Ipsum et phasellus</h2>
+                    </header>
+                    <ul class="divided">
+                      <li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
+                      <li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
+                      <li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
+                      <li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
+                      <li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
+                      <li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+                    </ul>
+                  </section>
+                </div>
+                <div class="col-4 col-12-medium">
+                  <section>
+                    <header>
+                      <h2>Vitae tempor lorem</h2>
+                    </header>
+                    <ul class="social">
+                      <li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
+                      <li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+                      <li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+                      <li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li>
+                      <li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+                    </ul>
+                    <ul class="contact">
+                      <li>
+                        <h3>Address</h3>
+                        <p>
+                          Untitled Incorporated<br />
+                          1234 Somewhere Road Suite<br />
+                          Nashville, TN 00000-0000
+                        </p>
+                      </li>
+                      <li>
+                        <h3>Mail</h3>
+                        <p><a href="#">someone@untitled.tld</a></p>
+                      </li>
+                      <li>
+                        <h3>Phone</h3>
+                        <p>(800) 000-0000</p>
+                      </li>
+                    </ul>
+                  </section>
+                </div>
+                <div class="col-12">
+  
+                    <div id="copyright">
+                      <ul class="links">
+                        <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                      </ul>
+                    </div>
+  
+                </div>
+              </div>
+            </div>
+          </section>
+  
+      </div>
+  
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+  
+    </body>
     </div>
+  
   );
 }
-
-
-function Section ({ id, title, className, bgUrl })  {
-    return (
-      <section id={id} className={`section ${className}`}>
-        <div className="wrapper-outer">
-          <div className="wrapper-inner">
-            <div
-              className="background"
-              style={{ backgroundImage: `url(${bgUrl})` }}
-            >
-              <h2 className="section-title">{title}</h2>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
