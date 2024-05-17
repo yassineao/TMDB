@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { getMovies } from '../api/getMovies';
 import Card from '../components/Card';
 import Slider from 'react-slick';
@@ -92,27 +94,30 @@ export default function Home() {
                     <section class="first">
                       <i class="icon solid featured fa-cog"></i>
                       <header>
-                        <h2>Ipsum consequat</h2>
+                        <h2>Popular Movies</h2>
                       </header>
-                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                      <p>Check out all the new popular movies</p>
+                      <Link to="/popularMovies">Popular movies</Link>
                     </section>
                   </div>
                   <div class="col-4 col-12-medium">
                     <section class="middle">
                       <i class="icon solid featured alt fa-bolt"></i>
                       <header>
-                        <h2>Magna etiam dolor</h2>
+                        <h2>Popular series</h2>
                       </header>
-                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                      <p>Check out all the new popular series</p>
+                      <Link to="/popularSerie">Popular series</Link>
                     </section>
                   </div>
                   <div class="col-4 col-12-medium">
                     <section class="last">
                       <i class="icon solid featured alt2 fa-star"></i>
                       <header>
-                        <h2>Tempus adipiscing</h2>
+                        <h2>Search movie</h2>
                       </header>
-                      <p>Nisl amet dolor sit ipsum veroeros sed blandit consequat veroeros et magna tempus.</p>
+                      <p>Check information about a film or a serie</p>
+                      <Link to="/search">Search</Link>
                     </section>
                   </div>
                 </div>
