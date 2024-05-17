@@ -1,7 +1,51 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getMovies } from '../api/getMovies';
+import Card from '../components/Card';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Cover  from '../components/Cover';
+import getToken from '../api/getTokenU';
 import '../styles/main.css';
 export default function Home() {
-  
+  const [userData, setUserData] = useState(null); 
+  const [movies, setMovies] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+  const fetchMovies = async () => {
+    try {
+      const data = await getMovies();
+      
+      setMovies(data);
+      console.log('Movie Dawwwta:', data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching Movies:', error);
+    }
+    
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = await getToken();
+        setUserData(user); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData(); 
+    fetchMovies();
+    
+  }, []);
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
     return (
       <div>
       <head>
@@ -11,18 +55,35 @@ export default function Home() {
       <link rel="stylesheet" href="assets/css/main.css" />
     </head>
     <body class="homepage is-preload">
+   
       <div id="page-wrapper">
   
           <section id="header">
-  
-  
-              <section id="banner">
+          <section id="banner">
                 <header>
-                  <h2>Howdy. This is Dopetrope.</h2>
-                  <p>A responsive template by HTML5 UP</p>
+                <Slider {...settings}>
+                {loading ? (
+        <p>Loading...</p>
+      ) : (
+        movies.results.slice(0, 5).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
+        
+     <div>
+                  <Card Type={"movie"} movie={movie} />
+
+      </div>
+     
+        ))
+      )}
+      
+    </Slider>
+  
+             
+  
+             
+                 
                 </header>
               </section>
-  
+         
               <section id="intro" class="container">
                 <div class="row">
                   <div class="col-4 col-12-medium">
@@ -352,3 +413,20 @@ export default function Home() {
   
   );
 }
+function Section ({ id, title, className, bgUrl, nid })  {
+  return (
+    <section id={id} className={`section ${className}`}>
+      <div className="wrapper-outer">
+        <div className="wrapper-inner">
+          <div
+            className="background"
+            style={{ backgroundImage: `url(${bgUrl})` }}
+          >
+            <h2 className="section-title">{title}</h2>
+            <Cover className="background" Type="movie" Id={nid} number={2} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

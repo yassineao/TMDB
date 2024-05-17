@@ -2172,7 +2172,6 @@ input, select, textarea {
 	#banner {
 		background: #CCE8F4 url("https://images3.alphacoders.com/134/thumb-1920-1345374.png");
 		background-position: center center;
-		background-size: auto 100%;
 		background-repeat: no-repeat;
 		text-align: center;
 		position: relative;
@@ -2181,10 +2180,11 @@ input, select, textarea {
 	}
 
 		#banner header {
-			background-color: rgba(34, 30, 31, 0.98);
+			background-color: #ffffff38;
 			display: inline-block;
 			padding: 2.5em 5em;
 			border-radius: 5px;
+			max-width: 963px;
 		}
 
 			#banner header h2 {
@@ -2195,11 +2195,11 @@ input, select, textarea {
 			}
 
 			#banner header p {
-				color: #d52349;
+				color: #dddddd;
 				padding: 0;
 				font-style: normal;
+				font-size: small;
 				margin: 0;
-				font-size: 1.5em;
 			}
 
 /* Intro */
