@@ -84,7 +84,6 @@ input, select, textarea {
 
 	body {
 		background: #252122;
-		background-image: url("https://images3.alphacoders.com/134/thumb-1920-1345374.png");
 	}
 
 		
@@ -2063,7 +2062,7 @@ input, select, textarea {
 	}
 
 		#header h1 {
-			color: #252122;
+			color: #9d7396;
 			font-weight: 900;
 			font-size: 2.5em;
 			letter-spacing: -0.035em;
@@ -2166,7 +2165,6 @@ input, select, textarea {
 		background-repeat: no-repeat;
 		text-align: center;
 		position: relative;
-		padding: 8em 0;
 		margin: 4em 0 0 0;
 	}
 
@@ -2740,4 +2738,16 @@ input, select, textarea {
 	}
 	#banner p.type {
 		visibility: hidden;
+	}
+	#banner #bright button {
+		visibility: hidden;
+	}
+	#banner .card {
+		margin: 0px;
+	}
+	.fa-cog:before {
+		content: "\f008";
+	}
+	#signup input {
+		background: white;
 	}

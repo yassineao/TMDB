@@ -7,7 +7,7 @@ import "../styles/Nbar.css"
 
 function TheSearch() {
     return (
-      <div>
+      <div >
         <Search/>
 
 

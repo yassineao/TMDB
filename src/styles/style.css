@@ -6,7 +6,7 @@
 
 
 .titles {
-  font-size: 150px;
+  font-size: 125px;
       color: #ddd;
       font-weight: bold;
       text-align: center;
@@ -16,6 +16,7 @@
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 grid-gap: 5rem;
+margin-left: 10px;
 
 }
 .movie_card {
