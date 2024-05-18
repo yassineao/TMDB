@@ -26,7 +26,8 @@ function Cover({ Type, Id ,number}) {
     <div>
      {cover && cover.file_path && ( // Check if cover and cover.file_path exist before rendering the img
         <img className="locandina" src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
-      )}
+      )
+      }
     </div>
   );
 }
