@@ -2164,16 +2164,17 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background: #CCE8F4 url("https://images3.alphacoders.com/134/thumb-1920-1345374.png");
+		background: #CCE8F4 url("https://r4.wallpaperflare.com/wallpaper/800/831/598/digital-art-neon-mountains-lake-wallpaper-af8582fc5ee62cdbf52c68a2617124d4.jpg");
 		background-position: center center;
 		background-repeat: no-repeat;
+		background-size: cover;
 		text-align: center;
 		position: relative;
-		margin: 4em 0 0 0;
+		margin: 3em 0 0 0;
 	}
 
 		#banner header {
-			background-color: #ffffff38;
+			background-color: #ffffff00;
 			display: inline-block;
 			padding: 2.5em 5em;
 			border-radius: 5px;
@@ -2380,9 +2381,7 @@ input, select, textarea {
 
 		/* Header */
 
-			#header {
-				padding: 4em 0 3em 0;
-			}
+			
 
 		/* Banner */
 

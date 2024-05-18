@@ -52,7 +52,7 @@ function Movies() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        movies.results.slice(0, 20).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
+        movies.results.slice(0, 18).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
         <Card Type={"movie"} movie={movie} />
         ))
       )}
