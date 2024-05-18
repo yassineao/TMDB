@@ -164,7 +164,11 @@ input, select, textarea {
 	p, ul, ol, dl, table {
 		margin-bottom: 2em;
 	}
-
+	#main .col-4 p{
+		margin-bottom: 2em;
+    height: 150px;
+    overflow: auto;
+	}
 /* Container */
 
 	.container {
@@ -2269,7 +2273,8 @@ input, select, textarea {
 		}
 
 		#main .major h2 {
-			background: #f7f7f7 url("https://images3.alphacoders.com/134/thumb-1920-1345374.png");
+			border-radius: 5px;
+
 		}
 
 /* Footer */
@@ -2751,3 +2756,8 @@ input, select, textarea {
 	#signup input {
 		background: white;
 	}
+	#main .col-6-medium .box{
+		height:920px;
+	   }
+	   
+	   
