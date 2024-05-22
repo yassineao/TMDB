@@ -53,7 +53,7 @@ export default function Home() {
     autoplaySpeed: 3000, // Autoplay speed in milliseconds
   };
     return (
-      <div>
+      <div >
       <head>
       <title>Dopetrope by HTML5 UP</title>
       <meta charset="utf-8" />
@@ -361,20 +361,3 @@ export default function Home() {
   
   );
 }
-function Section ({ id, title, className, bgUrl, nid })  {
-  return (
-    <section id={id} className={`section ${className}`}>
-      <div className="wrapper-outer">
-        <div className="wrapper-inner">
-          <div
-            className="background"
-            style={{ backgroundImage: `url(${bgUrl})` }}
-          >
-            <h2 className="section-title">{title}</h2>
-            <Cover className="background" Type="movie" Id={nid} number={2} />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};

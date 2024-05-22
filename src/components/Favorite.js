@@ -31,7 +31,7 @@ function MovieSerieF({ t,Id }) {
     }, [Id, apiKey]);
 
     return (
-        <div>
+        <div classname="Searchhh">
         {item ? ( 
             t === 'movie' ? (
             <Card Type={"movie"} movie={item} />

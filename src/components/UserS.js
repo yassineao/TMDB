@@ -65,14 +65,14 @@ function UserS() {
 
 
     return (
-        <><div class="form">
+        <>
+        <div class="form" id="f">
 
-        <ul class="tab-group">
-        </ul>
+        <h1 >Sign Up for Free</h1>
+        
       
         <div class="tab-content">
           <div id="signup">
-            <h1 class="title">Sign Up for Free</h1>
       
             <form onSubmit={handleSubmit}>
       
@@ -106,6 +106,7 @@ function UserS() {
                 <input type="text" placeholder="city" className="input"   value={city}
       onChange={(e) => setCity(e.target.value)} required/>
               </div>
+              <div class="top-row">
               <div class="field-wrap">
                 <label>
                 </label>
@@ -119,7 +120,7 @@ function UserS() {
                 <input type="text" placeholder="PLZ" className="input"   value={pLZ}
       onChange={(e) => setPLZ(e.target.value)} required/>
               </div>
-
+              </div>
               <div class="field-wrap">
                 <label>
                 </label>

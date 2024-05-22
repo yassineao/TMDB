@@ -18,12 +18,22 @@
   }
   
   .form {
-    background: rgba(19, 35, 47, 0.9);
-    padding: 82px;
+    padding: 50px;
     max-width: 600px;
-    margin: 117px auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    margin: 66px auto;
+    border-radius: 76px;
+    background: rgb(49 10 33 / 90%);
+  }
+  #f h1 {
+    font-size: 39px;
+    color: #f734a8;
+    font-family: ui-serif;
+}
+#f button {
+  margin-left: 178px;
+}
+#f span {
+  margin-left: 137px;
 }
   .tab-group {
     list-style: none;
@@ -105,7 +115,7 @@
     background: none;
     background-image: none;
     border: 1px solid #a0b3b0;
-    color: #ffffff;
+    color: #000000;
     border-radius: 0;
     transition: border-color .25s ease, box-shadow .25s ease;
   }
@@ -121,7 +131,7 @@
   
   .field-wrap {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 29px;
   }
   
   .top-row:after {

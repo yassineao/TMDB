@@ -127,7 +127,7 @@ html, body {
   background-color: black;
   border: none;
 }
-.btn:hover {
+.btn::not(#intro):hover {
   background-color: #0d0d0d;
 }
 .btn:focus {
@@ -135,7 +135,7 @@ html, body {
   outline-offset: 3px;
 }
 
-@media (hover: hover) and (min-width: 600px) {
+@media (:not(#intro):hover: :not(#intro):hover) and (min-width: 600px) {
   .cardT:after {
     transform: translateY(0);
   }
@@ -149,23 +149,23 @@ html, body {
     transition: transform var(--d) var(--e), opacity var(--d) var(--e);
   }
 
-  .cardT:hover,
+  .cardT::not(#intro):hover,
 .cardT:focus-within {
     align-items: center;
   }
-  .cardT:hover:before,
+  .cardT::not(#intro):hover:before,
 .cardT:focus-within:before {
     transform: translateY(-4%);
   }
-  .cardT:hover:after,
+  .cardT::not(#intro):hover:after,
 .cardT:focus-within:after {
     transform: translateY(-50%);
   }
-  .cardT:hover .content,
+  .cardT::not(#intro):hover .content,
 .cardT:focus-within .content {
     transform: translateY(0);
   }
-  .cardT:hover .content > *:not(.title),
+  .cardT::not(#intro):hover .content > *:not(.title),
 .cardT:focus-within .content > *:not(.title) {
     opacity: 1;
     transform: translateY(0);

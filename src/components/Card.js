@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import Cover from './Cover';
 import getToken from '../api/getTokenU';
 import updateFavoriteFilm from '../api/updateFavoriteFilm';
@@ -17,10 +19,9 @@ function Card({ Type, movie, serie }) {
 
                     let numberExists = false;
                     if (movie !== null) {
-                      console.log("xxxxxxxxxxxxxxxxx");
+                        console.log(movie)
                         numberExists = user.favoriteFilms.includes(movie.id);
                     } else if (serie !== null) {
-                      console.log("123123132");
 
                         numberExists = user.favoriteSeries.includes(serie.id);
                     }
@@ -64,7 +65,7 @@ function Card({ Type, movie, serie }) {
 
     return (
         <div>
-          
+          <Link to={"/test?id=" + movie.id}>
                 <div className="card">
                     <div className="movie_card" id="bright" >
                         <div className="info_section">
@@ -91,7 +92,7 @@ function Card({ Type, movie, serie }) {
                     </div>)}
                     </div>
                 </div>
-
+                </Link>
            
         </div>
     );

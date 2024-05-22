@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import "../styles/style.css"
 import { getPoster } from '../api/getPoster';
 
-function Cover({ Type, Id ,number}) {
+function Cover({ Type, Id ,number,classN}) {
   const [cover, setCover] = useState([]);
-
+if (classN===undefined){
+  classN= "locandina"
+}
+console.log("ddqdqwdqdq", classN)
   const fetchCover = async () => {
     try {
       const data1 = await getPoster(Type, Id);
@@ -25,7 +28,7 @@ function Cover({ Type, Id ,number}) {
   return (
     <div>
   {cover && cover.file_path ? (
-    <img className="locandina" src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
+    <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
   ) : (
     <img className="locandina" src="https://i.pinimg.com/originals/53/c4/61/53c46186693e5305886fb4d3dca1b107.jpg" alt="Fallback Cover" />
   )}

@@ -6,7 +6,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -91,9 +90,11 @@ input, select, textarea {
 	body, input, textarea, select {
 		font-family: 'Source Sans Pro';
 		font-weight: 300;
-		color: #5d5d5d;
+		color: #b72626;
 		font-size: 14pt;
 		line-height: 1.75em;
+		background: url("https://r4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-28f60d7850600cb8e04c418e2872141a.jpg");
+		background-size: cover;
 	}
 
 	strong, b {
@@ -2170,7 +2171,7 @@ input, select, textarea {
 		background-size: cover;
 		text-align: center;
 		position: relative;
-		margin: 3em 0 0 0;
+		margin: 2em 0 0 0;
 	}
 
 		#banner header {
@@ -2758,5 +2759,4 @@ input, select, textarea {
 	#main .col-6-medium .box{
 		height:920px;
 	   }
-	   
 	   
