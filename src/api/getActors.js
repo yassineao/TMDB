@@ -12,3 +12,15 @@ export const fetchCastDetails = async (Id, type) => {
         throw error;
     }
 };
+export const fetchSimilarMovies = async (Id, type) => {
+    try {
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${Id}/similar?api_key=${apiKey}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch similar movies');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching similar movies:', error);
+        throw error;
+    }
+};

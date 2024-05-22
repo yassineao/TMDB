@@ -60,7 +60,7 @@
 }
 
 .unique-container .cover {
-  position: absolute;
+  position: fixed;
   top: 160px;
   left: 40px;
   z-index: 2;
@@ -259,10 +259,15 @@
   margin-bottom: 4px;
 }
 
-.unique-container section#extraDetails {
-  position: absolute;
-  right: 5%;
-  top: 41%;
+.unique-container * {
+  transform: none !important;
+  filter: none !important;
+  perspective: none !important;
+}
+section#extraDetails {
+  position: fixed !important;
+  right: 5% !important;
+  top: 51% !important;
 }
 
 .unique-container h1.extra {
@@ -304,4 +309,9 @@
 section.actors {
   display: inline-flex;
   height: 287px;
+  overflow: hidden;
+  max-width: 1890px;
+}
+.unique-container {
+  background: rgb(47 5 15 / 90%);
 }

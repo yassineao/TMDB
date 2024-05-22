@@ -6,14 +6,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import Cover from '../components/Cover';
 import '../styles/test.css';
 import{fetchMovieDetails} from '../api/getMovie.js'
-import{fetchCastDetails} from '../api/getActors.js'
-
+import{fetchCastDetails, fetchSimilarMovies} from '../api/getActors.js'
+import Card from '../components/Card.js';
 function Test() {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState(null);
-    
+    const [similarMovies, setSimilarMovies] = useState([]);
     const [cast, setCast] = useState([]);
     const Id = params.get('id');
     const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
@@ -35,6 +35,8 @@ function Test() {
               setItem(movieData);
               const castData = await fetchCastDetails(Id, t);
               setCast(castData.cast);
+              const similarMoviesData = await fetchSimilarMovies(Id, t);
+              setSimilarMovies(similarMoviesData.results);
               setLoading(false);
           } catch (error) {
               console.error('Error loading details:', error);
@@ -50,11 +52,9 @@ function Test() {
 
     return (
         <div class="unique-container">
-          <body>
             <section className="movie-card">
-                <a href="#">
                     <Cover Type={t} Id={item.id} number={t === 'movie' ? 3 : 1} classN={"cover"} />
-                </a>
+           
                 <div className="hero">
                     <div className="details">
                         <div className="title1">{item.title} <span>PG-13</span></div>
@@ -100,13 +100,13 @@ function Test() {
                     ))}
             </section>
             <section className="SFilm">
+            <h2>Similar Movies</h2>
                 <Slider {...settings}>
-                    <div><h1>SFilm 1</h1></div>
-                    <div><h1>SFilm 2</h1></div>
-                    <div><h1>SFilm 3</h1></div>
+                    {similarMovies.map(movie => (
+                        <Card Type={"movie"} movie={movie} />
+                    ))}
                 </Slider>
             </section>
-          </body>
         </div>
     );
 }
