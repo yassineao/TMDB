@@ -91,7 +91,7 @@ function Test() {
                 <h1 className="extra">Vote Average: {item.vote_average}</h1>
             </section>
             <section className="actors">
-                    {cast.slice(0, 10).map(actor => (
+                    {cast.slice(0, 30).map(actor => (
                         <div key={actor.cast_id} className="actor-card">
                             <img src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} className="actor-image" />
                             <h2 className="actor-name">{actor.name}</h2>
