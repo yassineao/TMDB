@@ -46,7 +46,7 @@ function Series() {
 
   return (
     <div>
-    <div className="card">
+    <div className="card" id="pop">
       {loading ? (
         <p>Loading...</p>
       ) : (

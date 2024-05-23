@@ -9,7 +9,13 @@ function Card({ Type, movie, serie }) {
     const [isAdded, setIsAdded] = useState(false);
     const [userDataFetched, setUserDataFetched] = useState(false);
     
-    console.log(sessionStorage.getItem('session'));
+    console.log(sessionStorage.getItem('session'));  
+    let Id;
+    if (movie !== null) {
+        Id = movie.id;
+    } else if (serie !== null) {
+        Id = serie.id;
+    }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -36,19 +42,11 @@ function Card({ Type, movie, serie }) {
         fetchData();
     }, [userDataFetched, movie, serie]);
 
-    const addToFavorites = async () => {
+    const addToFavorites = async (e) => {
         try {
-            let Id;
-            let t = 'movie';
-            if (movie !== null) {
-                Id = movie.id;
-            } else if (serie !== null) {
-                Id = serie.id;
-                t = 'serie';
-            }
-
+            e.preventDefault();
             const type = isAdded ? 'pull' : 'addToSet';
-            const response = await updateFavoriteFilm(type, Id, t);
+            const response = await updateFavoriteFilm(type, Id, Type);
 
             if (response.ok) {
                 const data = await response.json();
@@ -65,7 +63,8 @@ function Card({ Type, movie, serie }) {
 
     return (
         <div>
-          <Link to={"/test?id=" + movie.id}>
+          <Link to={"/test?id=" + Id+"&Type="+Type}>
+
                 <div className="card">
                     <div className="movie_card" id="bright" >
                         <div className="info_section">

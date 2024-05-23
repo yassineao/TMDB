@@ -60,9 +60,8 @@
 }
 
 .unique-container .cover {
-  position: fixed;
-  top: 160px;
-  left: 40px;
+  margin-top: 10%;
+  margin-left: 3% ;
   z-index: 2;
   max-width: 187px;
 }
@@ -118,13 +117,13 @@
 .unique-container .column1 {
   padding-left: 35px;
   padding-top: 90px;
-  width: 220px;
+  width: 250px;
   float: left;
   text-align: center;
 }
 
 .unique-container .tag {
-  background: white;
+  background: #7ceaf15e;;
   border-radius: 10px;
   padding: 3px 8px;
   font-size: 14px;
@@ -278,9 +277,10 @@ section#extraDetails {
   border-top: outset;
 }
 .unique-container .actor-card {
-  background: #fff;
+  background: #bafaffb9;
   border-radius: 10px;
   padding: 10px;
+  max-width: 10%;
   text-align: center;
   margin: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -303,15 +303,50 @@ section#extraDetails {
 .unique-container .actor-role {
   font-size: 14px;
   color: #777;
+  
 }
 
 /* Other existing CSS */
 section.actors {
-  display: inline-flex;
-  height: 287px;
-  overflow: hidden;
-  max-width: 1890px;
+  display: flex;
+    margin-top: 23px;
+    overflow-x: scroll;
+    background: aliceblue;
 }
 .unique-container {
   background: rgb(47 5 15 / 90%);
+}
+div#extraDetails {
+  margin-left: 85%;
+}
+
+
+#style-5::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #f5f5f51f;
+  
+	width: 3px;
+}
+
+#style-5::-webkit-scrollbar
+{
+  height: 3px;
+	width: 3px;
+	background-color: #f5f5f527;
+}
+
+#style-5::-webkit-scrollbar-thumb
+{
+  
+	width: 3px;
+	background-color: rgba(10, 141, 223, 0.986);
+	
+}
+.slick-slider.slick-initialized {
+  background: none;
+}
+.SFilm .slick-slider.slick-initialized {
+  max-width: 820px;
+    margin-left: 26%;
 }

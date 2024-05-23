@@ -13,11 +13,13 @@
       margin: 100px;
 }
 .card{
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-gap: 5rem;
 margin-left: 10px;
 
+}
+div#pop {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5rem;
 }
 .movie_card {
   position: relative;
@@ -570,4 +572,19 @@ li{margin-bottom:20px;}
   padding: 5px 10px; /* Adjust the padding as needed */
   font-size: 12px; /* Adjust the font size as needed */
   color: ghostwhite;
+}
+.SFilm .card {
+  margin-left: 2%;
+}
+.SFilm h2 {
+  font-size: 73px;
+  margin-bottom: 51px;
+  color: white;
+  margin-left: 36%;
+}
+h2#actors {
+  font-size: 73px;
+  margin-bottom: 51px;
+  color: white;
+  margin-left: 43%;
 }

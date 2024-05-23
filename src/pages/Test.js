@@ -16,8 +16,8 @@ function Test() {
     const [similarMovies, setSimilarMovies] = useState([]);
     const [cast, setCast] = useState([]);
     const Id = params.get('id');
-    const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
-    const t = "movie";
+
+    const t = params.get('Type');
     
     const settings = {
         dots: true,
@@ -33,6 +33,7 @@ function Test() {
           try {
               const movieData = await fetchMovieDetails(Id, t);
               setItem(movieData);
+              
               const castData = await fetchCastDetails(Id, t);
               setCast(castData.cast);
               const similarMoviesData = await fetchSimilarMovies(Id, t);
@@ -53,11 +54,13 @@ function Test() {
     return (
         <div class="unique-container">
             <section className="movie-card">
-                    <Cover Type={t} Id={item.id} number={t === 'movie' ? 3 : 1} classN={"cover"} />
-           
-                <div className="hero">
+
+                <div className="hero" >
+                {t === 'movie' ? (  <Cover Type="movie" Id={item.id} number={3} classN={"cover"}/>  ) : ( <Cover Type="tv" Id={item.id} number={1} classN={"cover"} />)}
+
                     <div className="details">
-                        <div className="title1">{item.title} <span>PG-13</span></div>
+                        <div >                                {t === 'movie' ? (  <h2 className="title1">{item.title}</h2>) : ( <h2 className="title1">{item.name}</h2> )}
+                         <span>PG-13</span></div>
                         <div className="title2">{item.tagline}</div>
                         <fieldset className="rating">
                             <input type="radio" id="star5" name="rating" value="5" /><label className="full" htmlFor="star5" title="Awesome - 5 stars"></label>
@@ -71,9 +74,12 @@ function Test() {
                             <input type="radio" id="star1" name="rating" value="1" /><label className="full" htmlFor="star1" title="Sucks big time - 1 star"></label>
                             <input type="radio" id="starhalf" name="rating" value="half" /><label className="half" htmlFor="starhalf" title="Sucks big time - 0.5 stars"></label>
                         </fieldset>
+                       
                     </div>
                 </div>
+
                 <div className="description">
+
                     <div className="column1">
                         {item.genres.map(gen => (
                             <span className="tag" key={gen.id}>{gen.name}</span>
@@ -82,15 +88,20 @@ function Test() {
                     <div className="column2">
                         <p className="text">{item.overview}</p>
                     </div>
+                    <div id="extraDetails">
+                            <h1 className="extra">Original Language: {item.original_language}</h1>
+                            {t === 'movie' ? (  <h1 className="extra">Release Date: {item.release_date}</h1>) : ( <h1 className="extra">Release Date:{item.first_air_date}</h1> )}
+
+                            <h1 className="extra">Popularity: {item.popularity}</h1>
+                            <h1 className="extra">Vote Average: {item.vote_average}</h1>
+                        </div>
                 </div>
             </section>
-            <section id="extraDetails">
-                <h1 className="extra">Original Language: {item.original_language}</h1>
-                <h1 className="extra">Popularity: {item.popularity}</h1>
-                <h1 className="extra">Release Date: {item.release_date}</h1>
-                <h1 className="extra">Vote Average: {item.vote_average}</h1>
-            </section>
-            <section className="actors">
+           
+            <h2 id="actors">Actors</h2>
+            <section className="actors" id="style-5">
+            
+                
                     {cast.slice(0, 30).map(actor => (
                         <div key={actor.cast_id} className="actor-card">
                             <img src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`} alt={actor.name} className="actor-image" />
@@ -98,12 +109,17 @@ function Test() {
                             <p className="actor-role">{actor.character}</p>
                         </div>
                     ))}
+                   
             </section>
-            <section className="SFilm">
+            <section className="SFilm" >
             <h2>Similar Movies</h2>
                 <Slider {...settings}>
-                    {similarMovies.map(movie => (
-                        <Card Type={"movie"} movie={movie} />
+                    {similarMovies.map(item => (
+                        t === 'movie' ? (
+                            <Card Type={"movie"} movie={item} />
+                           ) : (
+                            <Card Type={"serie"} serie={item} movie={null}/>
+                          )
                     ))}
                 </Slider>
             </section>
