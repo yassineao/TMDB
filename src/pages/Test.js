@@ -41,7 +41,8 @@ function Test() {
             try {
                 const movieData = await fetchMovieDetails(Id, t);
                 setItem(movieData);
-                console.log("wqqqq",movieData)
+                
+                console.log("wq..qqq",movieData.videos.results.at(0))
                 const castData = await fetchCastDetails(Id, t);
                 setCast(castData.cast);
                 const similarMoviesData = await fetchSimilarMovies(Id, t);
@@ -156,7 +157,7 @@ function Test() {
           <iframe
             width="560"
             height="315"
-            src={`https://www.youtube.com/embed/${'VIDEO_ID'}?autoplay=1`}
+            src={`https://www.youtube.com/embed/"639d5326be6d88007f170f44"?autoplay=1`}
             frameBorder="0"
             allowFullScreen
           />
