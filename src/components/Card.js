@@ -9,7 +9,6 @@ function Card({ Type, movie, serie }) {
     const [isAdded, setIsAdded] = useState(false);
     const [userDataFetched, setUserDataFetched] = useState(false);
     
-    console.log(sessionStorage.getItem('session'));  
     let Id;
     if (movie !== null) {
         Id = movie.id;
@@ -25,7 +24,6 @@ function Card({ Type, movie, serie }) {
 
                     let numberExists = false;
                     if (movie !== null) {
-                        console.log(movie)
                         numberExists = user.favoriteFilms.includes(movie.id);
                     } else if (serie !== null) {
 
@@ -53,6 +51,7 @@ function Card({ Type, movie, serie }) {
                 sessionStorage.setItem('session', data.token);
                 setIsAdded(!isAdded);
             } else {
+                
                 const errorData = await response.json();
                 console.error('Failed to update favorite films:', errorData.message);
             }

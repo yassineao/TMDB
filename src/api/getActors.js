@@ -1,4 +1,3 @@
-
 const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
 
 var response =null;
@@ -44,3 +43,6 @@ export const fetchSimilarMovies = async (Id, type) => {
         throw error;
     }
 };
+
+
+

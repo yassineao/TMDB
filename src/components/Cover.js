@@ -7,7 +7,6 @@ function Cover({ Type, Id ,number,classN}) {
 if (classN===undefined){
   classN= "locandina"
 }
-console.log("ddqdqwdqdq", classN)
   const fetchCover = async () => {
     try {
       const data1 = await getPoster(Type, Id);
