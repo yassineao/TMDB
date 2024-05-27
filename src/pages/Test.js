@@ -216,9 +216,9 @@ function Test() {
                 {Array.from({ length: 30 }, (_, i) => (
                     <div  className="foto-card">
                          {t === 'movie' ? (
-                        <Cover Type="movie" Id={item.id} number={i} classN="cover" />
+                        <Cover Type="movie" Id={item.id} number={i} classN="" PB={"backd"} />
                     ) : (
-                        <Cover Type="tv" Id={item.id} number={i} classN="cover" />
+                        <Cover Type="tv" Id={item.id} number={i} classN="" PB={"backd"} />
                     )}
                    
                 </div>

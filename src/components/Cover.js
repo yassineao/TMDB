@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "../styles/style.css"
 import { getPoster } from '../api/getPoster';
 
-function Cover({ Type, Id ,number,classN}) {
+function Cover({ Type, Id ,number,classN,PB}) {
   const [cover, setCover] = useState([]);
 if (classN===undefined){
   classN= "locandina"
@@ -11,7 +11,12 @@ if (classN===undefined){
     try {
       const data1 = await getPoster(Type, Id);
       if (data1.posters && data1.posters.length > 0) {
-        setCover(data1.posters[number]);
+        
+        if (PB===undefined){
+          setCover(data1.posters[number]);
+        }
+        else
+        setCover(data1.backdrops[number]);
       } else {
         console.error('No poster found for this movie.');
       }

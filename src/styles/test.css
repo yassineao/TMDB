@@ -482,12 +482,12 @@ button.Trailer {
 
 .fotos-container {
   display: flex;
-  justify-content: center;
   gap: 20px;
   overflow-x: hidden;
   overflow-y: hidden;
   max-height: 293px;
   flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 
