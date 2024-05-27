@@ -22,7 +22,9 @@ function Test() {
     const t = params.get('Type');
     const [showPopup, setShowPopup] = useState(false);
     const [videoKey, setVideoKey] = useState('');
-
+    const [showImagePopup, setShowImagePopup] = useState(false);
+    const [currentImage, setCurrentImage] = useState('');
+    const [showCatalogPopup, setShowCatalogPopup] = useState(false);
     const opts = {
         height: '390',
         width: '640',
@@ -30,7 +32,15 @@ function Test() {
             autoplay: 1,
         },
     };
-
+    const handleImageClick = (image) => {
+        setCurrentImage(image);
+        setShowImagePopup(true);
+    };
+    
+    const handleCatalogPopup = () => {
+        setShowCatalogPopup(true);
+    };
+    
     const settings = {
         dots: true,
         infinite: true,
@@ -210,20 +220,45 @@ function Test() {
                 </div>
             </section>
             <div className="background-section"></div>
+            <button onClick={handleCatalogPopup}>Show Catalog</button>
             <h2 id="actors">Photos</h2>
             <section className="fotos">
                 <div className="fotos-container">
                 {Array.from({ length: 30 }, (_, i) => (
-                    <div  className="foto-card">
-                         {t === 'movie' ? (
-                        <Cover Type="movie" Id={item.id} number={i} classN="" PB={"backd"} />
-                    ) : (
-                        <Cover Type="tv" Id={item.id} number={i} classN="" PB={"backd"} />
-                    )}
-                   
+            <div className="foto-card" key={i} onClick={() => handleImageClick(`https://image.tmdb.org/t/p/original/${item.backdrop_path}`)}>
+                {t === 'movie' ? (
+                    <Cover Type="movie" Id={item.id} number={i} classN="" PB={"backd"} />
+                ) : (
+                    <Cover Type="tv" Id={item.id} number={i} classN="" PB={"backd"} />
+                )}
+            </div>
+        ))}
                 </div>
-                ))}
-                </div>
+                {showImagePopup && (
+    <div className="image-popup-overlay" onClick={() => setShowImagePopup(false)}>
+        <div className="image-popup-content" onClick={(e) => e.stopPropagation()}>
+            <button className="image-popup-close-button" onClick={() => setShowImagePopup(false)}>&times;</button>
+            <img src={currentImage} alt="Full-size" />
+        </div>
+    </div>
+)}
+
+{showCatalogPopup && (
+    <div className="catalog-popup-overlay" onClick={() => setShowCatalogPopup(false)}>
+        <div className="catalog-popup-content" onClick={(e) => e.stopPropagation()}>
+            <button className="catalog-popup-close-button" onClick={() => setShowCatalogPopup(false)}>&times;</button>
+            {Array.from({ length: 30 }, (_, i) => (
+                <img 
+                    src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} 
+                    alt={`Cover ${i}`} 
+                    key={i}
+                    onClick={() => handleImageClick(`https://image.tmdb.org/t/p/original/${item.backdrop_path}`)}
+                />
+            ))}
+        </div>
+    </div>
+)}
+
             </section>
 
             <h2 id="actors">Actors</h2>
