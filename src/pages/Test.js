@@ -49,7 +49,8 @@ function Test() {
             try {
                 const movieData = await fetchMovieDetails(Id, t);
                 setItem(movieData);
-                setVideoKey(movieData.videos.results.length > 0 ? movieData.videos.results[0].key : '');
+                const trailer = movieData.videos.results.find(video => video.type === 'Trailer');
+                setVideoKey(trailer ? trailer.key : '');
                 const castData = await fetchCastDetails(Id, t);
                 setCast(castData.cast);
                 const similarMoviesData = await fetchSimilarMovies(Id, t);
@@ -123,6 +124,48 @@ function Test() {
                 }
                 `}
             </style>
+            <section className="redaktion">
+            <ul className="redaktion-list">
+               
+                <div id="">
+                    <h2 className="red">Original Language <h1 className="extra">{item.original_language}</h1></h2>
+                    {t === 'movie' ? (
+                        <h2 className="red">Release Date <h1 className="extra">{item.release_date}</h1></h2>
+                    ) : (
+                        <h2 className="red">Release Date <h1 className="extra">{item.first_air_date}</h1></h2>
+                    )}
+                    <h2 className="red">Popularity <h1 className="extra">{item.popularity}</h1></h2>
+                    <h2 className="red">Vote Average <h1 className="extra">{item.vote_average}</h1></h2>
+                    {t === 'movie' && (
+                        <>
+                            <h2 className="red">Runtime <h1 className="extra">{item.runtime} minutes</h1></h2>
+                            <h2 className="red">Budget <h1 className="extra">${item.budget.toLocaleString()}</h1></h2>
+                            <h2 className="red">Revenue <h1 className="extra">${item.revenue.toLocaleString()}</h1></h2>
+                        </>
+                    )}
+
+                    {item.production_companies && item.production_companies.length > 0 && (
+                        <div className="production-companies">
+                            <h2>Production Companies:</h2>
+                            <ul>
+                                {item.production_companies.map((company) => (
+                                    <li key={company.id}>
+                                        {company.logo_path && (
+                                            <img
+                                                src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+                                                alt={company.name}
+                                                className="company-logo"
+                                            />
+                                        )}
+                                        <span>{company.name}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </ul>
+        </section>
             <section className="movie-card">
                 <div className="cover-title-container">
                     {t === 'movie' ? (
@@ -143,39 +186,46 @@ function Test() {
                         ))}
                     </div>
                 </div>
+              
                 <div className="hero"></div>
                 <div className="description">
-                    <div className="column1"></div>
+                    <div className="column1">
+                        <button className='Trailer' onClick={handleTogglePopup}>
+                            <i className="icon solid fa-play"></i>Watch trailer</button>
+                        {showPopup && (
+                            <div className="popup-overlay">
+                                <div className="popup-content">
+                                    <button className="popup-close-button" onClick={handleTogglePopup}>&times;</button>
+                                    <YouTube videoId={videoKey} opts={opts} />
+                                </div>
+                            </div>
+                        )}
+                    </div>
                     <div className="column2">
                         <p className="text">{item.overview}</p>
                     </div>
-                    <div id="extraDetails">
-                        <h1 className="extra">Original Language: {item.original_language}</h1>
-                        {t === 'movie' ? (
-                            <h1 className="extra">Release Date: {item.release_date}</h1>
-                        ) : (
-                            <h1 className="extra">Release Date: {item.first_air_date}</h1>
-                        )}
-                        <h1 className="extra">Popularity: {item.popularity}</h1>
-                        <h1 className="extra">Vote Average: {item.vote_average}</h1>
-                    </div>
-                </div>
-                <div>
-                    <button onClick={handleTogglePopup}>Open Popup</button>
-                    {showPopup && (
-                        <div className="popup-overlay">
-                            <div className="popup-content">
-                                <button className="popup-close-button" onClick={handleTogglePopup}>&times;</button>
-                                <YouTube videoId={videoKey} opts={opts} />
-                            </div>
-                        </div>
-                    )}
                 </div>
                 <div className="gradient-cards">
                     {/* Your existing card content */}
                 </div>
             </section>
             <div className="background-section"></div>
+            <h2 id="actors">Photos</h2>
+            <section className="fotos">
+                <div className="fotos-container">
+                {Array.from({ length: 30 }, (_, i) => (
+                    <div  className="foto-card">
+                         {t === 'movie' ? (
+                        <Cover Type="movie" Id={item.id} number={i} classN="cover" />
+                    ) : (
+                        <Cover Type="tv" Id={item.id} number={i} classN="cover" />
+                    )}
+                   
+                </div>
+                ))}
+                </div>
+            </section>
+
             <h2 id="actors">Actors</h2>
             <section className="actors" id="style-5">
                 {cast.slice(0, 30).map((actor) => (
@@ -194,6 +244,8 @@ function Test() {
                     </div>
                 ))}
             </section>
+            
+            <div className="background-section"></div>
             <section className="SFilm">
                 <h2>Similar Movies</h2>
                 <Slider {...settings}>
@@ -206,7 +258,42 @@ function Test() {
                     )}
                 </Slider>
             </section>
-            <div className="background-section"></div>
+            <section className="reviews">
+                <h2>User Reviews</h2>
+                {/* Add your reviews component here */}
+            </section>
+            <section className="images-gallery">
+                <h2>Images</h2>
+                <Slider {...settings}>
+                    {item.images?.backdrops?.map((image, index) => (
+                        <div key={index}>
+                            <img
+                                src={`https://image.tmdb.org/t/p/original${image.file_path}`}
+                                alt={`Backdrop ${index + 1}`}
+                                className="gallery-image"
+                            />
+                        </div>
+                    ))}
+                </Slider>
+            </section>
+            <section className="awards">
+                <h2>Awards</h2>
+                {/* Add your awards component here */}
+            </section>
+            <section className="social-media">
+                <h2>Follow Us</h2>
+                <div className="social-icons">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </section>
         </div>
     );
 }

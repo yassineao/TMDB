@@ -288,8 +288,7 @@ section#extraDetails {
   text-align: justify;
   font-size: larger;
   font-family: fantasy;
-  color: #7f1855;
-  border-top: outset;
+  color: #ff52b8;
 }
 
 .unique-container .actor-card {
@@ -326,7 +325,7 @@ section.actors {
   display: flex;
   margin-top: 23px;
   overflow-x: scroll;
-  background: aliceblue;
+  background: #f0f8ff9e;
 }
 
 .unique-container {
@@ -362,7 +361,6 @@ div#extraDetails {
   max-width: 820px;
   margin-left: 26%;
 }
-/* Add this to your test.css or details.css file */
 
 .popup-overlay {
   position: fixed;
@@ -410,8 +408,90 @@ div#extraDetails {
   z-index: 1002; /* ensures the button is above the content */
 }
 
+i.icon.solid.fa-play {
+  padding: 9px;
+}
 
-/* Ensure the body doesn't scroll when the popup is active */
-body.popup-active {
-  overflow: hidden;
+.fotos {
+  padding: 20px;
+  background-color: #f0f0ed26;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.fotos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+.foto-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.redaktion {
+  position: absolute;
+  top: 51px;
+  right: 0;
+  width: 300px;
+  background-color: #2c3e43e0;
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 20;
+  box-shadow: -18px 12px 8px rgba(0, 0, 0, 0.1);
+}
+.unique-container {
+  position: relative;
+}
+
+.unique-container .movie-card {
+  margin-right: 320px; /* Adjust to ensure space for the Redaktion section */
+}
+
+
+.redaktion-list {
+  list-style: none;
+  padding: 0;
+}
+
+.redaktion-list li {
+  margin-bottom: 10px;
+}
+
+.redaktion-list li a {
+  color: #5C7FB8;
+  text-decoration: none;
+}
+
+.redaktion-list li a:hover {
+  text-decoration: underline;
+}
+.redaktion-list span {
+  color: aliceblue;
+}
+h2.red {
+  font-size: medium;
+  color: aliceblue;
+}
+button.Trailer {
+  border-style: inset;
+}
+/* Add this to your test.css or details.css file */
+
+.fotos-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 293px;
+  flex-direction: row;
+}
+
+
+.cover {
+  width: 200px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
 }

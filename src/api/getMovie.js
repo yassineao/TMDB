@@ -14,7 +14,7 @@ export const fetchMovieDetails = async (Id, type) => {
        }
        else{
            console.log("pepepepep");
-            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}?api_key=${apiKey}&append_to_response=videos`);
 
        }
         if (!response.ok) {
