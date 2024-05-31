@@ -62,7 +62,7 @@ function Card({ Type, movie, serie }) {
 
     return (
         <div>
-          <Link to={"/test?id=" + Id+"&Type="+Type}>
+          <Link to={"/result?id=" + Id+"&Type="+Type}>
 
                 <div className="card">
                     <div className="movie_card" id="bright" >

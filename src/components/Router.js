@@ -11,6 +11,7 @@ import Signup from '../pages/Signup';
 import Profile from '../pages/Profile';
 import FavMovies from '../pages/Favorite';
 import Test from '../pages/Test';
+import Result from '../pages/Page';
 function RouteComponent() {
   
   return (
@@ -24,6 +25,7 @@ function RouteComponent() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/favmovies" element={<FavMovies />} />
       <Route path="/test" element={<Test />} />
+      <Route path="/result" element={<Result />} />
     </Routes>
   );
 }

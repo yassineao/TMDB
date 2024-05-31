@@ -124,10 +124,11 @@ function Search() {
                        </div>
 
                        {results.length === 0 ? (
-                         <p>No results found.</p>
+                        <div/>
+
                        ) : (
                         
-                         <ul>
+                         <ul id="sea">
                            {results.map((item) => (
                              <li key={item.id} className="cardS">
                                {item.mediaType === 'movie' ? (

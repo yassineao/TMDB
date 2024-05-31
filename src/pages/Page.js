@@ -18,7 +18,7 @@ import ActorsList from '../components/actorsList';
 import SimilarMoviesSlider from '../components/similar';
 import SocialMedia from '../components/social';
 
-function Test() {
+function Page() {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const [loading, setLoading] = useState(true);
@@ -155,6 +155,8 @@ function Test() {
                 <PhotoGallery item={item} t={t} handleImageClick={handleImageClick} showImagePopup={showImagePopup} currentImage={currentImage} setShowImagePopup={setShowImagePopup} />
             </section>
             <div className="background-section"></div>
+            
+            <h2 id="actors">Actors</h2>
             <ActorsList cast={cast} />
             <SimilarMoviesSlider similarMovies={similarMovies} t={t} />
             <div className="background-section"><SocialMedia /></div>
@@ -163,4 +165,4 @@ function Test() {
     );
 }
 
-export default Test;
+export default Page;

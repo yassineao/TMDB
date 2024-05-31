@@ -34,8 +34,8 @@ if (classN===undefined){
   {cover && cover.file_path ? (
     <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
   ) : (
-    <img className="locandina" src="https://i.pinimg.com/originals/53/c4/61/53c46186693e5305886fb4d3dca1b107.jpg" alt="Fallback Cover" />
-  )}
+      <div/>
+)}
 </div>
   );
 }

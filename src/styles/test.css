@@ -565,3 +565,6 @@ button.Trailer {
   height: auto;
   margin: 5px;
 }
+.image-popup-content img {
+  max-width: 70%;
+}
