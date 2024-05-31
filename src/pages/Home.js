@@ -66,7 +66,7 @@ export default function Home() {
   
           <section id="header">
           <section id="banner">
-                <header>
+                <header className="unique-container">
                 <Slider {...settings}>
                 {loading ? (
                     <p>Loading...</p>
@@ -74,10 +74,11 @@ export default function Home() {
                     movies.results.slice(0, 5).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
                     
                 <div>
+                    <div className="noMov" >
                               <Card Type={"movie"} movie={movie} />
 
                   </div>
-                
+                  </div>
                     ))
                   )}
                   

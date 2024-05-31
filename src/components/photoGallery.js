@@ -3,7 +3,6 @@ import Cover from './Cover';
 
 const PhotoGallery = ({ item, t, handleImageClick, showImagePopup, currentImage, setShowImagePopup }) => (
     <section className="fotos">
-        <h2>Photos</h2>
         <div className="fotos-container">
             {Array.from({ length: 30 }, (_, i) => (
                 <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>

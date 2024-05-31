@@ -5,7 +5,7 @@ import Cover from './Cover';
 import getToken from '../api/getTokenU';
 import updateFavoriteFilm from '../api/updateFavoriteFilm';
 
-function Card({ Type, movie, serie }) {
+function Card({ Type, movie, serie, style }) {
     const [isAdded, setIsAdded] = useState(false);
     const [userDataFetched, setUserDataFetched] = useState(false);
     
@@ -77,13 +77,25 @@ function Card({ Type, movie, serie }) {
                                 
                                 {Type === 'movie' ? (   <span className="minutes">{movie.vote_average}</span>) : (  <span className="minutes">222 </span>)}
                                 {Type === 'movie' ? (  <p className="type">{movie.release_date}, {movie.original_language}</p> ) : (  <p className="type">{serie.first_air_date}</p>)}
+                                {style !== 'res' ? (
+                                    <div className="movie_desc">
+                                        {Type === 'movie' ? (
+                                            <p className="text">{movie.overview}</p>
+                                        ) : (
+                                            <p className="text">{serie.overview}</p>
+                                        )}
+                                    </div>
+                                ) : (
+                                    Type === 'movie' ? (
+                                        <p className="text">{movie.overview}</p>
+                                    ) : (
+                                        <p className="text">{serie.overview}</p>
+                                    )
+                                )}
 
-                            </div>
-                            <div className="movie_desc">
-                                
-                                {Type === 'movie' ? (  <p className="text">{movie.overview}</p>) : (  <p className="text">{serie.overview}</p>)}
+                        </div>
 
-                            </div>
+                           
                         </div>
                         {Type === 'movie' ? (  <div className="blur_back"><Cover Type="movie" Id={movie.id} number={1} /></div>) : (  <div className="blur_back">
                         <Cover Type="tv" Id={serie.id} number={2} />

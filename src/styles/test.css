@@ -272,7 +272,7 @@
   margin-bottom: 4px;
 }
 
-.unique-container * {
+.noMov * {
   transform: none !important;
   filter: none !important;
   perspective: none !important;
@@ -499,8 +499,9 @@ button.Trailer {
 
 .fotos-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
+  justify-content: flex-start;
 }
 
 .foto-card {
@@ -567,4 +568,7 @@ button.Trailer {
 }
 .image-popup-content img {
   max-width: 70%;
+}
+#sea div#bright {
+  width: 100%;
 }

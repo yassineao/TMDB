@@ -18,9 +18,14 @@ const SimilarMoviesSlider = ({ similarMovies, t }) => {
             <Slider {...settings}>
                 {similarMovies.map((item) =>
                     t === 'movie' ? (
+                        <div className="noMov" >
                         <Card Type="movie" movie={item} key={item.id} />
+                        </div>
                     ) : (
+                        
+                        <div className="noMov" >
                         <Card Type="serie" serie={item} movie={null} key={item.id} />
+                        </div>
                     )
                 )}
             </Slider>
