@@ -7,9 +7,9 @@ const PhotoGallery = ({ item, t, handleImageClick, showImagePopup, currentImage,
             {Array.from({ length: 30 }, (_, i) => (
                 <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>
                     {t === 'movie' ? (
-                        <Cover Type="movie" Id={item.id} number={i} classN="" PB={"backd"} />
+                        <Cover Type="movie" Id={item.id} number={i} classN="S" PB={"backd"} />
                     ) : (
-                        <Cover Type="tv" Id={item.id} number={i} classN="" PB={"backd"} />
+                        <Cover Type="tv" Id={item.id} number={i} classN="S" PB={"backd"} />
                     )}
                 </div>
             ))}

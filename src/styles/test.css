@@ -417,6 +417,8 @@ i.icon.solid.fa-play {
   background-color: #f0f0ed26;
   border-radius: 5px;
   margin: 20px 0;
+  margin-right: 141px;
+
 }
 
 .fotos-container {
@@ -529,7 +531,6 @@ button.Trailer {
 
 .image-popup-content, .catalog-popup-content {
   position: relative;
-  background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -539,7 +540,7 @@ button.Trailer {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #ff0000;
+ 
   color: white;
   border: none;
   border-radius: 50%;
@@ -552,7 +553,7 @@ button.Trailer {
 }
 
 .image-popup-close-button:hover, .catalog-popup-close-button:hover {
-  background: #cc0000;
+  background: #cc000000;
 }
 
 .catalog-popup-content {
@@ -566,9 +567,12 @@ button.Trailer {
   height: auto;
   margin: 5px;
 }
-.image-popup-content img {
-  max-width: 70%;
-}
+
 #sea div#bright {
   width: 100%;
+}
+.image-popup-content img.cover {
+  width: 100%;
+  height: 100%;
+  max-width: initial;
 }

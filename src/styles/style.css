@@ -77,10 +77,9 @@ div#pop {
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 .movie_card .info_section .movie_desc {
-  padding: 25px;
-  height: 50%;
+  HEIGHT: 204PX;
     max-height: 300px; /* Adjust this value as needed */
-    overflow: auto;
+    overflow-y: scroll;
     position: absolute;
 }
 .movie_card .info_section .movie_desc .text {
@@ -123,7 +122,7 @@ div#pop {
 
 @media screen and (min-width: 768px) {
   .movie_header {
-    width: 60%;
+    width: 90%;
   }
 
   .movie_desc {

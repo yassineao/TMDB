@@ -42,9 +42,9 @@ function Page() {
 
     const handleImageClick = (image) => {
         if (t === "movie") {
-            setCurrentImage(<Cover Type="movie" Id={item.id} number={image} classN="cover" />);
+            setCurrentImage(<Cover Type="movie" Id={item.id} number={image} classN="cover" PB={"backd"} />);
         } else {
-            setCurrentImage(<Cover Type="movie" Id={item.id} number={image} classN="cover" />);
+            setCurrentImage(<Cover Type="movie" Id={item.id} number={image} classN="cover" PB={"backd"} />);
         }
         setShowImagePopup(true);
     };
@@ -137,7 +137,7 @@ function Page() {
                 }
                 `}
             </style>
-            <MovieDetails item={item} t={t} />
+           
             <section className="movie-card">
                 <MovieHeader item={item} t={t} />
                 <div className="hero"></div>
@@ -149,9 +149,10 @@ function Page() {
             
             </section>
             
-           
+            <MovieDetails item={item} t={t} />
             <h2 id="actors">Photos</h2>
-            <section className="fotos">            
+            <section className="fotos">  
+                      
                 <PhotoGallery item={item} t={t} handleImageClick={handleImageClick} showImagePopup={showImagePopup} currentImage={currentImage} setShowImagePopup={setShowImagePopup} />
             </section>
             <div className="background-section"></div>

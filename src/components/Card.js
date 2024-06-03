@@ -78,7 +78,7 @@ function Card({ Type, movie, serie, style }) {
                                 {Type === 'movie' ? (   <span className="minutes">{movie.vote_average}</span>) : (  <span className="minutes">222 </span>)}
                                 {Type === 'movie' ? (  <p className="type">{movie.release_date}, {movie.original_language}</p> ) : (  <p className="type">{serie.first_air_date}</p>)}
                                 {style !== 'res' ? (
-                                    <div className="movie_desc">
+                                    <div className="movie_desc" id="style-5">
                                         {Type === 'movie' ? (
                                             <p className="text">{movie.overview}</p>
                                         ) : (
