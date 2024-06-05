@@ -166,9 +166,7 @@ function Modify() {
                     </div>
 
             </form>
-            <div className="form-link">
-                    <span>Already have an account? <a href="/login" className="link login-link">Login</a></span>
-                </div>
+            
           </div>
       
           <div id="login">

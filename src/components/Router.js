@@ -10,7 +10,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup'; 
 import Profile from '../pages/Profile';
 import FavMovies from '../pages/Favorite';
-import Test from '../pages/Test';
+import Hwome from '../pages/Test';
 import Result from '../pages/Page';
 function RouteComponent() {
   
@@ -24,7 +24,7 @@ function RouteComponent() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/favmovies" element={<FavMovies />} />
-      <Route path="/test" element={<Test />} />
+      <Route path="/test" element={<Hwome />} />
       <Route path="/result" element={<Result />} />
     </Routes>
   );

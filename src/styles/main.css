@@ -1598,11 +1598,9 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="button"],
+
 	input[type="submit"],
-	input[type="reset"],
-	button,
-	.button {
+	input[type="reset"] {
 		-webkit-appearance: none;
 		display: inline-block;
 		text-decoration: none;
@@ -1622,62 +1620,9 @@ input, select, textarea {
 		transition: background-color .25s ease-in-out;
 	}
 
-		input[type="button"]:hover,
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		button:hover,
-		.button:hover {
-			background: #e53359;
-		}
 
-		input[type="button"]:active,
-		input[type="submit"]:active,
-		input[type="reset"]:active,
-		button:active,
-		.button:active {
-			background: #c51349;
-		}
-
-		input[type="button"].alt,
-		input[type="submit"].alt,
-		input[type="reset"].alt,
-		button.alt,
-		.button.alt {
-			background: #252122;
-		}
-
-			input[type="button"].alt:hover,
-			input[type="submit"].alt:hover,
-			input[type="reset"].alt:hover,
-			button.alt:hover,
-			.button.alt:hover {
-				background: #353132;
-			}
-
-			input[type="button"].alt:active,
-			input[type="submit"].alt:active,
-			input[type="reset"].alt:active,
-			button.alt:active,
-			.button.alt:active {
-				background: #151112;
-			}
-
-		input[type="button"].icon:before,
-		input[type="submit"].icon:before,
-		input[type="reset"].icon:before,
-		button.icon:before,
-		.button.icon:before {
-			opacity: 0.35;
-			position: relative;
-			top: 0.05em;
-			margin-right: 0.75em;
-		}
-
-		input[type="button"].large,
 		input[type="submit"].large,
-		input[type="reset"].large,
-		button.large,
-		.button.large {
+		input[type="reset"].large {
 			font-size: 1.5em;
 			padding: 0.75em 1.5em 0.75em 1.5em;
 		}
@@ -2246,9 +2191,7 @@ input, select, textarea {
 				box-shadow: -32px 0 0 0 #fff, 0 -32px 0 0 #fff, 0 32px 0 0 #fff, -32px 32px 0 0 #fff, -32px -32px 0 0 #fff, 0 0 32px 0 rgba(0, 0, 0, 0.15);
 			}
 
-		#intro .button {
-			min-width: 12em;
-		}
+		
 
 		#intro footer {
 			margin: 0;
@@ -2462,9 +2405,7 @@ input, select, textarea {
 				display: block;
 			}
 
-				.box footer ul.actions li .button {
-					width: 100%;
-				}
+		
 
 				.box footer ul.actions li:first-child {
 					margin-top: 0;
@@ -2550,11 +2491,9 @@ input, select, textarea {
 
 		/* Button */
 
-			input[type="button"].large,
 			input[type="submit"].large,
-			input[type="reset"].large,
-			button.large,
-			.button.large {
+			input[type="reset"].large
+		{
 				font-size: 1.1em;
 				padding: 0.65em 1.5em 0.65em 1.5em;
 			}
@@ -2566,9 +2505,6 @@ input, select, textarea {
 				display: block;
 			}
 
-				ul.actions li .button {
-					width: 100%;
-				}
 
 				ul.actions li:first-child {
 					margin-top: 0;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ActorsList = ({ cast }) => (
-    <section className="actors" id="style-8">
+    <section className="actors" id="style-5">
         {cast.slice(0, 30).map((actor) => (
             <div key={actor.cast_id} className="actor-card">
                 <img

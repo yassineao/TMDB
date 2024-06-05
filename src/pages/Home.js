@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Cover  from '../components/Cover';
 import getToken from '../api/getTokenU';
 import '../styles/main.css';
+import GlitchingButtons from '../components/glitchingButtons';
 export default function Home() {
   const [userData, setUserData] = useState(null); 
   const [movies, setMovies] = useState([]);
@@ -66,7 +67,7 @@ export default function Home() {
   
           <section id="header">
           <section id="banner">
-                <header className="unique-container">
+                <header>
                 <Slider {...settings}>
                 {loading ? (
                     <p>Loading...</p>
@@ -74,11 +75,10 @@ export default function Home() {
                     movies.results.slice(0, 5).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
                     
                 <div>
-                    <div className="noMov" >
                               <Card Type={"movie"} movie={movie} />
 
                   </div>
-                  </div>
+                
                     ))
                   )}
                   
@@ -125,15 +125,11 @@ export default function Home() {
                   </div>
                 </div>
                 <footer>
-                  <ul class="actions">
-                    <li><a href="#" class="button large">Get Started</a></li>
-                    <li><a href="#" class="button alt large">Learn More</a></li>
-                  </ul>
+               
                 </footer>
               </section>
   
           </section>
-  
           <section id="main">
             <div class="container">
               <div class="row">
@@ -358,6 +354,8 @@ export default function Home() {
         <script src="assets/js/main.js"></script>
   
     </body>
+    
+    <GlitchingButtons/>
     </div>
   
   );

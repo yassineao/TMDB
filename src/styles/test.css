@@ -557,13 +557,12 @@ button.Trailer {
 }
 
 .catalog-popup-content {
+  display: ruby;
   width: 80%;
   height: 80%;
-  overflow-y: auto;
 }
 
 .catalog-popup-content img {
-  width: 100px;
   height: auto;
   margin: 5px;
 }

@@ -137,26 +137,40 @@ function Page() {
                 }
                 `}
             </style>
-           
+            {showCatalogPopup && (
+                <div className="catalog-popup-overlay" onClick={() => setShowCatalogPopup(false)}>
+                    <button className="catalog-popup-close-button" onClick={() => setShowCatalogPopup(false)}>&times;</button>
+                     <div className="catalog-popup-content" onClick={(e) => e.stopPropagation()}>
+                        {Array.from({ length: 30 }, (_, i) => (
+                           <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>
+                           {t === 'movie' ? (
+                               <Cover Type="movie" Id={item.id} number={i} classN="S" PB={"backd"} />
+                           ) : (
+                               <Cover Type="tv" Id={item.id} number={i} classN="S" PB={"backd"} />
+                           )}
+                       </div>
+                        ))}
+                    </div>
+                </div>
+            )}
             <section className="movie-card">
                 <MovieHeader item={item} t={t} />
                 <div className="hero"></div>
                 <TrailerPopup showPopup={showPopup} handleTogglePopup={handleTogglePopup} videoKey={videoKey} opts={opts} />
-
                 <div className="column2">
                     <p className="text">{item.overview}</p>
                 </div>
-            
             </section>
             
             <MovieDetails item={item} t={t} />
             <h2 id="actors">Photos</h2>
             <section className="fotos">  
-                      
-                <PhotoGallery item={item} t={t} handleImageClick={handleImageClick} showImagePopup={showImagePopup} currentImage={currentImage} setShowImagePopup={setShowImagePopup} />
+            <PhotoGallery item={item} t={t} handleImageClick={handleImageClick} showImagePopup={showImagePopup} currentImage={currentImage} setShowImagePopup={setShowImagePopup} />
+            <button onClick={handleCatalogPopup}>Show Catalog</button>
+           
+            
             </section>
             <div className="background-section"></div>
-            
             <h2 id="actors">Actors</h2>
             <ActorsList cast={cast} />
             <SimilarMoviesSlider similarMovies={similarMovies} t={t} />

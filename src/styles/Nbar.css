@@ -1,10 +1,5 @@
 /*-------------Reset-------------*/
-button {
-  background: none;
-  box-shadow: none;
-  border: none;
-  cursor: pointer;
-}
+
 
 button:focus,
 input:focus {
