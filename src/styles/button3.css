@@ -1,0 +1,57 @@
+.favorite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none;
+    position: relative;
+    color: aliceblue;
+  }
+  
+  .favorite-button svg {
+    transition: fill 0.3s ease-in-out;
+    fill: none;
+    stroke: currentColor;
+  }
+  
+  .favorite-button.favorite svg {
+    fill: pink;
+    stroke: pink;
+  }
+  
+  .favorite-button:hover svg {
+    fill: url(#gradient);
+    stroke: pink;
+  }
+  
+  .favorite-button .action {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    text-align: center;
+    display: none;
+  }
+  
+  .favorite-button:hover .action {
+    display: block;
+  }
+  
+  .favorite-button .action span {
+    display: block;
+    color: #fff;
+  }
+  
+  .favorite-button.favorite .option-1 {
+    display: none;
+  }
+  
+  .favorite-button:not(.favorite) .option-2 {
+    display: none;
+  }
+  
+  /* Hover gradient animation */
+  
+  

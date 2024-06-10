@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getSearched } from '../api/getSearched';
 import Card from './Card';
 import GlitchingButton from './glitchingButton';
-import GlitchingButtons from './glitchingButtons';
 
 function Search() {
   const [query, setQuery] = useState('');
@@ -97,12 +96,8 @@ function Search() {
         />
         <div className="containeer">
           <GlitchingButton handleClick={handleSearch} name={"Search"} aria={true} />
-          <GlitchingButton handleClick={handleSearch} name={searchType} aria={false} />
+          <GlitchingButton handleClick={() => setSearchType(searchType === 'movie' ? 'tv' : 'movie')} name={searchType} aria={false} />
         </div>
-      
-        <button onClick={() => setSearchType(searchType === 'movie' ? 'tv' : 'movie')}>
-          Toggle Search Type (Current: {searchType})
-        </button>
       </div>
 
       {results.length === 0 ? (

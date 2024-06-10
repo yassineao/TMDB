@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import GlitchingButton from './glitchingButton';
 import Cover from './Cover';
 import getToken from '../api/getTokenU';
 import updateFavoriteFilm from '../api/updateFavoriteFilm';
-
+import FavoriteButton from './favoriteButton';
 function Card({ Type, movie, serie, style }) {
     const [isAdded, setIsAdded] = useState(false);
     const [userDataFetched, setUserDataFetched] = useState(false);
@@ -71,9 +71,13 @@ function Card({ Type, movie, serie, style }) {
                                 {Type === 'movie' ? (  <Cover Type="movie" Id={movie.id} number={3} />  ) : ( <Cover Type="tv" Id={serie.id} number={1} />)}
                                 {Type === 'movie' ? (  <h1>{movie.title}</h1>) : ( <h1>{serie.name}</h1> )}
                                 {sessionStorage.getItem('session') === null ? ( <h1>{userDataFetched}</h1>) : ( 
-                                <button className="smallButton" onClick={addToFavorites}>
-                                    {isAdded ? 'Remove from Favorites' : 'Add to Favorites'}
-                                </button> )}
+                                    <div>
+                                      <GlitchingButton handleClick={addToFavorites}  name={isAdded ? 'Remove' : 'Add '}  aria={true} />
+                                      <FavoriteButton handleClick={addToFavorites}  isFavorite={isAdded }  aria={true} />
+                                    </div>
+                            
+                            
+                            )}
                                 
                                 {Type === 'movie' ? (   <span className="minutes">{movie.vote_average}</span>) : (  <span className="minutes">222 </span>)}
                                 {Type === 'movie' ? (  <p className="type">{movie.release_date}, {movie.original_language}</p> ) : (  <p className="type">{serie.first_air_date}</p>)}
