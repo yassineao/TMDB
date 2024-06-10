@@ -95,6 +95,7 @@ input, select, textarea {
 		line-height: 1.75em;
 		background: url("https://r4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-28f60d7850600cb8e04c418e2872141a.jpg");
 		background-size: cover;
+		background-position-x: center;
 	}
 
 	strong, b {

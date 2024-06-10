@@ -16,6 +16,10 @@ export default function Home() {
   const [moviesP, setMoviesP] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+
+
+  
   const fetchMovies = async () => {
     try {
       const data = await getTrending();
@@ -74,7 +78,7 @@ export default function Home() {
                   ) : (
                     movies.results.slice(0, 5).map(movie => ( // Use slice(0, 20) to get only the first 20 movies
                     
-                <div>
+                <div className="noMov">
                               <Card Type={"movie"} movie={movie} />
 
                   </div>
@@ -355,7 +359,6 @@ export default function Home() {
   
     </body>
     
-    <GlitchingButtons/>
     </div>
   
   );

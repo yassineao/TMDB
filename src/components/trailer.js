@@ -1,11 +1,10 @@
 import React from 'react';
 import YouTube from 'react-youtube';
-
+import SlidingButton from './slidingButton';
 const TrailerPopup = ({ showPopup, handleTogglePopup, videoKey, opts }) => (
     <>
         <div className="column1">
-            <button className='Trailer' onClick={handleTogglePopup}>
-                <i className="icon solid fa-play"></i>Watch trailer</button>
+            <SlidingButton name={"Trailer"} handleClick={handleTogglePopup}/>
             {showPopup && (
                 <div className="popup-overlay">
                     <div className="popup-content">
