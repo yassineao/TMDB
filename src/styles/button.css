@@ -209,3 +209,6 @@
   left: 81%;
   line-height: 6.2px;
 }
+.righto {
+  text-align: -webkit-right;
+}

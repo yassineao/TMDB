@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useFavoriteMovies from '../api/getFavorite';
 import MovieSerieF from '../components/Favorite';
+import GlitchingButton from '../components/glitchingButton';
 function FavoriteMoviesPage() {
     const [searchType, setSearchType] = useState('movie'); // 'movie' or 'tv'
 
@@ -19,9 +20,9 @@ function FavoriteMoviesPage() {
     return (
         <div>
                <h1 class="titles">Favorite Movies </h1>
-               <button onClick={handleToggleSearchType}>
-                Toggle Search Type (Current: {searchType})
-            </button>
+               <div class="righto"> 
+                <GlitchingButton handleClick={handleToggleSearchType} name={searchType} aria={true}/>
+                </div>
             <ul>
                 {favoriteMovies.map((Id) => (
                     <li key={favoriteMovies.id}>
