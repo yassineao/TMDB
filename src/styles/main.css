@@ -96,6 +96,9 @@ input, select, textarea {
 		background: url("https://r4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-28f60d7850600cb8e04c418e2872141a.jpg");
 		background-size: cover;
 		background-position-x: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
 
 	strong, b {
@@ -2696,4 +2699,20 @@ input, select, textarea {
 	#main .col-6-medium .box{
 		height:920px;
 	   }
-	   
+	   .field button {
+		margin-left: 33%;
+		width: 130px;
+		height: 40px;
+		color: #fff;
+		border-radius: 5px;
+		padding: 10px 25px;
+		font-family: 'Lato', sans-serif;
+		font-weight: 500;
+		background: #7d276e;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		position: relative;
+		display: inline-block;
+		box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+		outline: none;
+	}

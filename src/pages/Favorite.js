@@ -25,7 +25,8 @@ function FavoriteMoviesPage() {
                 </div>
             <ul>
                 {favoriteMovies.map((Id) => (
-                    <li key={favoriteMovies.id}>
+                    <li key={favoriteMovies.id} className="cardS">
+                       
                                 <MovieSerieF t={searchType} Id={Id} />
                              
                              </li>

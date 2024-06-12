@@ -51,8 +51,9 @@ function Login() {
                                 <input type="password" placeholder="Password" className="password"   value={password}
                                     onChange={(e) => setPassword(e.target.value)} required/>
                             </div>
-                            <p className="forgot"><a href="#">Forgot Password?</a></p>
-                            <button className="button button-block">Log In</button>
+                            <div className="field button-field">
+                        <button   >Login</button>
+                    </div>
                             <div className="form-link">
                                 <span>No account? Make one. <a href="/signup" className="link login-link">signup</a></span>
                             </div>

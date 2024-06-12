@@ -165,4 +165,5 @@ html, body {
 }
 li.cardS {
   display: table-caption;
+  margin-left: 60%;
 }
