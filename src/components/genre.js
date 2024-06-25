@@ -36,7 +36,7 @@ function Genre({ name, link }) {
   </div>
   <div class="cppcode">
   <div class="loader">
-   <div data-glitch={name} class="glitch">{name}</div>
+   <div data-gliitch={name} class="gliitch">{name}</div>
 </div>
   </div>
 </div>
