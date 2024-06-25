@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { fetchGenres } from '../api/fetchGenres';
 import Genre from '../components/genre';
 export default function Genres() {
   const [genres, setGenres] = useState([]);

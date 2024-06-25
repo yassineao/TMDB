@@ -27,7 +27,7 @@ function RouteComponent() {
       <Route path="/favmovies" element={<FavMovies />} />
       <Route path="/test" element={<Hwome />} />
       <Route path="/result" element={<Result />} />
-      <Route path="/genre" element={<Genres />} />
+      <Route path="/genres" element={<Genres />} />
     </Routes>
   );
 }
