@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getSearched } from '../api/getSearched';
 import Card from './Card';
 import GlitchingButton from './glitchingButton';
-
+import "../styles/container.css"
 function Search() {
   const [query, setQuery] = useState('');
   const [searchType, setSearchType] = useState('movie');
@@ -50,6 +50,7 @@ function Search() {
 
   return (
     <div>
+      
       <div id="search">
         <svg viewBox="0 0 420 60" xmlns="http://www.w3.org/2000/svg">
           <rect className="bar" />
@@ -94,7 +95,7 @@ function Search() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for a movie..."
         />
-        <div className="containeer">
+        <div className="right">
           <GlitchingButton handleClick={handleSearch} name={"Search"} aria={true} />
           <GlitchingButton handleClick={() => setSearchType(searchType === 'movie' ? 'tv' : 'movie')} name={searchType} aria={false} />
         </div>
@@ -106,6 +107,15 @@ function Search() {
         <ul>
           {results.map((item) => (
             <li key={item.id} className="cardS">
+               <style>
+                {`
+                .card {
+                  margin-left: 10px;
+                  background: aliceblue;
+                  border-radius: 10px;
+              }
+                `}
+            </style>
               {item.mediaType === 'movie' ? (
                 <Card Type={"movie"} movie={item} />
               ) : (

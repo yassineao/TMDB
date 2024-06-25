@@ -12,6 +12,7 @@ import Profile from '../pages/Profile';
 import FavMovies from '../pages/Favorite';
 import Hwome from '../pages/Test';
 import Result from '../pages/Page';
+import Genres from '../pages/Genre';
 function RouteComponent() {
   
   return (
@@ -26,6 +27,7 @@ function RouteComponent() {
       <Route path="/favmovies" element={<FavMovies />} />
       <Route path="/test" element={<Hwome />} />
       <Route path="/result" element={<Result />} />
+      <Route path="/genre" element={<Genres />} />
     </Routes>
   );
 }
