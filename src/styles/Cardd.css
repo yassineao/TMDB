@@ -102,3 +102,128 @@
     display: ruby-text;
     margin-top: 10%;
 }
+
+/* Styles for the popup card */
+#popup-card .cardd {
+  width: 78%;
+  height: 73%;
+  background: #15001f;
+  border: 1px solid #c042ff;
+  font-size: 14px;
+  font-family: monospace;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  opacity: 1;
+  overflow: auto;
+}
+
+#popup-card .titlebar {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 21px;
+  font-weight: 450;
+  background-color: #1b00ff;
+  width: 100%;
+  text-align: right;
+  padding: 5px;
+}
+
+#popup-card .cardd button {
+  width: 40px;
+  height: 35px;
+  margin-left: -5px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  transition: 0.2s;
+}
+
+#popup-card button svg path, 
+#popup-card button svg rect, 
+#popup-card button svg polygon {
+  fill: #ffffff;
+}
+
+#popup-card button svg {
+  width: 10px;
+  height: 10px;
+}
+
+#popup-card .close:hover {
+  background-color: #e81123;
+}
+
+#popup-card .maximize:hover {
+  background-color: #c042ff2e;
+}
+
+#popup-card .minimize:hover {
+  background-color: #c042ff2e;
+}
+
+#popup-card #pre {
+  overflow: auto;
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  color: #bafff8;
+}
+
+#popup-card .curlies {
+  color: #ff0000;
+}
+
+#popup-card .sc {
+  color: #e600ff;
+}
+
+#popup-card .rounds {
+  color: #ffffff;
+}
+
+#popup-card .operator {
+  color: #ffff00;
+}
+
+#popup-card .s1 {
+  color: #22ff00;
+}
+
+#popup-card .s2 {
+  color: #4281ff;
+}
+
+#popup-card .s3 {
+  color: #ff4284;
+}
+
+#popup-card .s4 {
+  color: #ffae00;
+}
+
+#popup-card .s5 {
+  color: #ffffff;
+}
+
+#popup-card .s6 {
+  color: #ffff00;
+}
+
+/* Additional styles for popup overlay */
+#popup-card .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+#popup-card .overlay.show {
+  display: block;
+}

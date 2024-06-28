@@ -16,9 +16,11 @@
   }
   
   .favorite-button.favorite svg {
-    fill: pink;
-    stroke: pink;
-  }
+    fill: #ff002d;
+    stroke: #ff0707;
+    width: auto;
+    height: auto;
+}
   
   .favorite-button:hover svg {
     fill: url(#gradient);

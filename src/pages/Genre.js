@@ -1,11 +1,18 @@
+
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchGenres } from '../api/fetchGenres';
+
 import Genre from '../components/genre';
 export default function Genres() {
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [genreId, setGenreId] = useState(null); // Initialize genreId to null
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleTogglePopup = (id) => {
+    setGenreId(id);
+    setShowPopup((prev) => !prev);
+  };
 
   useEffect(() => {
     const fetchGenres = async () => {
@@ -31,14 +38,17 @@ export default function Genres() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-    return (
-      <div id='genre'>
+  return (
+    <div id='genre'>
       {genres.map(genre => (
-               <Genre name={genre.name}/>
-              ))}
-
-      </div>
-     
-  
+        <Genre 
+          key={genre.id}
+          genreId={genre.id}
+          name={genre.name}
+          handleTogglePopup={handleTogglePopup}
+          showPopup={showPopup && genreId === genre.id}
+        />
+      ))}
+    </div>
   );
 }

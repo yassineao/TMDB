@@ -44,6 +44,8 @@ function App() {
 
               <Link to="/popularMovies" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Movies</span></span></Link>
               <Link to="/popularSerie" className="nav-link"><span className="nav-link-span"><span className="u-nav">Popular Series</span></span></Link>
+              <Link to="/genres" className="nav-link"><span className="nav-link-span"><span className="u-nav">Genres</span></span></Link>
+
               {userData ? (
                 <>
                   <Link to="/profile" className="nav-link"><span className="nav-link-span"><span className="u-nav">Profile</span></span></Link>

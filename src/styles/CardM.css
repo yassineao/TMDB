@@ -1,0 +1,75 @@
+.cardM {
+    width: 99%;
+    height: 22.5em;
+    background: #333;
+    transition: 1s ease-in-out;
+    clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+}
+
+.cardM .content {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+}
+
+.cardM .img {
+    width: 9.8em;
+    height: 12.8em;
+    border-radius: 12px;
+    margin-right: 1em;
+}
+
+.cardM .info {
+    font-weight: 400;
+    color: white;
+    text-align: left;
+    font-size: 0.72em;
+    flex: 1;
+}
+
+.cardM span {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 2em;
+}
+
+.cardM .share {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.cardM a {
+    color: white;
+    transition: .4s ease-in-out;
+}
+
+.cardM a:hover {
+    color: red;
+}
+
+.cardM button {
+    padding: 0.8em 1.7em;
+    display: block;
+    margin: auto;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    transition: .4s ease-in-out;
+}
+
+.cardM button:hover {
+    background: red;
+    color: white;
+    cursor: pointer;
+}
