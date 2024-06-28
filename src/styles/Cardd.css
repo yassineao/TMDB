@@ -129,6 +129,9 @@
   width: 100%;
   text-align: right;
   padding: 5px;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
 }
 
 #popup-card .cardd button {

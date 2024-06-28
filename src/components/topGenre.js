@@ -1,5 +1,5 @@
 import React from 'react';
-import Cover from './Cover';
+import { Link } from 'react-router-dom';
 import "../styles/CardM.css"
 
 const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor }) => (
@@ -29,6 +29,8 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor }) => (
                 {films.map((film) => (
                   
                   <div key={film.id}>
+                    
+          <Link to={`/result?id=${film.id}&Type=${"movie"}`}>
                      <style>
                 {`
                 .cardM  {
@@ -48,7 +50,7 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor }) => (
         <p className="info">{film.overview}</p>
         <div className="share"></div>
     </div>
-</div>
+</div></Link>
 </div>
 
                   
