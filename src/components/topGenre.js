@@ -41,17 +41,16 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor }) => (
              
                 `}
             </style>
-            <div className="cardM" style={{ backgroundImage: ` linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original${film.backdrop_path || film.poster_path}')` }}>
+            <div className="cardM" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original${film.backdrop_path || film.poster_path}')` }}>
+   
+    <div className="contentt">
+        <span>{film.title}</span>
+        <p className="info">{film.overview}</p>
+        <div className="share"></div>
+    </div>
+</div>
+</div>
 
-
-                      <div class="img"> <Cover Type="movie" Id={film.id} number={1} classN="img" /></div>
-                      <span>{film.title}</span>
-                      <p class="info">{film.overview}</p>
-                      <div class="share">
-                      
-                      </div>
-                    </div>
-                  </div>
                   
                 ))}
               </div>

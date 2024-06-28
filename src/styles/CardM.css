@@ -7,14 +7,10 @@
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Display content in a row */
+    align-items: center; /* Align items vertically centered */
     margin: 1%;
-}
-
-.cardM .content {
-    display: flex;
-    align-items: center;
-    margin: 1em;
+    box-sizing: border-box; /* Include padding in width and height */
 }
 
 .cardM .img {
@@ -22,22 +18,31 @@
     height: 12.8em;
     border-radius: 12px;
     margin-right: 1em;
+    flex-shrink: 0; /* Ensure image does not shrink */
+}
+
+.cardM .contentt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1; /* Allow content to take remaining space */
+}
+
+.cardM .contentt span {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin-top: 8%;
+    margin-bottom: 4%;
 }
 
 .cardM .info {
     font-weight: 400;
     color: white;
     text-align: left;
-    font-size: 0.72em;
-    flex: 1;
-}
-
-.cardM span {
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    display: block;
-    font-size: 2em;
+    margin-top: 0.5em; /* Add margin for spacing */
 }
 
 .cardM .share {
