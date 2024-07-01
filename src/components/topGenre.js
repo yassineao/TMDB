@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/CardM.css"
 
-const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor }) => (
+const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
   <>
    
     <div className="column1">

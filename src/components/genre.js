@@ -5,7 +5,7 @@ import { fetchMGenres } from '../api/fetchMovieGen';
 import '../styles/Cardd.css';
 import '../styles/glitch.css';
 
-function Genre({ genreId, name, handleTogglePopup, showPopup }) {
+function Genre({ genreId, name, handleTogglePopup, showPopup, type }) {
   const [bgColor, setBgColor] = useState('');
   const [films, setFilms] = useState([]);
 
@@ -26,7 +26,7 @@ function Genre({ genreId, name, handleTogglePopup, showPopup }) {
     const fetchMoviesByGenre = async () => {
       try {
         setBgColor(getRandomColor());
-        const genreM = await fetchMGenres('movie', genreId);
+        const genreM = await fetchMGenres(type, genreId);
         setFilms(genreM);
       } catch (error) {
         console.error('Error fetching movies by genre:', error);
@@ -34,7 +34,7 @@ function Genre({ genreId, name, handleTogglePopup, showPopup }) {
     };
 
     fetchMoviesByGenre();
-  }, [genreId]);
+  }, [genreId,type]);
 
   return (
     <div className="cardd" id="unique-card" onClick={() => handleTogglePopup(genreId)}>
@@ -56,7 +56,7 @@ function Genre({ genreId, name, handleTogglePopup, showPopup }) {
           <div data-gliitch={name} className="gliitch">{name}</div>
         </div>
       </div>
-      <TopGenre showPopup={showPopup} bgColor={bgColor} films={films} />
+      <TopGenre showPopup={showPopup} bgColor={bgColor} films={films} type={type} />
     </div>
   );
 }

@@ -53,6 +53,7 @@ export default function Genres() {
               name={genre.name}
               handleTogglePopup={handleTogglePopup}
               showPopup={showPopup && genreId === genre.id}
+              type={searchType}
             />
           ))}
         </div>
