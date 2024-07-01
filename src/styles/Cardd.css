@@ -100,7 +100,7 @@
   }
   div#genre {
     display: ruby-text;
-    margin-top: 10%;
+    margin-top: 3%;
 }
 
 /* Styles for the popup card */
@@ -229,4 +229,13 @@
 
 #popup-card .overlay.show {
   display: block;
+}
+div#uni .radio-wrapper {
+  width: 47%;
+  height: 84px;
+  margin: auto;
+  margin-top: 5%;
+}
+div#uni .radio-wrapper .btn {
+  font-size: 30px;
 }

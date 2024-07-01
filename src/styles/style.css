@@ -573,3 +573,8 @@ h2#actors {
   margin-left: 43%;
   margin-top: 10%;
 }
+div#uni {
+  margin: auto;
+  margin-top: 4%;
+  /* width: 52%; */
+}
