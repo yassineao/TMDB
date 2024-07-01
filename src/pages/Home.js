@@ -151,8 +151,9 @@ export default function Home() {
                           
                                   
                           
-
+                            
                                     <div class="col-4 col-6-medium col-12-small">
+                                      <Link to={`/result?id=${movie.id}&Type=${"movie"}`}>
                           <section class="box">
                             <a href="#" class="image featured"><Cover Type="movie" Id={movie.id} number={1} /> </a>
                             <header>
@@ -160,9 +161,8 @@ export default function Home() {
                             </header>
                             <p>{movie.overview}</p>
                           
-                          </section>
+                          </section></Link>
                         </div>
-
                       
                           ))
                         )}
