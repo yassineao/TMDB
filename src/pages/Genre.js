@@ -19,7 +19,7 @@ export default function Genres() {
     const fetchGenres = async () => {
       try {
         const response = await fetch(
-          'https://api.themoviedb.org/3/genre/movie/list?api_key=831a4bb8a39f71fea9d3c2efe8fb5ab2&language=en-US'
+          `https://api.themoviedb.org/3/genre/${searchType}/list?api_key=831a4bb8a39f71fea9d3c2efe8fb5ab2&language=en-US`
         );
         console.log(searchType);
         if (!response.ok) {
@@ -35,7 +35,7 @@ export default function Genres() {
     };
 
     fetchGenres();
-  }, []);
+  }, [searchType]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

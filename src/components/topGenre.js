@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/CardM.css"
-
+import Cover from './Cover';
 const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
   <>
    
@@ -44,9 +44,10 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
                 `}
             </style>
             <div className="cardM" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original${film.backdrop_path || film.poster_path}')` }}>
-   
+
     <div className="contentt">
-        <span>{film.title}</span>
+    {type === 'movie' ? ( <span>{film.title}</span> ) : ( <span>{film.name}</span> )}
+
         <p className="info">{film.overview}</p>
         <div className="share"></div>
     </div>
