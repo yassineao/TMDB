@@ -1,16 +1,16 @@
-const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
+
 
 var response =null;
 export const fetchCastDetails = async (Id, type) => {
     try {
         if(type==="movie"){
-            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`);
             console.log("89898989898");
 
        }
        else{
            console.log("pepepepep");
-            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}/credits?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}/credits?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`);
 
        }
         if (!response.ok) {
@@ -25,13 +25,13 @@ export const fetchCastDetails = async (Id, type) => {
 export const fetchSimilarMovies = async (Id, type) => {
     try {
         if(type==="movie"){
-            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/similar?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/similar?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`);
             console.log("89898989898");
 
        }
        else{
            console.log("pepepepep");
-            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}/similar?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}/similar?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`);
 
        }
         if (!response.ok) {

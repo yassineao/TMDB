@@ -1,12 +1,11 @@
 
-const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
 
 var response =null;
 
 export const fetch = async (Id, type, what) => {
     try {
         if(type==="movie"){
-            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/${what}?api_key=${apiKey}`);
+            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}/${what}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`);
             console.log("89898989898");
 
        }

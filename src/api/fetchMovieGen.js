@@ -1,7 +1,6 @@
 
 export  const fetchMGenres = async (type,genreId) => {
-    const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
-    const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apiKey}&with_genres=${genreId}`;
+    const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&with_genres=${genreId}`;
     console.log(type)
     const response = await fetch(url);
     if (!response.ok) {

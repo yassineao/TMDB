@@ -1,4 +1,3 @@
-const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
 
 export const fetchMovieDetails = async (Id, type) => {
     var mergedJsonresult,response2 ,response =null;
@@ -6,7 +5,7 @@ export const fetchMovieDetails = async (Id, type) => {
     
     try {
         if(type==="movie"){
-            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}?api_key=${apiKey}&append_to_response=videos`);
+            response = await fetch(`https://api.themoviedb.org/3/movie/${Id}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&append_to_response=videos`);
          
 
             
@@ -14,7 +13,7 @@ export const fetchMovieDetails = async (Id, type) => {
        }
        else{
            console.log("pepepepep");
-            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}?api_key=${apiKey}&append_to_response=videos`);
+            response = await fetch(`https://api.themoviedb.org/3/tv/${Id}?api_key=${process.env.REACT_APP_MOVIE_API_KEY}&append_to_response=videos`);
 
        }
         if (!response.ok) {
