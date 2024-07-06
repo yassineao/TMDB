@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
 function MovieSerieF({ t,Id }) {
-    const apiKey = '831a4bb8a39f71fea9d3c2efe8fb5ab2';
+    const apiKey = process.env.REACT_APP_MOVIE_API_KEY;
     const [item, setItem] = useState(null);
     var response =null;
     useEffect(() => {

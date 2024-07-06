@@ -1,68 +1,53 @@
 
 import { useState } from 'react'
 import GlitchingButton from './glitchingButton';
+
 function UserS() {
-
-
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [house_Nr, setHouse_Nr] = useState('');
     const [pLZ, setPLZ] = useState('');
-      
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [checkPass, setcheckPass] = useState('');
-    const [errorMessage, setErrorMessage] = useState('')
-   
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleSubmit = async (e) => {
-      try{  e.preventDefault();
-         
-    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-    if (!passwordRegex.test(password)) {
-        setErrorMessage('Password must be at least 8 characters long and contain at least one number and one special character.');
-        return;
-    }
-
-    // Password matching logic
-    if (password !== checkPass) {
-        setErrorMessage('Passwords do not match.');
-        return;
-    }
-        let result = await fetch(
-        'http://localhost:5000/register', {
-            method: "post",
-            body: JSON.stringify({  
-                firstname,
-                lastname,
-                country,
-                city,
-                house_Nr,
-                pLZ , 
-                email,
-                password,
-                phoneNumber,
-             }),
-            headers: {
-                'Content-Type': 'application/json'
+        e.preventDefault();
+        try {
+            const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                setErrorMessage('Password must be at least 8 characters long and contain at least one number and one special character.');
+                return;
             }
-        })
-        result = await result.json();
-        console.warn(result);
-        if (result) {
-            alert("Data saved succesfully");
-        }
-        else{
-            alert("Check Data");
-        }}
-        catch{
-            alert("Check Data");
-        }
-       
-    }
 
+            if (password !== checkPass) {
+                setErrorMessage('Passwords do not match.');
+                return;
+            }
+
+            let response = await fetch('http://localhost:5000/register', {
+                method: "POST",
+                body: JSON.stringify({
+                    firstname, lastname, country, city, house_Nr, pLZ, email, password, phoneNumber,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            let result = await response.json();
+            if (result) {
+                alert("Data saved successfully");
+            } else {
+                alert("Check Data");
+            }
+        } catch {
+            alert("Check Data");
+        }
+    };
 
 
     return (

@@ -163,7 +163,10 @@ html, body {
     transition-duration: 0s;
   }
 }
-li.cardS {
-  display: table-caption;
-  margin-left: 60%;
+ul.centroe {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+  margin-top: 2%;
 }

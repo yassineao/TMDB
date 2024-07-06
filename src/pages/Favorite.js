@@ -19,11 +19,12 @@ function FavoriteMoviesPage() {
     };
     return (
         <div>
-               <h1 class="titles">Favorite Movies </h1>
-               <div class="righto"> 
-                <GlitchingButton handleClick={handleToggleSearchType} name={searchType} aria={true}/>
+               <h1 class="titles">Favorite  </h1>
+               <div id='uni'>       
+ 
+                <GlitchingButton handleClick={handleToggleSearchType} name={searchType} aria={false}/>
                 </div>
-            <ul>
+            <ul class="centroe">
                 {favoriteMovies.map((Id) => (
                     <li key={favoriteMovies.id} className="cardS">
                        

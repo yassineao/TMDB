@@ -6,11 +6,11 @@
 
 
 .titles {
-  font-size: 125px;
-      color: #ddd;
-      font-weight: bold;
-      text-align: center;
-      margin: 100px;
+  font-size: 647%;
+    color: #ddd;
+    font-weight: bold;
+    text-align: center;
+    margin: 8%;
 }
 .card{
 margin-left: 10px;
@@ -18,9 +18,15 @@ margin-left: 10px;
 }
 div#pop {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: 5rem;
+  grid-template-columns: repeat(2, 1fr); /* Default 2 column layout */
+
+  /* Media query for smaller screens */
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; /* Switch to 1 column layout */
+  }
 }
+
 .movie_card {
   position: relative;
   display: block;

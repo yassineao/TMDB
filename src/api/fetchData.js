@@ -11,6 +11,7 @@ export const fetchUserData = async (setUserDataFetched, setIsAdded, movie, serie
       numberExists = user.favoriteFilms.includes(movie.id);
     } else if (serie !== null) {
       numberExists = user.favoriteSeries.includes(serie.id);
+      console.log("öööööööööööööööööööööööööööeoeoeoeoeeoööööööööööö");
     }
 
     setIsAdded(numberExists);

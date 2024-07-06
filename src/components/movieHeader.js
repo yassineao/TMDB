@@ -9,10 +9,11 @@ const MovieHeader = ({ item, t }) => {
 
     useEffect(() => {
         if (!userDataFetched) {
-            fetchUserData(setUserDataFetched, setIsAdded, t === 'movie' ? item : null, t === 'tv' ? item : null);
+            fetchUserData(setUserDataFetched, setIsAdded, t === 'movie' ? item : null, t === 'serie' ? item : null);
+           
         }
     }, [userDataFetched, item, t]);
-
+    console.log("asdfasfeeee",t);
     return (
         <div className="cover-title-container">
             {t === 'movie' ? (

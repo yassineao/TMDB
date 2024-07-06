@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const cookies = require('js-cookie');
+const helmet = require('helmet');
 const app = express();
 const port = 5000;
 
@@ -38,30 +39,43 @@ const UserSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    alias: 'created_at', 
+    alias: 'created_at',
   },
   updatedAt: {
     type: Date,
     default: Date.now,
-    alias: 'updated_at', 
+    alias: 'updated_at',
   },
   favoriteFilms: {
-    type: [Number], 
+    type: [Number],
     default: [],
   },
   favoriteSeries: {
-    type: [Number], 
+    type: [Number],
     default: [],
   },
 });
-
 
 const User = mongoose.model('User', UserSchema);
 User.createIndexes();
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
+// Configure CSP
+const cspDirectives = {
+  defaultSrc: ["'self'"],
+  scriptSrc: ["'self'", "'unsafe-inline'"], // Adjust based on your needs, try to avoid 'unsafe-inline'
+  styleSrc: ["'self'", "'unsafe-inline'"],
+  imgSrc: ["'self'", "data:"],
+  connectSrc: ["'self'", "http://localhost:5000"],
+};
 
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: cspDirectives,
+  })
+);
 
 // Register route
 app.post('/register', async (req, res) => {
@@ -86,8 +100,7 @@ app.post('/login', async (req, res) => {
       const match = await bcrypt.compare(password, user.password);
       if (match) {
         const token = jwt.sign({ user: user }, '65269dfa629841gwe9r51er8');
-      
-        res.status(200).json({ message: 'Login successful',  token });
+        res.status(200).json({ message: 'Login successful', token });
       } else {
         res.status(401).json({ message: 'Invalid password' });
       }
@@ -101,8 +114,8 @@ app.post('/login', async (req, res) => {
 });
 
 const verifyToken = (req, res, next) => {
-  const token =  req.headers.authorization.split(' ')[1];
-  
+  const token = req.headers.authorization.split(' ')[1];
+
   if (!token) {
     return res.status(401).json({ message: 'No token provided' });
   }
@@ -114,18 +127,21 @@ const verifyToken = (req, res, next) => {
     next();
   });
 };
+
 app.get('/protected', verifyToken, (req, res) => {
   res.status(200).json({ message: 'This is a protected route', user: req.user });
 });
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
 // Modify Profile route
 app.put('/profile', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
     const { firstname, lastname, email, country, city, house_Nr, pLZ, phoneNumber } = req.body;
-    console.log(userId,userId.lastname,"wwwww",lastname)
+    
     // Construct update object with provided fields
     const updateFields = {};
     if (firstname) updateFields.firstname = firstname;
@@ -136,6 +152,7 @@ app.put('/profile', verifyToken, async (req, res) => {
     if (house_Nr) updateFields.house_Nr = house_Nr;
     if (pLZ) updateFields.pLZ = pLZ;
     if (phoneNumber) updateFields.phoneNumber = phoneNumber;
+
     // Check if the provided email already exists in the database
     if (email) {
       const existingUser = await User.findOne({ email });
@@ -144,7 +161,6 @@ app.put('/profile', verifyToken, async (req, res) => {
       }
     }
 
-    console.log(updateFields,userId,updateFields.lastname,"wwwww",lastname)
     // Find the user by ID and update the profile fields
     const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true });
     const token = jwt.sign({ user: updatedUser }, '65269dfa629841gwe9r51er8');
@@ -152,7 +168,7 @@ app.put('/profile', verifyToken, async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json({  token });
+    res.status(200).json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
@@ -162,71 +178,53 @@ app.put('/profile', verifyToken, async (req, res) => {
 app.put('/add-favorite-film', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
-    const { Id, type,t } = req.body;
+    const { Id, type, t } = req.body;
+
     // Find the user by ID and update favoriteFilms array based on the type
-    console.log("lllllllllllllllllll",type);
     let updatedUser;
     if (type === 'addToSet') {
-      if (t=== 'movie'){
-
+      if (t === 'movie') {
         updatedUser = await User.findByIdAndUpdate(userId, {
-          $addToSet: { favoriteFilms: Id } // $addToSet ensures filmId is added only if not already present
-        }, { new: true }); // To return the updated document
-
-
-      }
-      else{
+          $addToSet: { favoriteFilms: Id }
+        }, { new: true });
+      } else {
         updatedUser = await User.findByIdAndUpdate(userId, {
-          $addToSet: { favoriteSeries: Id } // $addToSet ensures filmId is added only if not already present
-        }, { new: true }); // To return the updated document
-
+          $addToSet: { favoriteSeries: Id }
+        }, { new: true });
       }
-      
     } else {
-      if (t=== 'movie'){
-
+      if (t === 'movie') {
         updatedUser = await User.findByIdAndUpdate(userId, {
-          $pull: { favoriteFilms: Id } // $addToSet ensures filmId is added only if not already present
-        }, { new: true }); // To return the updated document
-
-
-      }
-      else{
+          $pull: { favoriteFilms: Id }
+        }, { new: true });
+      } else {
         updatedUser = await User.findByIdAndUpdate(userId, {
-          $pull: { favoriteSeries: Id } // $addToSet ensures filmId is added only if not already present
-        }, { new: true }); // To return the updated document
-
+          $pull: { favoriteSeries: Id }
+        }, { new: true });
       }
     }
     const token = jwt.sign({ user: updatedUser }, '65269dfa629841gwe9r51er8');
-    // Send the updated token along with the updated user information in the response
     res.status(200).json({ token });
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
   }
 });
+
 app.get('/favorite-movies', verifyToken, async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId);
-    const t = req.query.t; 
-    console.log(t)
+    const t = req.query.t;
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    if (t=== 'movie'){
-    res.status(200).json(user.favoriteFilms);
+    if (t === 'movie') {
+      res.status(200).json(user.favoriteFilms);
+    } else {
+      res.status(200).json(user.favoriteSeries);
     }
-    else{
-
-      
-      console.log("dwdw",user.favoriteFilms);
-      console.log("dwdw",user.favoriteSeries);
-
-    res.status(200).json(user.favoriteSeries);
-    }
-    
   } catch (error) {
     console.error(error);
     res.status(500).send('Something went wrong');
