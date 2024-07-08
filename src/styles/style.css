@@ -228,8 +228,8 @@ float: right;
 #search svg {
 	grid-area: search;
 	overflow: visible;
-	color: hsl(324 50% 24% / 1);
-	fill: none;
+  color: hsl(324deg 92.38% 47.55%);
+  	fill: none;
 	stroke: currentColor;
 }
 

@@ -285,10 +285,10 @@ section#extraDetails {
 }
 
 .unique-container h1.extra {
-  text-align: justify;
-  font-size: larger;
-  font-family: fantasy;
+  font-family: 'Source Sans Pro';
   color: #ff52b8;
+  display: -webkit-inline-box;
+  margin-top: 10%;
 }
 
 .unique-container .actor-card {
@@ -438,7 +438,7 @@ i.icon.solid.fa-play {
   top: 51px;
   right: 0;
   width: 300px;
-  background-color: #2c3e43e0;
+  background-color: #6d02434a;
   border-radius: 5px;
   padding: 20px;
   z-index: 20;
@@ -474,8 +474,9 @@ i.icon.solid.fa-play {
   color: aliceblue;
 }
 h2.red {
-  font-size: medium;
-  color: aliceblue;
+  font-size: x-large;
+    font-family: 'Font Awesome 5 Brands';
+    color: #f7c1f3;
 }
 button.Trailer {
   border-style: inset;

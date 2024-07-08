@@ -16,7 +16,15 @@ html, body {
   overflow-x: hidden;
 }
 
-
+ul.mid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 3%;
+  grid-gap: 1%;
+  /* margin: 0; */
+  /* text-align: -webkit-center; */
+  /* padding: 0; */
+}
 
 @media  {
   .page-content {
@@ -163,10 +171,6 @@ html, body {
     transition-duration: 0s;
   }
 }
-ul.centroe {
-  display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(1, 1fr);
-  place-items: center;
-  margin-top: 2%;
+.card{
+  max-width: 58%;
 }
