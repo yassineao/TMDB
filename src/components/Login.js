@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-
+import "../styles/input.css"
 function Login() {
     const navigate = useNavigate(); 
     const [email, setEmail] = useState('');
@@ -42,16 +42,31 @@ function Login() {
                 <div className="tab-content">
                     <div id="signup">
                         <h1>Welcome Back!</h1>
-                        <form onSubmit={handleSubmit}>
-                            <div className="field-wrap">
-                                <input type="email" placeholder="Email" className="input"  value={email}
-                                    onChange={(e) => setEmail(e.target.value)} required/>
+                        <form onSubmit={handleSubmit} id='sin'>
+                        <div class="brutalist-container">
+
+                            <input
+                                placeholder="TYPE HERE"
+                                class="brutalist-input smooth-type"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} required
+                            />
+                            <label class="brutalist-label">Email</label>
                             </div>
-                            <div className="field-wrap">
-                                <input type="password" placeholder="Password" className="password"   value={password}
-                                    onChange={(e) => setPassword(e.target.value)} required/>
+                            <div class="brutalist-container">
+                            <input
+                                placeholder="TYPE HERE"
+                                class="brutalist-input smooth-type"
+                                type="password"
+                                value={password}
+                                    onChange={(e) => setPassword(e.target.value)} required
+                            />
+                            <label class="brutalist-label">Password</label>
                             </div>
+                            
                             <div className="field button-field">
+                           
                         <button   >Login</button>
                     </div>
                             <div className="form-link">

@@ -63,77 +63,126 @@ function UserS() {
             <form onSubmit={handleSubmit}>
       
               <div class="top-row">
-                <div class="field-wrap">
-                  <label>
-                    
-                  </label>
-                  <input type="text" placeholder="Firstname" className="input"   value={firstname}
-      onChange={(e) => setFirstname(e.target.value)} required autocomplete="off"/>
-                </div>
-      
-                <div class="field-wrap">
-                  <label>
-                  </label>
-                  <input type="text" placeholder="Lastname" className="input"   value={lastname}
-      onChange={(e) => setLastname(e.target.value)} required autocomplete="off"/>
-                </div>
-              </div>
-      
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="text" placeholder="Country" className="input"   value={country}
-      onChange={(e) => setCountry(e.target.value)} required/>
-              </div>
-      
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="text" placeholder="city" className="input"   value={city}
-      onChange={(e) => setCity(e.target.value)} required/>
-              </div>
-              <div class="top-row">
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="text" placeholder="Nr°" className="input"   value={house_Nr}
-      onChange={(e) => setHouse_Nr(e.target.value)} required/>
-              </div>
-      
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="text" placeholder="PLZ" className="input"   value={pLZ}
-      onChange={(e) => setPLZ(e.target.value)} required/>
-              </div>
-              </div>
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="text" placeholder="Phone number" className="input"   value={phoneNumber}
-      onChange={(e) => setPhoneNumber(e.target.value)} required/>
-              </div>
+              <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Firstname</label>
+            </div>
 
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="email" placeholder="Email" className="input"  value={email}
-      onChange={(e) => setEmail(e.target.value)} required/>
-              </div>
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Lastname</label>
+            </div>
 
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="password" placeholder="Password" className="password"   value={password}
-      onChange={(e) => setPassword(e.target.value)} required/>
-              </div>
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Country</label>
+            </div>
 
-              <div class="field-wrap">
-                <label>
-                </label>
-                <input type="password" placeholder="Retype password" className="password"  value={checkPass}
-      onChange={(e) => setcheckPass(e.target.value)} required/>
-              </div>
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">City</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={house_Nr}
+                    onChange={(e) => setHouse_Nr(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Nr°</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={pLZ}
+                    onChange={(e) => setPLZ(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">PLZ</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="text"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Phone number</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Email</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Password</label>
+            </div>
+
+            <div class="brutalist-container">
+                <input
+                    placeholder="TYPE HERE"
+                    class="brutalist-input smooth-type"
+                    type="password"
+                    value={checkPass}
+                    onChange={(e) => setcheckPass(e.target.value)}
+                    required
+                />
+                <label class="brutalist-label">Retype password</label>
+            </div>
+            </div>
 
               {errorMessage && <p  style={{ color: 'red' }}>{errorMessage}</p>}
               
