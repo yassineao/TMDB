@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../components/Search';
+import Search from '../components/search';
 
 import "../styles/Cards.css"
 import "../styles/Nbar.css"

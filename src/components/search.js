@@ -104,7 +104,7 @@ function Search() {
       {results.length === 0 ? (
         <div />
       ) : (
-        <ul>
+        <ul class="midd">
           {results.map((item) => (
             <li key={item.id} className="cardS">
                <style>

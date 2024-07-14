@@ -30,7 +30,7 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
                   
                   <div key={film.id}>
                     
-          <Link to={`/result?id=${film.id}&Type=${"movie"}`}>
+          <Link to={`/result?id=${film.id}&Type=${type}`}>
                      <style>
                 {`
                 .cardM  {

@@ -239,3 +239,8 @@ div#uni .radio-wrapper {
 div#uni .radio-wrapper .btn {
   font-size: 30px;
 }
+ul.midd {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}

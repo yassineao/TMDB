@@ -24,7 +24,7 @@ function FavoriteMoviesPage() {
  
                 <GlitchingButton handleClick={handleToggleSearchType} name={searchType} aria={false}/>
                 </div>
-            <ul class="centroe">
+            <ul class="midd">
                 {favoriteMovies.map((Id) => (
                     <li key={favoriteMovies.id} className="cardS">
                        
