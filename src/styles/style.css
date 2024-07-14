@@ -10,7 +10,7 @@
     color: #ddd;
     font-weight: bold;
     text-align: center;
-    margin: 8%;
+    margin: 6%;
 }
 .card{
 margin-left: 10px;
@@ -583,4 +583,5 @@ div#uni {
   margin: auto;
   margin-top: 4%;
   /* width: 52%; */
+  margin-bottom: 3%;
 }

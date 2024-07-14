@@ -3,6 +3,7 @@ import { getSearched } from '../api/getSearched';
 import Card from './Card';
 import GlitchingButton from './glitchingButton';
 import "../styles/container.css"
+import "../styles/notFound.css"
 function Search() {
   const [query, setQuery] = useState('');
   const [searchType, setSearchType] = useState('movie');
@@ -102,7 +103,21 @@ function Search() {
       </div>
 
       {results.length === 0 ? (
-        <div />
+        <div id='poil'>
+          <div class="terminal-loader" id='poil'>
+  <div class="terminal-header"> 
+    <div class="terminal-title" id='poil'>Status</div>
+    <div class="terminal-controls"id='poil'>
+      <div class="control close" id='poil'></div>
+      <div class="control minimize" id='poil'></div>
+      <div class="control maximize" id='poil'></div>
+    </div>
+  </div>
+  <div class="text" id='poil'>not Found...</div>
+</div>
+
+
+        </div>
       ) : (
         <ul class="midd">
           {results.map((item) => (
