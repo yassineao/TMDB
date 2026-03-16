@@ -1,8 +1,8 @@
-import React from 'react';
+
 import Cover from './Cover';
 
 const PhotoGallery = ({ item, t, handleImageClick, showImagePopup, currentImage, setShowImagePopup }) => (
-    <section className="fotos">
+    <div>
         <div className="fotos-container">
             {Array.from({ length: 30 }, (_, i) => (
                 <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>
@@ -22,7 +22,7 @@ const PhotoGallery = ({ item, t, handleImageClick, showImagePopup, currentImage,
                 </div>
             </div>
         )}
-    </section>
+    </div>
 );
 
 export default PhotoGallery;

@@ -1,6 +1,6 @@
 
 export const fetchMovieDetails = async (Id, type) => {
-    var mergedJsonresult,response2 ,response =null;
+    var response =null;
      
     
     try {

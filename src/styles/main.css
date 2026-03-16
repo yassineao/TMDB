@@ -1586,9 +1586,8 @@ body::after {
 				padding: 0 1em 0 1em;
 			}
 
-	footer {
-		margin: 2.25em 0 0 0;
-	}
+	
+	
 
 /* Box */
 
@@ -2251,68 +2250,7 @@ body::after {
 
 		}
 
-/* Footer */
 
-	#footer {
-		position: relative;
-		color: #858484;
-		padding: 4em 0;
-	}
-
-		#footer:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background: url("https://images3.alphacoders.com/134/thumb-1920-1345374.png");
-			background-size: 100% 100%;
-			z-index: 0;
-			opacity: 0.5;
-		}
-
-		#footer a {
-			color: #c5c4c4;
-		}
-
-		#footer h2, #footer h3, #footer h4, #footer h5, #footer h6, #footer strong, #footer b {
-			color: #fff;
-		}
-
-			#footer h2 a, #footer h3 a, #footer h4 a, #footer h5 a, #footer h6 a, #footer strong a, #footer b a {
-				color: inherit;
-			}
-
-		#footer ul.contact li,
-		#footer ul.dates li,
-		#footer ul.divided li {
-			border-top-color: #353434;
-			border-top-color: rgba(255, 255, 255, 0.05);
-		}
-
-		#footer header {
-			margin: 0 0 3em 0;
-		}
-
-			#footer header h2 {
-				font-size: 1.75em;
-			}
-
-/* Copyright */
-
-	#copyright {
-		text-align: center;
-		margin: 3em 0 2em 0;
-	}
-
-		#copyright ul.links {
-			display: inline-block;
-			background: #2C2929;
-			background: rgba(255, 255, 255, 0.05);
-			border-radius: 5px;
-			margin: 0;
-			padding: 0.85em 2.25em 0.85em 2.25em;
-		}
 
 /* XLarge */
 

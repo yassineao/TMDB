@@ -577,11 +577,13 @@ h2#actors {
   margin-bottom: 51px;
   color: white;
   margin-left: 43%;
-  margin-top: 10%;
 }
 div#uni {
   margin: auto;
   margin-top: 4%;
   /* width: 52%; */
   margin-bottom: 3%;
+}
+ul.redaktion-list {
+    transform: scale(0.8);
 }

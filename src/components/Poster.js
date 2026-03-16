@@ -28,7 +28,11 @@ function Poster({ movieId }) {
 
   return (
     <div>
+      {poster ? (
         <img className="locandina" src={`https://image.tmdb.org/t/p/w500${poster}`} alt="nice" />
+      ) : (
+        <img className="locandina" src={process.env.PUBLIC_URL + '/404.jpg'} alt="Not found" />
+      )}
     </div>
   );
 }

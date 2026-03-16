@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import getToken from '../api/getTokenU';
 function useFavoriteMovies(t) {
     const [favoriteMovies, setFavoriteMovies] = useState([]);
-    const [favoriteSeries, setFavoriteSeries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [userDataFetched, setUserDataFetched] = useState(false); 

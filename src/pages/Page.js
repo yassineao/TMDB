@@ -130,6 +130,7 @@ function Page() {
                 .background-section:nth-of-type(1) {
                     background-position: center;
                     transform: skewY(-2.2deg);
+                    margin-top: 3%;
                 }
 
                 .background-section:nth-of-type(2) {
@@ -171,7 +172,7 @@ function Page() {
             
             </section>
             <div className="background-section"></div>
-            <h2 id="actors">Actors</h2>
+            <h2 id="actors" style={{ marginTop: '3%' }}>Actors</h2>
             <ActorsList cast={cast} />
             <SimilarMoviesSlider similarMovies={similarMovies} t={t} />
             <div className="background-section"><SocialMedia /></div>

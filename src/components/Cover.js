@@ -31,12 +31,12 @@ if (classN===undefined){
 
   return (
     <div>
-  {cover && cover.file_path ? (
-    <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
-  ) : (
-      <div/>
-)}
-</div>
+      {cover && cover.file_path ? (
+        <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
+      ) : (
+        <img className={classN} src={process.env.PUBLIC_URL + '/404.jpg'} alt="Not found" />
+      )}
+    </div>
   );
 }
 
