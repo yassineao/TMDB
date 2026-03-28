@@ -12,8 +12,8 @@ const GlitchingButton = ({ aria, name, handleClick }) => {
         onClick={handleClick} 
         aria-pressed={aria}
       >
-        <span aria-hidden="">_</span>{name}
-        <span className="btn__glitch" aria-hidden="">{name}</span>
+        <span aria-hidden={true}>_</span>{name}
+        <span className="btn__glitch" aria-hidden={true}>{name}</span>
         <label className="number">r1</label>
       </button>
     </div>

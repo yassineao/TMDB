@@ -27,11 +27,6 @@ function Series() {
 
 
 
-  // Function to check if the content is overflowing
-  const isOverflowing = (element) => {
-    return element.scrollHeight > element.clientHeight;
-  };
-
   // Function to auto-scroll the movie_desc element to the end if it's overflowing
  
   useEffect(() => {

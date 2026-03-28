@@ -47,6 +47,7 @@ function Search() {
 
   useEffect(() => {
     autoScrollToEnd();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results]);
 
   return (

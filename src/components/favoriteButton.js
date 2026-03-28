@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/button3.css';
 
 const FavoriteButton = ({  handleClick ,isFavorite}) => {

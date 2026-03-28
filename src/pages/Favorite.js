@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import useFavoriteMovies from '../api/getFavorite';
 import MovieSerieF from '../components/Favorite';
 import GlitchingButton from '../components/glitchingButton';
