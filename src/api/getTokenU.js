@@ -1,6 +1,8 @@
+import API_BASE_URL from './apiBaseUrl';
+
 async function getToken() {
     try {
-        const response = await fetch('http://localhost:5000/protected', {
+        const response = await fetch(`${API_BASE_URL}/protected`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem('session')}`,

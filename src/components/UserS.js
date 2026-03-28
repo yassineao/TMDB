@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import GlitchingButton from './glitchingButton';
+import API_BASE_URL from '../api/apiBaseUrl';
 
 function UserS() {
     const [firstname, setFirstname] = useState('');
@@ -29,7 +29,7 @@ function UserS() {
                 return;
             }
 
-            let response = await fetch('http://localhost:5000/register', {
+            let response = await fetch(`${API_BASE_URL}/register`, {
                 method: "POST",
                 body: JSON.stringify({
                     firstname, lastname, country, city, house_Nr, pLZ, email, password, phoneNumber,
@@ -147,7 +147,7 @@ function UserS() {
                 <label class="brutalist-label">Phone number</label>
             </div>
 
-            <div class="brutalist-container">
+            <div class="brutalist-container full-width-field">
                 <input
                     placeholder="TYPE HERE"
                     class="brutalist-input smooth-type"
@@ -159,7 +159,7 @@ function UserS() {
                 <label class="brutalist-label">Email</label>
             </div>
 
-            <div class="brutalist-container">
+            <div class="brutalist-container full-width-field">
                 <input
                     placeholder="TYPE HERE"
                     class="brutalist-input smooth-type"
@@ -171,7 +171,7 @@ function UserS() {
                 <label class="brutalist-label">Password</label>
             </div>
 
-            <div class="brutalist-container">
+            <div class="brutalist-container full-width-field">
                 <input
                     placeholder="TYPE HERE"
                     class="brutalist-input smooth-type"

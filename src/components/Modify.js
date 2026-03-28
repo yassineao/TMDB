@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import API_BASE_URL from '../api/apiBaseUrl';
 
 function Modify() {
 
@@ -11,13 +12,11 @@ function Modify() {
     const [pLZ, setPLZ] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [checkPass, setcheckPass] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/protected', {
+                const response = await fetch(`${API_BASE_URL}/protected`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem('session')}`,
@@ -55,7 +54,7 @@ function Modify() {
         try {
             e.preventDefault();
             const result = await fetch(
-                'http://localhost:5000/profile', {
+                `${API_BASE_URL}/profile`, {
                 method: "PUT", // Change method to PUT
                 body: JSON.stringify({
                     firstname,

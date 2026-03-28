@@ -133,18 +133,32 @@
     margin-bottom: 29px;
   }
   
-  .top-row:after {
-    content: "";
-    display: table;
-    clear: both;
+  .top-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1.5rem;
+    align-items: start;
   }
   .top-row > div {
-    float: left;
-    width: 48%;
-    margin-right: 4%;
-  }
-  .top-row > div:last-child {
+    width: 100%;
     margin: 0;
+    min-width: 0;
+  }
+  .top-row .brutalist-container {
+    margin-bottom: 1rem;
+  }
+  .top-row > .full-width-field {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 720px) {
+    .top-row {
+      grid-template-columns: 1fr;
+    }
+
+    .top-row > .full-width-field {
+      grid-column: auto;
+    }
   }
   
   .button {

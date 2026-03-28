@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import API_BASE_URL from '../api/apiBaseUrl';
 import "../styles/input.css"
 function Login() {
-    const navigate = useNavigate(); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            let result = await fetch('http://localhost:5000/login', {
+            let result = await fetch(`${API_BASE_URL}/login`, {
                 method: "post",
                 body: JSON.stringify({  
                     email,

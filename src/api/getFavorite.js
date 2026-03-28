@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import getToken from '../api/getTokenU';
+import API_BASE_URL from './apiBaseUrl';
 function useFavoriteMovies(t) {
     const [favoriteMovies, setFavoriteMovies] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ function useFavoriteMovies(t) {
       console.log("asdfsadfasf",t)
             try {
                 const token = sessionStorage.getItem('session');
-                const response = await fetch('http://localhost:5000/favorite-movies?t='+t, {
+                const response = await fetch(`${API_BASE_URL}/favorite-movies?t=${t}`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,

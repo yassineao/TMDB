@@ -6,10 +6,18 @@ const jwt = require('jsonwebtoken');
 const cookies = require('js-cookie');
 const helmet = require('helmet');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
+const mongoUri = process.env.MONGODB_URI;
+const jwtSecret = process.env.JWT_SECRET;
+const frontendOrigin = process.env.FRONTEND_ORIGIN || 'http://localhost:3000';
+
+if (!mongoUri || !jwtSecret) {
+  console.error('Missing required env vars: MONGODB_URI and JWT_SECRET');
+  process.exit(1);
+}
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/FilmUsers', {
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -68,7 +76,7 @@ const cspDirectives = {
   scriptSrc: ["'self'", "'unsafe-inline'"], // Adjust based on your needs, try to avoid 'unsafe-inline'
   styleSrc: ["'self'", "'unsafe-inline'"],
   imgSrc: ["'self'", "data:"],
-  connectSrc: ["'self'", "http://localhost:5000"],
+  connectSrc: ["'self'", frontendOrigin],
 };
 
 app.use(
@@ -99,7 +107,7 @@ app.post('/login', async (req, res) => {
     if (user) {
       const match = await bcrypt.compare(password, user.password);
       if (match) {
-        const token = jwt.sign({ user: user }, '65269dfa629841gwe9r51er8');
+        const token = jwt.sign({ user: user }, jwtSecret);
         res.status(200).json({ message: 'Login successful', token });
       } else {
         res.status(401).json({ message: 'Invalid password' });
@@ -114,12 +122,13 @@ app.post('/login', async (req, res) => {
 });
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization.split(' ')[1];
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
 
   if (!token) {
     return res.status(401).json({ message: 'No token provided' });
   }
-  jwt.verify(token, '65269dfa629841gwe9r51er8', (err, decoded) => {
+  jwt.verify(token, jwtSecret, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: 'Invalid token' });
     }
@@ -163,7 +172,7 @@ app.put('/profile', verifyToken, async (req, res) => {
 
     // Find the user by ID and update the profile fields
     const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true });
-    const token = jwt.sign({ user: updatedUser }, '65269dfa629841gwe9r51er8');
+    const token = jwt.sign({ user: updatedUser }, jwtSecret);
     if (!updatedUser) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -203,7 +212,7 @@ app.put('/add-favorite-film', verifyToken, async (req, res) => {
         }, { new: true });
       }
     }
-    const token = jwt.sign({ user: updatedUser }, '65269dfa629841gwe9r51er8');
+    const token = jwt.sign({ user: updatedUser }, jwtSecret);
     res.status(200).json({ token });
   } catch (error) {
     console.error(error);

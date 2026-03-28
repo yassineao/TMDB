@@ -1,7 +1,9 @@
+import API_BASE_URL from './apiBaseUrl';
+
 async function updateFavoriteFilm(type, Id ,t) {
     try {
       console.log("pppppp",t, Id)
-      const response = await fetch('http://localhost:5000/add-favorite-film', {
+      const response = await fetch(`${API_BASE_URL}/add-favorite-film`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

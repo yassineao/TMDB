@@ -172,5 +172,6 @@ ul.mid {
   }
 }
 .card{
-  max-width: 58%;
+  max-width: 100%;
+  width: 100%;
 }

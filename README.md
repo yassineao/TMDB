@@ -60,11 +60,18 @@ A full-stack web application for browsing and managing movies and TV series usin
 
 4. **Set up environment variables**
 
-   Create a `.env` file in the backend directory with:
+   Create `backend/.env` with:
    ```
    MONGODB_URI=mongodb://localhost:27017/FilmUsers
-   JWT_SECRET=your_jwt_secret_key
-   TMDB_API_KEY=your_tmdb_api_key
+   JWT_SECRET=replace_with_a_long_random_secret
+   FRONTEND_ORIGIN=http://localhost:3000
+   PORT=5000
+   ```
+
+   Create root `.env` with:
+   ```
+   REACT_APP_MOVIE_API_KEY=your_tmdb_api_key
+   REACT_APP_API_BASE_URL=http://localhost:5000
    ```
 
 5. **Start MongoDB**
