@@ -1,6 +1,6 @@
 .cardM {
     width: 99%;
-    height: 22.5em;
+    height: 17.5em;
     background: #333;
     transition: 1s ease-in-out;
     clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
@@ -14,8 +14,8 @@
 }
 
 .cardM .img {
-    width: 9.8em;
-    height: 12.8em;
+    width: 8em;
+    height: 10.5em;
     border-radius: 12px;
     margin-right: 1em;
     flex-shrink: 0; /* Ensure image does not shrink */
@@ -33,16 +33,18 @@
     color: white;
     text-align: center;
     display: block;
-    font-size: 2em;
-    margin-top: 8%;
-    margin-bottom: 4%;
+    font-size: 1.4em;
+    margin-top: 6%;
+    margin-bottom: 3%;
 }
 
 .cardM .info {
     font-weight: 400;
     color: white;
     text-align: left;
-    margin-top: 0.5em; /* Add margin for spacing */
+    margin-top: 0.35em; /* Add margin for spacing */
+    font-size: 0.88em;
+    line-height: 1.35;
 }
 
 .cardM .share {

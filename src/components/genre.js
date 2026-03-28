@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import TopGenre from '../components/topGenre';
 import { fetchMGenres } from '../api/fetchMovieGen';
 import '../styles/Cardd.css';
-import '../styles/glitch.css';
 
 function Genre({ genreId, name, handleTogglePopup, showPopup, type }) {
   const [bgColor, setBgColor] = useState('');
@@ -51,10 +50,10 @@ function Genre({ genreId, name, handleTogglePopup, showPopup, type }) {
           </button>
         </span>
       </div>
-      <div className="cppcode">
-        <div className="loader">
-          <div data-gliitch={name} className="gliitch">{name}</div>
-        </div>
+      <div className="genre-card-content">
+        <p className="genre-card-label">{type === 'movie' ? 'Movie Genre' : 'Series Genre'}</p>
+        <h3 className="genre-card-title">{name}</h3>
+        <p className="genre-card-hint">Click to view titles</p>
       </div>
       <TopGenre showPopup={showPopup} bgColor={bgColor} films={films} type={type} />
     </div>

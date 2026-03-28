@@ -41,10 +41,17 @@ export default function Genres() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="genre-page">     
-      <div id='uni'>       
+    <div className="genre-page">
+      <div className="genre-headline">
+        <p className="genre-eyebrow">Browse the catalog</p>
+        <h1 className="genre-page-title">
+          {searchType === 'movie' ? 'Pick A Movie Genre' : 'Pick A Series Genre'}
+        </h1>
+        <p className="genre-subtitle">Switch the type and open a genre to see matching titles.</p>
+      </div>
+      <div id='uni'>
       <GlitchingButton handleClick={() => setSearchType(searchType === 'movie' ? 'tv' : 'movie')} name={searchType} aria={true} />
-      </div>    
+      </div>
      <div id='genre'>
           {genres.map(genre => (
             <Genre 
