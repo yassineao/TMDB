@@ -29,7 +29,8 @@ if (classN===undefined){
   useEffect(() => {
     fetchCover();
     setImageFailed(false);
-  }, [Type, Id]); // Depend on Type and Id instead of fetchCover
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [Type, Id]);
 
   if (classN === "S" && (!cover || !cover.file_path || imageFailed)) {
     return null;

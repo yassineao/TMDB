@@ -9,9 +9,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import Cover from '../components/Cover';
 import getToken from '../api/getTokenU';
 import '../styles/main.css';
-import GlitchingButtons from '../components/glitchingButtons';
+
 export default function Home() {
-  const [userData, setUserData] = useState(null);
+  const [, setUserData] = useState(null);
   const [movies, setMovies] = useState([]);
   const [moviesP, setMoviesP] = useState([]);
 
@@ -153,7 +153,7 @@ export default function Home() {
                           <div class="col-4 col-6-medium col-12-small">
                             <Link to={`/result?id=${movie.id}&Type=${"movie"}`}>
                               <section class="box">
-                                <a href="#" class="image featured"><Cover Type="movie" Id={movie.id} number={1} /> </a>
+                                <span class="image featured"><Cover Type="movie" Id={movie.id} number={1} /> </span>
                                 <header>
                                   <h3>{movie.title}</h3>
                                 </header>
