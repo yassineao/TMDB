@@ -27,15 +27,15 @@ const GlitchingButtons = () => {
   <div class="radio-wrapper">
   
     <button class="btn" id="value-2" name="btn" type="button" onclick="toggleButton(this)" >
-      _Radio<span aria-hidden="">_</span>
-      <span class="btn__glitch" aria-hidden="">_R_a_d_i_o_</span>
+      _Radio<span aria-hidden={true}>_</span>
+      <span class="btn__glitch" aria-hidden={true}>_R_a_d_i_o_</span>
       <label class="number">r2</label>
     </button>
   </div>
   <div class="radio-wrapper">
     <button class="btn" id="value-3" name="btn" type="button" onclick="toggleButton(this)">
-      Buttons<span aria-hidden=""></span>
-      <span class="btn__glitch" aria-hidden="">Buttons_</span>
+      Buttons<span aria-hidden={true}></span>
+      <span class="btn__glitch" aria-hidden={true}>Buttons_</span>
       <label class="number">r3</label>
     </button>
   </div>

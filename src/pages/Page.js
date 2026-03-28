@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Cover from '../components/Cover';
@@ -8,8 +7,6 @@ import '../styles/test.css';
 import '../styles/details.css';
 import { fetchMovieDetails } from '../api/getMovie';
 import { fetchCastDetails, fetchSimilarMovies } from '../api/getActors';
-import Card from '../components/Card';
-import YouTube from 'react-youtube';
 import MovieHeader from '../components/movieHeader';
 import MovieDetails from '../components/movieDetails';
 import TrailerPopup from '../components/trailer';

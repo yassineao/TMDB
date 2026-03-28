@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import GlitchingButton from './glitchingButton';
 import Cover from './Cover';
 import FavoriteButton from './favoriteButton';
 import { fetchUserData, handleFavoriteClick } from '../api/fetchData.js';

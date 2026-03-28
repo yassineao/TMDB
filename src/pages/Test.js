@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Genre from '../components/genre';
 export default function Hwome() {
   const [genres, setGenres] = useState([]);
