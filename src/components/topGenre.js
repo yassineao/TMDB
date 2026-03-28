@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/CardM.css"
-import Cover from './Cover';
 const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
   <>
    
@@ -23,43 +22,23 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
                 </button>
               </span>
             </div>
-            <div >
-              <div >
-                
+            <div className="genre-popup-content">
                 {films.map((film) => (
-                  
-                  <div key={film.id}>
-                    
-          <Link to={`/result?id=${film.id}&Type=${type}`}>
-                     <style>
-                {`
-                .cardM  {
-                    background-size: cover;
-                    content: "";
-                    display: block;
-                    height: 300px;
-                }
-
-             
-                `}
-            </style>
-            <div className="cardM" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original${film.backdrop_path || film.poster_path}')` }}>
-
-    <div className="contentt">
-    {type === 'movie' ? ( <span>{film.title}</span> ) : ( <span>{film.name}</span> )}
-
-        <p className="info">{film.overview}</p>
-        <div className="share"></div>
-    </div>
-</div></Link>
-</div>
-
-                  
+                  <div key={film.id} className="genre-popup-item">
+                    <Link to={`/result?id=${film.id}&Type=${type}`}>
+                      <div className="cardM" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),url('https://image.tmdb.org/t/p/original${film.backdrop_path || film.poster_path}')` }}>
+                        <div className="contentt">
+                          {type === 'movie' ? ( <span>{film.title}</span> ) : ( <span>{film.name}</span> )}
+                          <p className="info">{film.overview}</p>
+                          <div className="share"></div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
       )}
     </div>
   </>

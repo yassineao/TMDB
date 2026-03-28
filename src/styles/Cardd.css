@@ -189,8 +189,8 @@
 
 /* Styles for the popup card */
 #popup-card .cardd {
-  width: 68%;
-  height: 68%;
+  width: min(88vw, 1200px);
+  height: min(86vh, 900px);
   background: #15001f;
   border: 1px solid #c042ff;
   font-size: 13px;
@@ -203,6 +203,14 @@
   z-index: 1000;
   opacity: 1;
   overflow: auto;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  #popup-card .cardd {
+    width: 94vw;
+    height: 88vh;
+  }
 }
 
 #popup-card .titlebar {
@@ -313,6 +321,25 @@
 
 #popup-card .overlay.show {
   display: block;
+}
+
+.genre-popup-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  align-items: start;
+}
+
+.genre-popup-item {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .genre-popup-content {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
 }
 div#uni .radio-wrapper {
   width: min(180px, 100%);

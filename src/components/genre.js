@@ -55,7 +55,7 @@ function Genre({ genreId, name, handleTogglePopup, showPopup, type }) {
         <h3 className="genre-card-title">{name}</h3>
         <p className="genre-card-hint">Click to view titles</p>
       </div>
-      <TopGenre showPopup={showPopup} bgColor={bgColor} films={films} type={type} />
+      <TopGenre showPopup={showPopup} handleTogglePopup={() => handleTogglePopup(genreId)} bgColor={bgColor} films={films} type={type} />
     </div>
   );
 }
