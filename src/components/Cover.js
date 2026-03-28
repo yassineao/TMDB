@@ -34,7 +34,7 @@ if (classN===undefined){
       {cover && cover.file_path ? (
         <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
       ) : (
-        <img className={classN} src={process.env.PUBLIC_URL + '/404.jpg'} alt="Not found" />
+        <img className={classN} src="https://i.pinimg.com/1200x/7c/e2/ce/7ce2ce45c1edb8543379e8db68645602.jpg" alt="Not found" />
       )}
     </div>
   );

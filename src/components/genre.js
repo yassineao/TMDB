@@ -36,7 +36,7 @@ function Genre({ genreId, name, handleTogglePopup, showPopup, type }) {
   }, [genreId,type]);
 
   return (
-    <div className="cardd" id="unique-card" onClick={() => handleTogglePopup(genreId)}>
+    <div className={`cardd ${showPopup ? 'popup-open' : ''}`} id="unique-card" onClick={() => handleTogglePopup(genreId)}>
       <div className="titlebar" style={{ backgroundColor: bgColor }}>
         <span className="buttons">
           <button className="minimize">

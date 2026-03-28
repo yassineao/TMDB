@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import getToken from './api/getTokenU';
 import './styles/navigation.css';
+import './styles/Nbar.css';
 import RouteComponent from './components/Router';
 import NavBar from './components/navBar';
 import Footer from './components/footer';
@@ -32,9 +33,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <RouteComponent />
-
         <NavBar userData={userData} logout={logout} />
+        <RouteComponent />
         <Footer />
       </Router>
 

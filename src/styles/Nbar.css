@@ -1,202 +1,167 @@
-/*-------------Reset-------------*/
-
-
-button:focus,
-input:focus {
-  outline: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-
-#home {
-  background-color: #ddd;
-}
-
-#about {
-  background-color: #aaa;
-}
-
-#work {
-  background-color: #888;
-}
-
-#contact {
-  background-color: #666;
-}
-
-/*-------------Helpers-------------*/
+/* Header / Navbar refresh */
 .skew {
-  transform: skew(-20deg);
+  transform: skew(-14deg);
 }
 
 .un-skew {
-  transform: skew(20deg);
+  transform: skew(14deg);
 }
 
-/*-------------Nav-------------*/
 #nav-wrapper {
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
-  z-index: 100;
+  width: 100%;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  background: linear-gradient(to bottom, rgba(5, 8, 13, 0.92), rgba(5, 8, 13, 0.65));
+  backdrop-filter: blur(8px);
 }
 
 #nav {
-  background-color: #37061f;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  max-width: 1320px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #141b24, #0d1119);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 0.5rem;
   font-family: "Saira Semi Condensed", sans-serif;
-  height: 4em;
-  overflow: hidden;
-}
-#nav.nav-visible {
-  height: 100%;
-  overflow: auto;
 }
 
 .nav {
   display: flex;
-  height: 4em;
-  line-height: 4em;
-  flex-grow: 1;
+  align-items: center;
+  min-height: 64px;
 }
 
-.nav-link,
-.logo {
-  padding: 0 1em;
-}
-
-span.gradient {
-  background: #f857a8;
-  background: linear-gradient(45deg, rgba(255, 51, 0, 0.5), hsl(324 50% 24% / 1));
-  padding: 0 1em;
-  position: relative;
-  right: 1em;
-  margin-right: auto;
-}
-span.gradient:hover {
-  animation-name: logo-hover;
-  animation-duration: 0.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.17, 0.57, 0.31, 0.85);
-}
-
-h1.logo {
-  font-weight: 300;
-  font-size: 1.75em;
-
-  color: #fff;
-}
-
-h1.logo a, a:active, a:hover, a:visited {
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-link {
-  text-transform: uppercase;
-  text-align: center;
-  border-top: 0.5px solid #ddd;
-}
-
-a:link, a:visited, a:active {
-  text-decoration: none;
-  color: #f857a8;
-}
-
-a:hover {
-  text-decoration: underline;
+.left {
+  flex: 0 0 auto;
 }
 
 .right {
+  flex: 1 1 auto;
+  justify-content: flex-end;
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+span.gradient {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #f5c518, #ffdc6b);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1.logo {
+  font-size: 1.32rem;
+  line-height: 1;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+h1.logo a,
+h1.logo a:visited,
+h1.logo a:hover,
+h1.logo a:active {
+  color: #101521;
+  text-decoration: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #e9edf3;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0.58rem 0.75rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link-span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.u-nav {
+  color: inherit;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: #101521;
+  background: #f5c518;
+  border-color: #f5c518;
+  transform: translateY(-1px);
 }
 
 .btn-nav {
-  color: #f857a8;
-  padding-left: 2em;
-  padding-right: 2em;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5c518;
+  border-radius: 10px;
+  padding: 0.45rem 0.7rem;
+  margin-left: 0.45rem;
+  display: none;
 }
 
-@media (min-width: 800px) {
+@media (max-width: 980px) {
   #nav-wrapper {
-    overflow: hidden;
+    padding: 0.5rem;
   }
 
   #nav {
-    overflow: hidden;
-    flex-direction: row;
-  }
-
-  .nav-link {
-    border-top: none;
+    min-height: 58px;
+    padding: 0 0.35rem;
   }
 
   .right {
-    overflow: hidden;
-    flex-direction: row;
-    justify-content: flex-end;
-    position: relative;
-    left: 1.5em;
-    height: auto;
-  }
-
-  .btn-nav {
-    display: none;
-  }
-
-  .nav a:link.active, a:visited.active, a:active.active {
-    background: #f857a8;
-    background: -webkit-linear-gradient(45deg, #f857a8, #ff5858);
-    background: linear-gradient(45deg, #f857a8, #ff5858);
-    color: #fff;
-  }
-
-  .nav-link-span {
-    transform: skew(20deg);
-    display: inline-block;
+    gap: 0.2rem;
   }
 
   .nav-link {
-    transform: skew(-20deg);
-    color: #777;
-    text-decoration: none;
-  }
-  .nav-link:last-child {
-    padding-right: 3em;
+    font-size: 0.76rem;
+    padding: 0.5rem 0.55rem;
+    letter-spacing: 0.02em;
   }
 
-  a:hover.nav-link:not(.active) {
-    color: #444;
-    background: #ddd;
-    background: linear-gradient(45deg, #fff, #ddd);
+  h1.logo {
+    font-size: 1.12rem;
   }
 }
-@keyframes logo-hover {
-  20% {
-    padding-right: 0em;
+
+@media (max-width: 760px) {
+  #nav {
+    flex-wrap: wrap;
+    padding: 0.4rem;
   }
-  100% {
-    padding-right: 5em;
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .right {
+    justify-content: center;
+    padding: 0.35rem 0.1rem 0.1rem;
+  }
+
+  .nav-link {
+    font-size: 0.72rem;
   }
 }
-/* Nav */
-#nav{
-  position:relative;
-  width:100%;
-  height:52px;
-  font-size:14px;
-  font-family:'Lemon', display;
- }
- 
- 
+     display: inline-block;
+

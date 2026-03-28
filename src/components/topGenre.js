@@ -6,9 +6,9 @@ const TopGenre = ({ showPopup, handleTogglePopup, films, bgColor , type}) => (
    
     <div className="column1">
       {showPopup && (
-        <div id="popup-card">
+        <div id="popup-card" onClick={(e) => e.stopPropagation()}>
           <div className="overlay show" onClick={handleTogglePopup}></div>
-          <div className="cardd">
+          <div className="cardd" onClick={(e) => e.stopPropagation()}>
             <div className="titlebar" style={{ backgroundColor: bgColor }}>
               <span className="buttons">
                 <button className="minimize">

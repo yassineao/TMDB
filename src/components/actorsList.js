@@ -10,7 +10,7 @@ const ActorsList = ({ cast }) => (
                     className="actor-image"
                     onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://r4.wallpaperflare.com/wallpaper/198/872/888/numbers-404-not-found-simple-background-minimalism-wallpaper-17a93acbb6fa45c5bcfd98b088d7a993.jpg';
+                        e.target.src = 'https://i.pinimg.com/1200x/7c/e2/ce/7ce2ce45c1edb8543379e8db68645602.jpg';
                     }}
                 />
                 <h2 className="actor-name">{actor.name}</h2>
