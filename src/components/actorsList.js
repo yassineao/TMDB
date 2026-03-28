@@ -10,7 +10,10 @@ const ActorsList = ({ cast }) => (
                     className="actor-image"
                     onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://i.pinimg.com/1200x/7c/e2/ce/7ce2ce45c1edb8543379e8db68645602.jpg';
+                        const card = e.target.closest('.actor-card');
+                        if (card) {
+                            card.style.display = 'none';
+                        }
                     }}
                 />
                 <h2 className="actor-name">{actor.name}</h2>

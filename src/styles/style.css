@@ -35,7 +35,7 @@ div#pop {
   position: relative;
   display: block;
   width: 100%;
-  height: 220px;
+  height: 350px;
   overflow: hidden;
   border-radius: 10px;
   transition: all 0.4s;
@@ -54,14 +54,12 @@ div#pop {
 }
 .movie_card .info_section .movie_header {
   position: relative;
-  padding: 12px 16px;
+  padding: 25px;
   height: 40%;
 }
 .movie_card .info_section .movie_header h1 {
   color: #fff;
   font-weight: 400;
-  font-size: 1rem;
-  margin: 0 0 4px;
 }
 .movie_card .info_section .movie_header h4 {
   color: #9ac7fa;
@@ -83,16 +81,15 @@ div#pop {
 .movie_card .info_section .movie_header .locandina {
   position: relative;
   float: left;
-  margin-right: 12px;
-  height: 80px;
+  margin-right: 20px;
+  height: 120px;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 .movie_card .info_section .movie_desc {
-  height: 80px;
-  max-height: 80px;
-  overflow-y: scroll;
-  position: absolute;
-  font-size: 0.8rem;
+  HEIGHT: 204PX;
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: scroll;
+    position: absolute;
 }
 .movie_card .info_section .movie_desc .text {
   color: #cfd6e1;
@@ -157,7 +154,7 @@ div#pop {
   .movie_card {
     width: 100%;
     margin: 0;
-    min-height: 220px;
+    min-height: 350px;
     height: auto;
   }
 
@@ -170,6 +167,7 @@ div#pop {
   .movie_header {
     width: 100%;
     margin-top: 85px;
+    max-width: 10%;
   }
 
   .movie_desc {
@@ -411,17 +409,7 @@ float: right;
 	grid-area: results;
 	background: hsl(0, 0%, 95%);
 }
-/*
-  https://developer.mozilla.org/en/docs/Web/CSS/box-shadow
-  box-shadow: [inset?] [top] [left] [blur] [size] [color];
 
-  Tips:
-    - We're setting all the blurs to 0 since we want a solid fill.
-    - Add the inset keyword so the box-shadow is on the inside of the element
-    - Animating the inset shadow on hover looks like the element is filling in from whatever side you specify ([top] and [left] accept negative values to become [bottom] and [right])
-    - Multiple shadows can be stacked
-    - If you're animating multiple shadows, be sure to keep the same number of shadows on hover/focus as non-hover/focus (even if you have to create a transparent shadow) so the animation is smooth. Otherwise, you'll get something choppy.
-*/
 .fill:hover,
 .fill:focus {
   box-shadow: inset 0 0 0 2em var(--hover);
@@ -584,13 +572,19 @@ h2#actors {
   margin-bottom: 51px;
   color: white;
   margin-left: 43%;
+      margin-top: 3%;
 }
 div#uni {
   margin: auto;
   margin-top: 4%;
   /* width: 52%; */
   margin-bottom: 3%;
+  
 }
 ul.redaktion-list {
-    transform: scale(0.8);
+  transform: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+      margin-top: 30%;
 }

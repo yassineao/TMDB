@@ -1,10 +1,10 @@
 
 import Cover from './Cover';
 
-const PhotoGallery = ({ item, t, handleImageClick, showImagePopup, currentImage, setShowImagePopup }) => (
+const PhotoGallery = ({ item, t, photoIndexes, handleImageClick, showImagePopup, currentImage, setShowImagePopup }) => (
     <div>
         <div className="fotos-container">
-            {Array.from({ length: 30 }, (_, i) => (
+            {photoIndexes.map((i) => (
                 <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>
                     {t === 'movie' ? (
                         <Cover Type="movie" Id={item.id} number={i} classN="S" PB={"backd"} />

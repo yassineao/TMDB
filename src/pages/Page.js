@@ -7,6 +7,7 @@ import '../styles/test.css';
 import '../styles/details.css';
 import { fetchMovieDetails } from '../api/getMovie';
 import { fetchCastDetails, fetchSimilarMovies } from '../api/getActors';
+import { getPoster } from '../api/getPoster';
 import MovieHeader from '../components/movieHeader';
 import MovieDetails from '../components/movieDetails';
 import TrailerPopup from '../components/trailer';
@@ -29,6 +30,7 @@ function Page() {
     const [showImagePopup, setShowImagePopup] = useState(false);
     const [currentImage, setCurrentImage] = useState('');
     const [showCatalogPopup, setShowCatalogPopup] = useState(false);
+    const [photoIndexes, setPhotoIndexes] = useState([]);
     const opts = {
         height: '390',
         width: '640',
@@ -101,6 +103,35 @@ function Page() {
         }
     }, [showPopup]);
 
+    useEffect(() => {
+        const loadPhotoIndexes = async () => {
+            try {
+                const imageData = await getPoster(t, Id);
+                const source = imageData.backdrops && imageData.backdrops.length > 0
+                    ? imageData.backdrops
+                    : (imageData.posters || []);
+
+                const validIndexes = source
+                    .map((img, idx) => (img && img.file_path ? idx : null))
+                    .filter((idx) => idx !== null)
+                    .slice(0, 30);
+
+                setPhotoIndexes(validIndexes);
+
+                if (validIndexes.length === 0) {
+                    setShowCatalogPopup(false);
+                }
+            } catch (error) {
+                setPhotoIndexes([]);
+                setShowCatalogPopup(false);
+            }
+        };
+
+        if (Id && t) {
+            loadPhotoIndexes();
+        }
+    }, [Id, t]);
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -115,6 +146,7 @@ function Page() {
                     content: "";
                     display: block;
                     height: 300px;
+                    background-position: top;
                 }
 
                 .background-section {
@@ -139,7 +171,7 @@ function Page() {
                 <div className="catalog-popup-overlay" onClick={() => setShowCatalogPopup(false)}>
                     <button className="catalog-popup-close-button" onClick={() => setShowCatalogPopup(false)}>&times;</button>
                      <div className="catalog-popup-content" onClick={(e) => e.stopPropagation()}>
-                        {Array.from({ length: 30 }, (_, i) => (
+                        {photoIndexes.map((i) => (
                            <div className="foto-card" key={i} onClick={() => handleImageClick(i)}>
                            {t === 'movie' ? (
                                <Cover Type="movie" Id={item.id} number={i} classN="S" PB={"backd"} />
@@ -153,21 +185,31 @@ function Page() {
             )}
             <section className="movie-card">
                 <MovieHeader item={item} t={t} />
-                <div className="hero"></div>
+                
                 <TrailerPopup showPopup={showPopup} handleTogglePopup={handleTogglePopup} videoKey={videoKey} opts={opts} />
                 <div className="column2">
                     <p className="text">{item.overview}</p>
                 </div>
             </section>
-            
+            <div className="hero"></div>
             <MovieDetails item={item} t={t} />
-            <h2 id="actors">Photos</h2>
-            <section className="fotos">  
-            <PhotoGallery item={item} t={t} handleImageClick={handleImageClick} showImagePopup={showImagePopup} currentImage={currentImage} setShowImagePopup={setShowImagePopup} />
-            <button onClick={handleCatalogPopup}>Show Catalog</button>
-           
-            
-            </section>
+            {photoIndexes.length > 0 && (
+                <>
+                    <h2 id="actors">Photos</h2>
+                    <section className="fotos">
+                        <PhotoGallery
+                            item={item}
+                            t={t}
+                            photoIndexes={photoIndexes}
+                            handleImageClick={handleImageClick}
+                            showImagePopup={showImagePopup}
+                            currentImage={currentImage}
+                            setShowImagePopup={setShowImagePopup}
+                        />
+                        <button onClick={handleCatalogPopup}>Show Catalog</button>
+                    </section>
+                </>
+            )}
             <div className="background-section"></div>
             <h2 id="actors" style={{ marginTop: '3%' }}>Actors</h2>
             <ActorsList cast={cast} />

@@ -4,6 +4,7 @@ import { getPoster } from '../api/getPoster';
 
 function Cover({ Type, Id ,number,classN,PB}) {
   const [cover, setCover] = useState([]);
+  const [imageFailed, setImageFailed] = useState(false);
 if (classN===undefined){
   classN= "locandina"
 }
@@ -27,12 +28,22 @@ if (classN===undefined){
 
   useEffect(() => {
     fetchCover();
+    setImageFailed(false);
   }, [Type, Id]); // Depend on Type and Id instead of fetchCover
+
+  if (classN === "S" && (!cover || !cover.file_path || imageFailed)) {
+    return null;
+  }
 
   return (
     <div>
       {cover && cover.file_path ? (
-        <img className={classN} src={`https://image.tmdb.org/t/p/w500${cover.file_path}`} alt="Cover" />
+        <img
+          className={classN}
+          src={`https://image.tmdb.org/t/p/w500${cover.file_path}`}
+          alt="Cover"
+          onError={() => setImageFailed(true)}
+        />
       ) : (
         <img className={classN} src="https://i.pinimg.com/1200x/7c/e2/ce/7ce2ce45c1edb8543379e8db68645602.jpg" alt="Not found" />
       )}
