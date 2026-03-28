@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/style.css"
 import { getMovies } from '../api/getMovies';
-import Cover from './Cover';
 import Card from './Card';
 function Movies() {
  
@@ -28,11 +27,6 @@ function Movies() {
 
 
 
-
-  // Function to check if the content is overflowing
-  const isOverflowing = (element) => {
-    return element.scrollHeight > element.clientHeight;
-  };
 
   // Function to auto-scroll the movie_desc element to the end if it's overflowing
  

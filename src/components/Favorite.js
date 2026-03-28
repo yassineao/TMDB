@@ -3,10 +3,10 @@ import Card from './Card';
 function MovieSerieF({ t,Id }) {
     const apiKey = process.env.REACT_APP_MOVIE_API_KEY;
     const [item, setItem] = useState(null);
-    var response =null;
     useEffect(() => {
         const fetchMovieDetails = async () => {
             try {
+                let response = null;
                 if(t==="movie"){
                      response = await fetch(`https://api.themoviedb.org/3/movie/${Id}?api_key=${apiKey}`);
                      console.log("89898989898");
@@ -28,7 +28,7 @@ function MovieSerieF({ t,Id }) {
         };
 
         fetchMovieDetails();
-    }, [Id, apiKey]);
+    }, [Id, apiKey, t]);
 
     return (
         <div >
